@@ -1,7 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Home from '../pages/Home';
-import Search from '../pages/Search';
+import { Outlet } from 'react-router-dom';
 import GlobalStyles from '../styles/GlobalStyles';
 
 function App() {
@@ -9,10 +7,7 @@ function App() {
     <>
       <GlobalStyles />
       <header>Header</header>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />} />
-      </Routes>
+      <Outlet />
       <footer>Footer</footer>
     </>
   );
