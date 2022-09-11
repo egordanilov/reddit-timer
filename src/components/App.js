@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './Home';
-import Search from './Search';
-import GlobalStyles from './styles/GlobalStyles';
+import Home from '../pages/Home';
+import Search from '../pages/Search';
+import GlobalStyles from '../styles/GlobalStyles';
 
 function App() {
   return (
