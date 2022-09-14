@@ -12,7 +12,7 @@ function Header() {
 
       <div className="header__links">
         <Link to="/search?reddit=javascript">Search</Link>
-        <Link to="/#how-it-works">How It Works</Link>
+        <Link to="/#how-it-works">How it works</Link>
         <Link to="/#about">About</Link>
       </div>
     </HeaderStyled>

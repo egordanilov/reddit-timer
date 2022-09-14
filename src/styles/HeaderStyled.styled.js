@@ -10,14 +10,8 @@ const HeaderStyled = styled.header`
 
     a {
         text-decoration: none;
-        font-size: 16px;
-        line-height: 20px;
-        text-align: right;
         color: #636363;
-        margin-left: 16px;
-        display: inline-block;
-        font-family: "Montserrat";
-        font-weight: 400;
+        margin-left: 26px;
     }
 
     a:hover {
