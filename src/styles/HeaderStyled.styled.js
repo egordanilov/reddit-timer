@@ -16,6 +16,8 @@ const HeaderStyled = styled.header`
         color: #636363;
         margin-left: 16px;
         display: inline-block;
+        font-family: "Montserrat";
+        font-weight: 400;
     }
 
     a:hover {

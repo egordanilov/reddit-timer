@@ -4,7 +4,6 @@ import CssReset from './CssReset';
 const GlobalStyles = createGlobalStyle`  
     ${CssReset}
 
-    /** Montserrat Regular **/
     @font-face {
       font-family: "Montserrat";
       font-weight: 400;
@@ -52,7 +51,6 @@ const GlobalStyles = createGlobalStyle`
       font-size: ${(props) => props.theme.font.size.default};
       line-height: ${(props) => props.theme.font.lineHeight.default};
       color: ${(props) => props.theme.color.text};
-      background: #cbcbcb;
     }
 `;
 
