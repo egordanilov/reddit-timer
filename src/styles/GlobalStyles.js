@@ -52,6 +52,7 @@ const GlobalStyles = createGlobalStyle`
       font-size: ${(props) => props.theme.font.size.default};
       line-height: ${(props) => props.theme.font.lineHeight.default};
       color: ${(props) => props.theme.color.text};
+      background: #cbcbcb;
     }
 `;
 
