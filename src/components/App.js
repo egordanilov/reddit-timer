@@ -10,6 +10,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Header />
+      <header>Header</header>
       <Outlet />
       <footer>Footer</footer>
     </ThemeProvider>
