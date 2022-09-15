@@ -1,7 +1,24 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import App from './components/App';
 
+function setup() {
+  return render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
+}
+
 test('renders App', () => {
-  render(<App />);
+  setup();
+  const header = screen.getByRole('banner');
+  expect(header).toBeInTheDocument();
+});
+
+describe('Header', () => {
+  test('Header is present on every page', () => {
+    setup();
+  });
 });
