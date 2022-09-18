@@ -13,7 +13,7 @@ function Header() {
       </div>
 
       <div className="header__links">
-        <HeaderLink to="/search?reddit=javascript" theme={theme}>Search</HeaderLink>
+        <HeaderLink to="/search/javascript" theme={theme}>Search</HeaderLink>
         <HeaderLink to="/#how-it-works" theme={theme}>How it works</HeaderLink>
         <HeaderLink to="/#about" theme={theme}>About</HeaderLink>
       </div>
