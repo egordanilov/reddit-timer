@@ -18,7 +18,7 @@ function setup() {
   );
 }
 
-// test utils file
+/* test utils file
 const renderWithRouter = (ui, { route = '/' } = {}) => {
   window.history.pushState({}, 'Test page', route);
 
@@ -26,6 +26,7 @@ const renderWithRouter = (ui, { route = '/' } = {}) => {
     ...render(ui, { wrapper: MemoryRouter }),
   };
 };
+*/
 
 test('Header is present on every page', () => {
   setup();
