@@ -1,6 +1,7 @@
 const theme = {
   color: {
     text: '#93918f',
+    linkHover: '#ff4500',
   },
   font: {
     family: {

@@ -3,8 +3,6 @@ import CssReset from './CssReset';
 
 const GlobalStyles = createGlobalStyle`  
     ${CssReset}
-
-    /** Montserrat Regular **/
     @font-face {
       font-family: "Montserrat";
       font-weight: 400;
