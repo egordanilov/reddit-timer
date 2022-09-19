@@ -3,6 +3,7 @@ import { Outlet, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '../styles/GlobalStyles';
 import Header from '../UI/Header';
+import Footer from '../UI/Footer';
 import Home from '../pages/Home';
 import Search from '../pages/Search';
 import theme from '../styles/theme';
@@ -22,7 +23,7 @@ function App() {
         </Route>
       </Routes>
       <Outlet />
-      <footer>Footer</footer>
+      <Footer />
     </ThemeProvider>
   );
 }
