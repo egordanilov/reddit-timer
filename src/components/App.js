@@ -14,7 +14,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/">
-          <Route path="search" element={<Search />} />
+          <Route path="search" element={<Search />}>
+            <Route path=":subreddit" element={<Search />} />
+            <Route index element={<Search />} />
+          </Route>
           <Route index element={<Home />} />
         </Route>
       </Routes>
