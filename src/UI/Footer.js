@@ -8,7 +8,7 @@ import theme from '../styles/theme';
 function Footer() {
   return (
     <FooterStyled theme={theme}>
-      <a href="https://ooloo.io/employers">Profy.dev</a>
+      <a href="https://ooloo.io/employers">profy.dev</a>
       <Logo to="/"><IconMenu /></Logo>
       <Link to="/terms">Terms &amp; Privacy</Link>
     </FooterStyled>
