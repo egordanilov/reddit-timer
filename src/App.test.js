@@ -52,3 +52,10 @@ test('Search link points to the search page with javascript as the default value
   await userEvent.click(howItWorksLink);
   screen.debug();
 });
+
+test('Footer logo link takes to home page', async () => {
+  setup();
+  const footerLogo = screen.getByRole('link', { name: 'footerlogo.svg' });
+  await userEvent.click(footerLogo);
+  expect(screen.getByTestId('location-display')).toHaveTextContent('/');
+});
