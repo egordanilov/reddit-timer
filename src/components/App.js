@@ -6,6 +6,7 @@ import Header from '../UI/Header';
 import Footer from '../UI/Footer';
 import Home from '../pages/Home';
 import Search from '../pages/Search';
+import Terms from '../pages/Terms';
 import theme from '../styles/theme';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path=":subreddit" element={<Search />} />
             <Route index element={<Search />} />
           </Route>
+          <Route path="/terms" element={<Terms />} />
           <Route index element={<Home />} />
         </Route>
       </Routes>
