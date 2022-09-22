@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderStyled from '../styles/HeaderStyled.style';
 import HeaderLink from '../styles/HeaderLink.style';
-import HeaderLogo from '../styles/HeaderLogo.style';
+import Logo from '../styles/Logo.style';
 import { ReactComponent as IconMenu } from './RedditTimerLogo.svg';
 import theme from '../styles/theme';
 
@@ -9,7 +9,7 @@ function Header() {
   return (
     <HeaderStyled>
       <div className="header__logo">
-        <HeaderLogo to="/"><IconMenu /></HeaderLogo>
+        <Logo to="/"><IconMenu /></Logo>
       </div>
 
       <div className="header__links">

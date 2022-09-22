@@ -9,7 +9,7 @@ const LocationDisplay = () => {
   return <div data-testid="location-display">{location.pathname}</div>;
 };
 
-function setup() {
+export default function setup() {
   return render(
     <MemoryRouter>
       <App />

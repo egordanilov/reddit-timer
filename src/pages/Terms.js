@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Home() {
+export default function Terms() {
   return (
     <section className="viewWrapper">
-      Home page
+      Terms
     </section>
   );
 }

@@ -51,6 +51,10 @@ const GlobalStyles = createGlobalStyle`
       line-height: ${(props) => props.theme.font.lineHeight.default};
       color: ${(props) => props.theme.color.text};
     }
+
+    .viewWrapper {
+      min-height: calc(100vh - 200px);
+    }
 `;
 
 export default GlobalStyles;
