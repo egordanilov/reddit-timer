@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 const FooterStyled = styled.footer`
-    width: 100%;
+    width: 100%; /* tries to take up the complete space */
+    max-width: 940px; /* prevents growing larger than 940px */
+    margin: auto; /* centers footer on screens wider than 940px */
+    padding: 0 20px; /* ensures some horizontal space on small devices */    
     height: 100px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    position: absolute;
-    left: 0;
-    bottom: 0;
 
     a {
         text-decoration: none;
@@ -20,11 +19,12 @@ const FooterStyled = styled.footer`
     }
 
     a:first-of-type {
-        padding-left: 40px;
+        flex: 1;
     }
 
     a:last-of-type {
-        padding-right: 40px;
+        text-align: right;
+        flex: 1;
     }
 `;
 

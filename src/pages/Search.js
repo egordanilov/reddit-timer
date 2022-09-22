@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 export default function Search() {
   const { subreddit = 'javascript' } = useParams();
   return (
-    <>
+    <section className="viewWrapper">
       Search page
       {subreddit}
-    </>
+    </section>
   );
 }

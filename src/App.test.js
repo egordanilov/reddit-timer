@@ -9,7 +9,7 @@ const LocationDisplay = () => {
   return <div data-testid="location-display">{location.pathname}</div>;
 };
 
-function setup() {
+export default function setup() {
   return render(
     <MemoryRouter>
       <App />
@@ -51,11 +51,4 @@ test('Search link points to the search page with javascript as the default value
   const howItWorksLink = screen.getByRole('link', { name: 'How it works' });
   await userEvent.click(howItWorksLink);
   screen.debug();
-});
-
-test('Footer logo link takes to home page', async () => {
-  setup();
-  const footerLogo = screen.getByRole('link', { name: 'footerlogo.svg' });
-  await userEvent.click(footerLogo);
-  expect(screen.getByTestId('location-display')).toHaveTextContent('/');
 });
