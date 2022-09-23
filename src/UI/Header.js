@@ -4,6 +4,7 @@ import HeaderLink from '../styles/HeaderLink.style';
 import Logo from '../styles/Logo.style';
 import { ReactComponent as IconMenu } from './RedditTimerLogo.svg';
 import theme from '../styles/theme';
+import defaultSubreddit from '../sharedVariables';
 
 function Header() {
   return (
@@ -13,7 +14,7 @@ function Header() {
       </div>
 
       <div className="header__links">
-        <HeaderLink to="/search/javascript" theme={theme}>Search</HeaderLink>
+        <HeaderLink to={`/search/${defaultSubreddit}`} theme={theme}>Search</HeaderLink>
         <HeaderLink to="/#how-it-works" theme={theme}>How it works</HeaderLink>
         <HeaderLink to="/#about" theme={theme}>About</HeaderLink>
       </div>
