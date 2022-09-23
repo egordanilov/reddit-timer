@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import theme from './theme';
 
-const SectionWrapper = styled.section`
+const SectionWrapper = styled.article`
     text-align: left;
     max-width: 738px;
     margin: 105px auto;
