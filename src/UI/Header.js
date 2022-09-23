@@ -15,8 +15,8 @@ function Header() {
 
       <div className="header__links">
         <HeaderLink to={`/search/${defaultSubreddit}`} theme={theme}>Search</HeaderLink>
-        <HeaderLink to="/#how-it-works" theme={theme}>How it works</HeaderLink>
-        <HeaderLink to="/#about" theme={theme}>About</HeaderLink>
+        <HeaderLink smooth to="/#how-it-works" theme={theme}>How it works</HeaderLink>
+        <HeaderLink smooth to="/#about" theme={theme}>About</HeaderLink>
       </div>
     </HeaderStyled>
   );
