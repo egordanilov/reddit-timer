@@ -10,6 +10,7 @@ const HeroSubreddit = styled.p`
     line-height: 20px;
     text-align: center;
     margin-top: 46px;
+    text-decoration: none;
 `;
 
 export default HeroSubreddit;

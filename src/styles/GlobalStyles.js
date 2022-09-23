@@ -55,6 +55,10 @@ const GlobalStyles = createGlobalStyle`
     .viewWrapper {
       min-height: calc(100vh - 200px);
     }
+
+    a {
+      text-decoration: none;
+    }
 `;
 
 export default GlobalStyles;
