@@ -4,13 +4,10 @@ import SubredditForm from '../components/SubredditForm';
 
 export default function Search() {
   const { subreddit = 'javascript' } = useParams();
+  const [subredditInput, setSubredditInput] = React.useState(subreddit);
   return (
     <section className="viewWrapper">
-      <SubredditForm subreddit={subreddit} />
-      <br />
-      <br />
-      <br />
-      <br />
+      <SubredditForm subreddit={subredditInput} changeHandler={setSubredditInput} />
       Search page
       {subreddit}
     </section>
