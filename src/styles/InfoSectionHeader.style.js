@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import theme from './theme';
 
-const SectionWrapperHeader = styled.h2`
+const InfoSectionHeader = styled.h2`
     font-family: ${theme.font.family.headline};
     font-style: normal;
     font-weight: 400;
@@ -11,4 +11,4 @@ const SectionWrapperHeader = styled.h2`
     margin-bottom: 12px;
 `;
 
-export default SectionWrapperHeader;
+export default InfoSectionHeader;

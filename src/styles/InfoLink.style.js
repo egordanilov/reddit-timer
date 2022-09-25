@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import theme from './theme';
 
-const SectionWrapperLink = styled.a`
+const InfoLink = styled.a`
     color: ${theme.color.link};
     text-decoration: none;
 `;
 
-export default SectionWrapperLink;
+export default InfoLink;
