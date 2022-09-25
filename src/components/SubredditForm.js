@@ -1,14 +1,15 @@
 import React from 'react';
+import { string } from 'prop-types';
 import * as S from '../styles/SubredditFormWrapper.style';
 import { Heading, ActionButton } from '../styles/HeroSectionStyled.style';
 
-function SubredditForm() {
+function SubredditForm({ subreddit }) {
   return (
     <S.SubredditFormWrapper>
       <Heading>Find the best time for a subreddit</Heading>
       <S.InputRowWrapper>
         <S.InputLabel>r /</S.InputLabel>
-        <S.SubredditInput />
+        <S.SubredditInput value={subreddit} />
         <ActionButton>
           SEARCH
         </ActionButton>
@@ -16,5 +17,9 @@ function SubredditForm() {
     </S.SubredditFormWrapper>
   );
 }
+
+SubredditForm.propTypes = {
+  subreddit: string.isRequired,
+};
 
 export default SubredditForm;

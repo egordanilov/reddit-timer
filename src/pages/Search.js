@@ -6,7 +6,7 @@ export default function Search() {
   const { subreddit = 'javascript' } = useParams();
   return (
     <section className="viewWrapper">
-      <SubredditForm />
+      <SubredditForm subreddit={subreddit} />
       <br />
       <br />
       <br />
