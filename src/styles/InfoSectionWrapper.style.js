@@ -28,6 +28,10 @@ export const InfoStyled = styled.article`
 `;
 
 export const InfoLink = styled.a`
-color: ${theme.color.link};
-text-decoration: none;
+    color: ${theme.color.link};
+    text-decoration: none;
+    &:hover {
+        cursor: pointer;
+        color: ${theme.color.linkHover};
+    }
 `;

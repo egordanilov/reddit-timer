@@ -15,7 +15,7 @@ function HeroSection() {
         <S.HeroButton>SHOW ME THE BEST TIME</S.HeroButton>
       </Link>
       <Link to={`/search/${defaultSubreddit}`}>
-        <S.HeroSubreddit>r/javascript</S.HeroSubreddit>
+        <S.HeroSubreddit>{`r/${defaultSubreddit}`}</S.HeroSubreddit>
       </Link>
       <Link to={`/search/${defaultSubreddit}`}>
         <S.HeroImage src={headerImg} alt="Best time to post on reddit" />

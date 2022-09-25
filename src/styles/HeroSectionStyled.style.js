@@ -38,6 +38,12 @@ border: 1px solid #fdb755;
 padding: 14px 15px;
 cursor: pointer;
 margin-top: 45px;
+
+&:hover {
+    background: #fea62e;
+    border: 1px solid #fea62e;
+}
+
 `;
 
 export const HeroHeading = styled.h1`
