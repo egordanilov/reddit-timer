@@ -7,6 +7,10 @@ export default function Search() {
   return (
     <section className="viewWrapper">
       <SubredditForm />
+      <br />
+      <br />
+      <br />
+      <br />
       Search page
       {subreddit}
     </section>

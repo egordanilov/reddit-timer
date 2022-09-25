@@ -3,7 +3,6 @@ import theme from './theme';
 
 export const HeroSectionStyled = styled.section`
     text-align: center;
-    padding-top: 50px;
 `;
 
 export const HeroSubreddit = styled.p`
@@ -27,32 +26,32 @@ export const HeroSubtitle = styled.p`
     text-align: center;
     color: ${theme.color.text};
     margin-top: 20px;
+    margin-bottom: 45px;
 `;
 
-export const HeroButton = styled.button`
+export const ActionButton = styled.button`
 background: #fdb755;
 border-radius: 4px;
 color: #fff;
 font-family: ${theme.font.default};
-border: 1px solid #fdb755;
-padding: 14px 15px;
+border: none;
+padding: 10px 16px;
 cursor: pointer;
-margin-top: 45px;
-
+font-size: 14px;
 &:hover {
     background: #fea62e;
-    border: 1px solid #fea62e;
 }
 
 `;
 
-export const HeroHeading = styled.h1`
+export const Heading = styled.h1`
 font-family: ${theme.font.family.headline};
 color: #000000;
 font-weight: 400;
 line-height: 46px;
 font-size: 38px;
 text-align: center;
+display: block;
 `;
 
 export const HeroImage = styled.img`
