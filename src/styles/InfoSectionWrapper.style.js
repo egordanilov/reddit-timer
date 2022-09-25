@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import theme from './theme';
 
-const InfoSectionWrapper = styled.section`
+export const InfoSectionWrapper = styled.section`
     text-align: left;
     max-width: 738px;
     margin: 105px auto;
@@ -13,5 +13,21 @@ const InfoSectionWrapper = styled.section`
     line-height: 27px;
     color: ${theme.color.text};
 `;
+export const InfoSectionHeader = styled.h2`
+    font-family: ${theme.font.family.headline};
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+    margin-bottom: 12px;
+`;
 
-export default InfoSectionWrapper;
+export const InfoStyled = styled.article`
+    margin-bottom: 105px;
+`;
+
+export const InfoLink = styled.a`
+color: ${theme.color.link};
+text-decoration: none;
+`;

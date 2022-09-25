@@ -1,31 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HeroSectionStyled from '../styles/HeroSectionStyled.style';
-import HeroButton from '../styles/HeroButton.style';
-import HeroImage from '../styles/HeroImage.style';
-import HeroHeading from '../styles/HeroHeading.style';
-import HeroSubtitle from '../styles/HeroSubtitle.style';
-import HeroSubreddit from '../styles/HeroSubreddit.style';
+import * as S from '../styles/HeroSectionStyled.style';
 import defaultSubreddit from '../sharedVariables';
 import headerImg from '../UI/headerImg.png';
 
 function HeroSection() {
   return (
-    <HeroSectionStyled>
-      <HeroHeading>No reactions to your reddit posts?</HeroHeading>
-      <HeroSubtitle>
+    <S.HeroSectionStyled>
+      <S.HeroHeading>No reactions to your reddit posts?</S.HeroHeading>
+      <S.HeroSubtitle>
         Great timing, great results! Find the best time to post on your subreddit.
-      </HeroSubtitle>
+      </S.HeroSubtitle>
       <Link to={`/search/${defaultSubreddit}`}>
-        <HeroButton>SHOW ME THE BEST TIME</HeroButton>
+        <S.HeroButton>SHOW ME THE BEST TIME</S.HeroButton>
       </Link>
       <Link to={`/search/${defaultSubreddit}`}>
-        <HeroSubreddit>r/javascript</HeroSubreddit>
+        <S.HeroSubreddit>r/javascript</S.HeroSubreddit>
       </Link>
       <Link to={`/search/${defaultSubreddit}`}>
-        <HeroImage src={headerImg} alt="Best time to post on reddit" />
+        <S.HeroImage src={headerImg} alt="Best time to post on reddit" />
       </Link>
-    </HeroSectionStyled>
+    </S.HeroSectionStyled>
   );
 }
 

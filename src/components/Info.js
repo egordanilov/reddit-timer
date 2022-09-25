@@ -1,14 +1,13 @@
 import React from 'react';
 import { string, node } from 'prop-types';
-import InfoStyled from '../styles/InfoStyled.style';
-import InfoSectionHeader from '../styles/InfoSectionHeader.style';
+import * as S from '../styles/InfoSectionWrapper.style';
 
 function Info({ id, headline, children }) {
   return (
-    <InfoStyled id={id}>
-      <InfoSectionHeader>{ headline }</InfoSectionHeader>
+    <S.InfoStyled id={id}>
+      <S.InfoSectionHeader>{ headline }</S.InfoSectionHeader>
       { children }
-    </InfoStyled>
+    </S.InfoStyled>
   );
 }
 

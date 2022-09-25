@@ -1,11 +1,10 @@
 import React from 'react';
-import InfoSectionWrapper from '../styles/InfoSectionWrapper.style';
+import * as S from '../styles/InfoSectionWrapper.style';
 import Info from './Info';
-import InfoLink from '../styles/InfoLink.style';
 
 function InfoSection() {
   return (
-    <InfoSectionWrapper>
+    <S.InfoSectionWrapper>
       <Info id="how-it-works" headline="How it works">
         • We find the 500 top posts from the past year for a subreddit.
         <br />
@@ -16,11 +15,11 @@ function InfoSection() {
       {/* eslint-disable */}
       <Info id="about" headline="About">
         This app was created during a course on 
-        <InfoLink href="https://profy.dev" target="_blank" rel="noopener noreferrer"> profy.dev </InfoLink> with the goal to implement a pixel-perfect real-world application with professional workflows and tools like Kanban, ClickUp, Figma, GitHub, pull requests and code reviews. 
-        <InfoLink href="https://profy.dev/employers" target="_blank" rel="noopener noreferrer"> Click here for more information.</InfoLink>
+        <S.InfoLink href="https://profy.dev" target="_blank" rel="noopener noreferrer"> profy.dev </S.InfoLink> with the goal to implement a pixel-perfect real-world application with professional workflows and tools like Kanban, ClickUp, Figma, GitHub, pull requests and code reviews. 
+        <S.InfoLink href="https://profy.dev/employers" target="_blank" rel="noopener noreferrer"> Click here for more information.</S.InfoLink>
       </Info>
       {/* eslint-enable */}
-    </InfoSectionWrapper>
+    </S.InfoSectionWrapper>
   );
 }
 
