@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <section className="viewWrapper">
       <HeroSection />
-      Home page
       <InfoSection />
     </section>
   );
