@@ -14,10 +14,11 @@ function SubredditForm({ subreddit, changeHandler }) {
     <S.SubredditFormWrapper>
       <Heading>Find the best time for a subreddit</Heading>
       <S.InputRowWrapper onSubmit={submitHandler}>
-        <S.InputLabel>r /</S.InputLabel>
+        <S.InputLabel htmlFor="subredditInput">r /</S.InputLabel>
         <S.SubredditInput
           value={subreddit}
           onChange={(event) => changeHandler(event.target.value)}
+          id="subredditInput"
         />
         <ActionButton type="submit">
           SEARCH
