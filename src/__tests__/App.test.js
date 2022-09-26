@@ -18,16 +18,6 @@ export default function setup() {
   );
 }
 
-/* test utils file
-const renderWithRouter = (ui, { route = '/' } = {}) => {
-  window.history.pushState({}, 'Test page', route);
-
-  return {
-    ...render(ui, { wrapper: MemoryRouter }),
-  };
-};
-*/
-
 test('Header is present on every page', () => {
   setup();
   const header = screen.getByRole('banner');
