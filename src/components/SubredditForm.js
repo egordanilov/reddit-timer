@@ -1,14 +1,21 @@
-import React from 'react';
-import { string, func } from 'prop-types';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import * as S from '../styles/SubredditFormWrapper.style';
 import { Heading, ActionButton } from '../styles/HeroSectionStyled.style';
+import defaultSubreddit from '../sharedVariables';
 
-function SubredditForm({ subreddit, changeHandler }) {
+function SubredditForm() {
+  const { subreddit = defaultSubreddit } = useParams();
+  const [subredditInput, setSubredditInput] = React.useState(subreddit);
   const submitHandler = (e) => {
     e.preventDefault();
-    const newPath = `/search/${subreddit}`;
+    const newPath = `/search/${subredditInput}`;
     window.history.pushState({}, undefined, newPath);
   };
+
+  useEffect(() => {
+    setSubredditInput(subreddit);
+  }, [subreddit]);
 
   return (
     <S.SubredditFormWrapper>
@@ -16,8 +23,8 @@ function SubredditForm({ subreddit, changeHandler }) {
       <S.InputRowWrapper onSubmit={submitHandler}>
         <S.InputLabel htmlFor="subredditInput">r /</S.InputLabel>
         <S.SubredditInput
-          value={subreddit}
-          onChange={(event) => changeHandler(event.target.value)}
+          value={subredditInput}
+          onChange={(event) => setSubredditInput(event.target.value)}
           id="subredditInput"
         />
         <ActionButton type="submit">
@@ -27,10 +34,5 @@ function SubredditForm({ subreddit, changeHandler }) {
     </S.SubredditFormWrapper>
   );
 }
-
-SubredditForm.propTypes = {
-  subreddit: string.isRequired,
-  changeHandler: func.isRequired,
-};
 
 export default SubredditForm;
