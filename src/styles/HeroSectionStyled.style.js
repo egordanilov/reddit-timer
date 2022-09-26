@@ -34,6 +34,7 @@ background: #fdb755;
 border-radius: 4px;
 color: #fff;
 font-family: ${theme.font.default};
+
 border: none;
 padding: 10px 16px;
 cursor: pointer;
