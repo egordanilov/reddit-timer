@@ -7,12 +7,12 @@ import headerImg from '../UI/headerImg.png';
 function HeroSection() {
   return (
     <S.HeroSectionStyled>
-      <S.HeroHeading>No reactions to your reddit posts?</S.HeroHeading>
+      <S.Heading>No reactions to your reddit posts?</S.Heading>
       <S.HeroSubtitle>
         Great timing, great results! Find the best time to post on your subreddit.
       </S.HeroSubtitle>
       <Link to={`/search/${defaultSubreddit}`}>
-        <S.HeroButton>SHOW ME THE BEST TIME</S.HeroButton>
+        <S.ActionButton>SHOW ME THE BEST TIME</S.ActionButton>
       </Link>
       <Link to={`/search/${defaultSubreddit}`}>
         <S.HeroSubreddit>{`r/${defaultSubreddit}`}</S.HeroSubreddit>

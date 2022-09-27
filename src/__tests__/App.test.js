@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter, useLocation } from 'react-router-dom';
 import App from '../components/App';
 
-const LocationDisplay = () => {
+export const LocationDisplay = () => {
   const location = useLocation();
   return <div data-testid="location-display">{location.pathname}</div>;
 };
@@ -17,16 +17,6 @@ export default function setup() {
     </MemoryRouter>,
   );
 }
-
-/* test utils file
-const renderWithRouter = (ui, { route = '/' } = {}) => {
-  window.history.pushState({}, 'Test page', route);
-
-  return {
-    ...render(ui, { wrapper: MemoryRouter }),
-  };
-};
-*/
 
 test('Header is present on every page', () => {
   setup();
