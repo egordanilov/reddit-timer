@@ -1,13 +1,12 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-// import setup from './App.test';
 import App from '../components/App';
 import { LocationDisplay } from './App.test';
 
 function setup() {
-  const oddRoute = '/search/fhjdfsh';
+  const oddRoute = '/search/angular';
   render(
     <MemoryRouter initialEntries={[oddRoute]}>
       <App />
@@ -16,21 +15,21 @@ function setup() {
   );
 }
 
-test('initializes the input value from the URL', async () => {
+test('initializes the input value from the URL and updates the URL with the new subreddit on submit', async () => {
   setup();
+  const headerLink = screen.getByRole('link', { name: 'Search' });
+  const submitButton = screen.getByRole('button', { name: 'SEARCH' });
   const locationDisplay = screen.getByTestId('location-display');
   const subredditInput = screen.getByLabelText('r /');
-  expect(locationDisplay).toHaveTextContent(subredditInput.value);
-});
-
-test('updates the URL with the new subreddit on submit', async () => {
-  setup();
-  const navigate = jest.fn();
-  const subredditInput = screen.getByLabelText('r /');
-  await fireEvent.change(subredditInput, { target: { value: 'newurlalteredinput' } });
-  const submitButton = screen.getByRole('button', { name: 'SEARCH' });
-  screen.debug();
+  // Expect the form input value to initialize from URL
+  expect(subredditInput.value).toBe('angular');
+  // Clear the form input, type in reactjs, submit the form, expect the path to be reactjs
+  await userEvent.clear(subredditInput);
+  await userEvent.type(subredditInput, 'reactjs');
   await userEvent.click(submitButton);
-  const newUrl = `/search/${subredditInput.value}`;
-  expect(navigate).toBeCalledWith(newUrl);
+  expect(locationDisplay).toHaveTextContent(subredditInput.value);
+  // Click on Search link in the header and expect a default input param and url to be javascript
+  await userEvent.click(headerLink);
+  expect(subredditInput.value).toBe('javascript');
+  expect(locationDisplay).toHaveTextContent('/search/javascript');
 });
