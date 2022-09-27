@@ -25,12 +25,12 @@ test('initializes the input value from the URL', async () => {
 
 test('updates the URL with the new subreddit on submit', async () => {
   setup();
-  window.history.pushState = jest.fn();
+  const navigate = jest.fn();
   const subredditInput = screen.getByLabelText('r /');
   await fireEvent.change(subredditInput, { target: { value: 'newurlalteredinput' } });
   const submitButton = screen.getByRole('button', { name: 'SEARCH' });
   screen.debug();
   await userEvent.click(submitButton);
   const newUrl = `/search/${subredditInput.value}`;
-  expect(window.history.pushState).toBeCalledWith({}, undefined, newUrl);
+  expect(navigate).toBeCalledWith(newUrl);
 });
