@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import defaultSubreddit from '../sharedVariables';
+import LoadingSpinner from '../styles/LoadingSpinner.style';
 /* eslint-disable */
 
 function LoadTheData() {
@@ -33,7 +34,7 @@ function LoadTheData() {
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   } else {
     return (JSON.stringify(posts));
   }
