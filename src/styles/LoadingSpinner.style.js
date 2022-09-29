@@ -10,6 +10,7 @@ const LoadingSpinner = styled.div`
     animation: spin 1.5s linear infinite;
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+    margin: 0 auto;
 
     @keyframes spin {
         0% { transform: rotate(0deg); }

@@ -9,6 +9,7 @@ export const InputRowWrapper = styled.form`
    align-items: center;
    margin-top: 30px;
    height: 36px;
+   margin-bottom: 56px;
 `;
 
 export const SubredditInput = styled.input`
