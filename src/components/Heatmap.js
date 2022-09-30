@@ -2,47 +2,52 @@ import React from 'react';
 import * as S from '../styles/HeatMapWrapper.style';
 
 function HeatMap() {
+  const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const hours = ['12:00am', '2:00am', '4:00am', '6:00am', '8:00am', '10:00am', '12:00pm', '2:00pm', '4:00pm', '6:00pm', '8:00pm', '10:00pm'];
+  /* eslint-disable */
+  const hoursComp = hours.map((hour) => <S.HeatMapHeaderHour key={hour}>{hour}</S.HeatMapHeaderHour>);
+  
+  const weekdaysComp = weekdays.map((weekday) => {
+    return (
+        <S.HeatMapRow>
+            <S.HeatMapRowWeekday>{weekday}</S.HeatMapRowWeekday>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+            <S.HeatMapRowNumber>5</S.HeatMapRowNumber>
+        </S.HeatMapRow>
+    );
+  });
+  /* eslint-enable */
   return (
     <S.HeatMapWrapper>
       <S.HeatMapHeader>
         <S.HeatMapHeaderHourWrapper>
-          <S.HeatMapHeaderHour>12:00am</S.HeatMapHeaderHour>
-          <S.HeatMapHeaderHour>2:00am</S.HeatMapHeaderHour>
-          <S.HeatMapHeaderHour>4:00am</S.HeatMapHeaderHour>
-          <S.HeatMapHeaderHour>6:00am</S.HeatMapHeaderHour>
-          <S.HeatMapHeaderHour>8:00am</S.HeatMapHeaderHour>
-          <S.HeatMapHeaderHour>10:00am</S.HeatMapHeaderHour>
-          <S.HeatMapHeaderHour>12:00pm</S.HeatMapHeaderHour>
-          <S.HeatMapHeaderHour>2:00pm</S.HeatMapHeaderHour>
-          <S.HeatMapHeaderHour>4:00pm</S.HeatMapHeaderHour>
-          <S.HeatMapHeaderHour>6:00pm</S.HeatMapHeaderHour>
-          <S.HeatMapHeaderHour>8:00pm</S.HeatMapHeaderHour>
-          <S.HeatMapHeaderHour>10:00pm</S.HeatMapHeaderHour>
+          {hoursComp}
         </S.HeatMapHeaderHourWrapper>
       </S.HeatMapHeader>
       <S.HeatMapBody>
-        <S.HeatMapRow>
-          <S.HeatMapRowWeekday>Sunday</S.HeatMapRowWeekday>
-          <S.HeatMapRowNumber>2</S.HeatMapRowNumber>
-        </S.HeatMapRow>
-        <S.HeatMapRow>
-          <S.HeatMapRowWeekday>Monday</S.HeatMapRowWeekday>
-        </S.HeatMapRow>
-        <S.HeatMapRow>
-          <S.HeatMapRowWeekday>Tuesday</S.HeatMapRowWeekday>
-        </S.HeatMapRow>
-        <S.HeatMapRow>
-          <S.HeatMapRowWeekday>Wednesday</S.HeatMapRowWeekday>
-        </S.HeatMapRow>
-        <S.HeatMapRow>
-          <S.HeatMapRowWeekday>Thursday</S.HeatMapRowWeekday>
-        </S.HeatMapRow>
-        <S.HeatMapRow>
-          <S.HeatMapRowWeekday>Friday</S.HeatMapRowWeekday>
-        </S.HeatMapRow>
-        <S.HeatMapRow>
-          <S.HeatMapRowWeekday>Saturday</S.HeatMapRowWeekday>
-        </S.HeatMapRow>
+        {weekdaysComp}
       </S.HeatMapBody>
     </S.HeatMapWrapper>
   );

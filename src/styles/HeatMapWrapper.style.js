@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from './theme';
 
 export const HeatMapWrapper = styled.section`
     width: 1114px;
@@ -63,7 +64,7 @@ export const HeatMapRowWeekday = styled.div`
 `;
 
 export const HeatMapRowNumber = styled.div`
-    background: #A9D194;
+    background: ${theme.heatMapColors[0]};
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
