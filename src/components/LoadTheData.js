@@ -16,11 +16,7 @@ function LoadTheData() {
       .then((res) => res.json())
       .then((data) => {
         setPosts([...posts, data.data.children]);
-        console.log('Fetch completed');
-        console.log('Length of posts is ', posts.length)
-        console.log(data.data);
         setAfter(data.data.after);
-        console.log(after);
       },
       (err) => {
         setIsLoaded(true);
@@ -36,7 +32,6 @@ function LoadTheData() {
     } else {
       setIsLoaded(true);
     }
-    console.log('completed fetching', posts);
   }, [subreddit, after]);
 
   if (error) {
