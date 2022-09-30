@@ -49,6 +49,12 @@ function HeatMap() {
       <S.HeatMapBody>
         {weekdaysComp}
       </S.HeatMapBody>
+      <S.HeatMapTimeZone>
+        All times are shown in your timezone:
+        <S.TimeZoneBold>
+          {` ${Intl.DateTimeFormat().resolvedOptions().timeZone}`}
+        </S.TimeZoneBold>
+      </S.HeatMapTimeZone>
     </S.HeatMapWrapper>
   );
 }

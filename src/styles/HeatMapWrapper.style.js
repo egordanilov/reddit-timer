@@ -4,13 +4,11 @@ import theme from './theme';
 export const HeatMapWrapper = styled.section`
     width: 1114px;
     height: 332px;
-    background: grey;
 `;
 
 export const HeatMapHeader = styled.div`
     width: 100%;
     height: 52px;
-    background: red;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -74,4 +72,25 @@ export const HeatMapRowNumber = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    &:hover {
+        cursor: pointer;
+        border: 2px solid #93918F;
+        z-index: 10;
+        box-sizing: border-box;
+    }
+`;
+
+export const HeatMapTimeZone = styled.p`
+    text-align: center;
+    margin-top: 12px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #93918F;
+`;
+
+export const TimeZoneBold = styled.span`
+  font-weight: 600;
 `;
