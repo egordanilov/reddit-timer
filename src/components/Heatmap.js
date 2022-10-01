@@ -38,6 +38,7 @@ function HeatMap() {
         </S.HeatMapRow>
     );
   });
+
   /* eslint-enable */
   return (
     <S.HeatMapWrapper>

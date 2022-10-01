@@ -4,6 +4,7 @@ import theme from './theme';
 export const HeatMapWrapper = styled.section`
     width: 1114px;
     height: 332px;
+    margin-top: 60px;
 `;
 
 export const HeatMapHeader = styled.div`
