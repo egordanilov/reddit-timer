@@ -28,16 +28,23 @@ function HeatMap() {
   });
 
   return (
-    <S.HeatMapWrapper>
-      <S.HeatMapHeader>
-        <S.HeatMapHeaderHourWrapper>
-          {headerHours}
-        </S.HeatMapHeaderHourWrapper>
-      </S.HeatMapHeader>
-      <S.HeatMapBody>
-          {heatMapRows}
-        </S.HeatMapBody>
-    </S.HeatMapWrapper>
+    <>
+      <S.HeatMapWrapper>
+        <S.HeatMapHeader>
+          <S.HeatMapHeaderHourWrapper>
+            {headerHours}
+          </S.HeatMapHeaderHourWrapper>
+        </S.HeatMapHeader>
+        <S.HeatMapBody>
+            {heatMapRows}
+          </S.HeatMapBody>
+      </S.HeatMapWrapper>
+      <S.HeatMapTimeZone>
+        All times are shown in your timezone:
+        <S.TimeZoneBold>{` ${Intl.DateTimeFormat().resolvedOptions().timeZone}`}</S.TimeZoneBold>
+      </S.HeatMapTimeZone>
+    </>
+    
   );
 }
 
