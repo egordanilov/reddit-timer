@@ -63,7 +63,7 @@ export const HeatMapRowWeekday = styled.div`
 `;
 
 export const HeatMapRowNumber = styled.div`
-    background: ${theme.heatMapColors[0]};
+    background: ${(props) => theme.heatMapColors[props.numberOfPosts]};
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
