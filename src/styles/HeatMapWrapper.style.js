@@ -63,6 +63,7 @@ export const HeatMapRowWeekday = styled.div`
 `;
 
 export const HeatMapRowNumber = styled.div`
+    box-sizing: border-box;
     background: ${(props) => theme.heatMapColors[props.numberOfPosts < 10 ? props.numberOfPosts : 10]};
     font-style: normal;
     font-weight: 700;
@@ -73,11 +74,10 @@ export const HeatMapRowNumber = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    border: ${(props) => `${props.selected ? '2px' : '0px'} solid #93918f`};
     &:hover {
         cursor: pointer;
         border: 2px solid #93918F;
-        z-index: 10;
-        box-sizing: border-box;
     }
 `;
 
