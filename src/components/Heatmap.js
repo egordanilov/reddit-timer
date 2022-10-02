@@ -13,8 +13,8 @@ function HeatMap() {
   });
   const heatMapRows = weekdays.map((weekDay) => {
     const postsByHour = utcHours.map((hour) => {
-      return(
-        <S.HeatMapRowNumber key={`${weekDay} ${hour}`} numberOfPosts={6}>5</S.HeatMapRowNumber>
+      return (
+        <S.HeatMapRowNumber key={`${weekDay} ${hour}`} numberOfPosts={13}>5</S.HeatMapRowNumber>
       );
     });
     return(
