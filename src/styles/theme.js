@@ -3,6 +3,7 @@ const theme = {
     text: '#93918f',
     linkHover: '#ff4500',
     link: '#0087ff',
+    loadingSpinner: '#feb756',
   },
   font: {
     family: {
