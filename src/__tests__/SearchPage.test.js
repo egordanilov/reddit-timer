@@ -5,10 +5,9 @@ import { MemoryRouter } from 'react-router-dom';
 import App from '../components/App';
 import { LocationDisplay } from './App.test';
 
-function setup() {
-  const oddRoute = '/search/angular';
+function setup(route) {
   render(
-    <MemoryRouter initialEntries={[oddRoute]}>
+    <MemoryRouter initialEntries={[route]}>
       <App />
       <LocationDisplay />
     </MemoryRouter>,
@@ -16,7 +15,7 @@ function setup() {
 }
 
 test('initializes the input value from the URL and updates the URL with the new subreddit on submit', async () => {
-  setup();
+  setup('/search/angular');
   const headerLink = screen.getByRole('link', { name: 'Search' });
   const submitButton = screen.getByRole('button', { name: 'SEARCH' });
   const locationDisplay = screen.getByTestId('location-display');
