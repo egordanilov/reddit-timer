@@ -31,8 +31,8 @@ function useFetchPosts(subreddit) {
         setIsLoaded(true);
       })
       .catch((err) => {
-        setIsLoaded(true);
         setError(err);
+        setIsLoaded(true);
       });
   }, [subreddit]);
   return {
