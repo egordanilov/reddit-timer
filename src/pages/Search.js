@@ -11,7 +11,12 @@ export default function Search() {
   const fetchPosts = useFetchPosts(subreddit);
   let fetchOutput = <></>;
   if (fetchPosts.error) {
-    fetchOutput = <>Failed to fetch, check internet connection and subreddit name</>;
+    fetchOutput = (
+      <>
+        Failed to fetch, check internet connection and subreddit name
+        {fetchPosts.error}
+      </>
+    );
   }
   if (!fetchPosts.isLoaded) {
     fetchOutput = <LoadingSpinner />;
