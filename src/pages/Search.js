@@ -4,32 +4,15 @@ import useFetchPosts from '../hooks/useFetchPosts';
 import SubredditForm from '../components/SubredditForm';
 import HeatMap from '../components/HeatMap';
 import defaultSubreddit from '../sharedVariables';
-import LoadingSpinner from '../styles/LoadingSpinner.style';
 
 export default function Search() {
   const { subreddit = defaultSubreddit } = useParams();
+  /* using a hook to fetch posts for current subreddit */
   const fetchPosts = useFetchPosts(subreddit);
-  let fetchOutput = <></>;
-  if (fetchPosts.error) {
-    fetchOutput = (
-      <>
-        Failed to fetch, check internet connection and subreddit name
-        {fetchPosts.error}
-      </>
-    );
-  }
-  if (!fetchPosts.isLoaded) {
-    fetchOutput = <LoadingSpinner />;
-  }
-
-  if (!fetchPosts.error && fetchPosts.isLoaded) {
-    fetchOutput = JSON.stringify(fetchPosts.posts);
-  }
   return (
     <section className="viewWrapper">
       <SubredditForm />
-      <HeatMap />
-      {fetchOutput}
+      <HeatMap fetchPosts={fetchPosts} />
     </section>
   );
 }
