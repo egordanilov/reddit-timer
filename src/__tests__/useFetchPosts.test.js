@@ -12,7 +12,7 @@ test('loads 500 top posts from the Reddit API', async () => {
   expect(result.current.isLoaded).toBe(true);
   expect(result.current.posts.length).toEqual(500);
 
-  const postTitles = result.current.posts.map(({ data }) => data.title);
+  const postTitles = result.current.posts.map((data) => data.title);
   expect(postTitles).toMatchSnapshot();
 });
 
