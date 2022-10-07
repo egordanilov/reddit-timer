@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
+import { object } from 'prop-types';
 import * as S from '../styles/HeatMapWrapper.style';
 import LoadingSpinner from '../styles/LoadingSpinner.style';
 import { getPostsByDayHour } from '../hooks/useFetchPosts';
 import { weekdays, hours, utcHours } from '../sharedVariables';
-/* eslint-disable */
+
 function HeatMap({ fetchPosts }) {
   const [selectedDayHour, setSelectedDayHour] = useState('');
   function dayHourClickHandler(weekDay, hour) {
     setSelectedDayHour(`${weekDay} ${hour}`);
     console.log(getPostsByDayHour(fetchPosts.posts, weekDay, hour));
-  };
+  }
   const headerHours = hours.map((hour) => (
     <S.HeatMapHeaderHour key={hour}>{hour}</S.HeatMapHeaderHour>
   ));
@@ -25,7 +26,6 @@ function HeatMap({ fetchPosts }) {
         {getPostsByDayHour(fetchPosts.posts, weekDay, hour).length}
       </S.HeatMapRowNumber>
     ));
-/* eslint-disable */
     return (
       <S.HeatMapRow key={weekDay}>
         <S.HeatMapRowWeekday>
@@ -35,7 +35,6 @@ function HeatMap({ fetchPosts }) {
       </S.HeatMapRow>
     );
   });
-  /* eslint-disable */
   /* display an error if any */
   if (fetchPosts.error) {
     return (
@@ -61,8 +60,8 @@ function HeatMap({ fetchPosts }) {
           </S.HeatMapHeaderHourWrapper>
         </S.HeatMapHeader>
         <S.HeatMapBody>
-            {heatMapRows}
-          </S.HeatMapBody>
+          {heatMapRows}
+        </S.HeatMapBody>
       </S.HeatMapWrapper>
       <S.HeatMapTimeZone>
         All times are shown in your timezone:
@@ -71,5 +70,10 @@ function HeatMap({ fetchPosts }) {
     </>
   );
 }
+
+HeatMap.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  fetchPosts: object.isRequired,
+};
 
 export default HeatMap;

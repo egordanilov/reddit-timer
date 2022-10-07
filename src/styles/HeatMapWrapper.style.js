@@ -4,7 +4,7 @@ import theme from './theme';
 export const HeatMapWrapper = styled.section`
     width: 1114px;
     height: 332px;
-    margin-top: 60px;
+    margin: 60px auto 0 auto;
 `;
 
 export const HeatMapHeader = styled.div`
@@ -30,7 +30,6 @@ export const HeatMapHeaderHour = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: ${theme.font.family.default};
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -53,7 +52,6 @@ export const HeatMapRowWeekday = styled.div`
     height: 100%;
     background: #1E2537;
     color: #ffffff;
-    font-family: ${theme.font.family.default};
     font-style: normal;
     font-weight: 600;
     font-size: 15px;
@@ -84,7 +82,6 @@ export const HeatMapRowNumber = styled.div`
 export const HeatMapTimeZone = styled.p`
     text-align: center;
     margin-top: 12px;
-    font-family: ${theme.font.family.default};
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
