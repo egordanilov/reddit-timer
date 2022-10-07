@@ -54,11 +54,14 @@ function useFetchPosts(subreddit) {
 
   /* fetch posts every time subreddit have been updated or component 've been mounted */
   useEffect(() => {
+    let cancel = false;
+
     setPosts([]);
     setIsLoaded(false);
     setError(null);
     fetchPaginatedPosts(subreddit)
       .then((newPosts) => {
+        if (cancel) return;
         setPosts(newPosts);
         setIsLoaded(true);
       })
@@ -66,6 +69,10 @@ function useFetchPosts(subreddit) {
         setError(err);
         setIsLoaded(true);
       });
+    /* prevent calling fetchPaginatedPosts if component has been unmounted */
+    return () => {
+      cancel = true;
+    };
   }, [subreddit]);
   /* return post List, loading status and errors if any */
   return {
