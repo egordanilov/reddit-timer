@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import { weekdays } from '../sharedVariables';
 /* restructure post list from an api response */
 function sortPostList(unsortedList) {
   /* map over api response and restructure and simplify post list  */
@@ -73,6 +73,13 @@ function useFetchPosts(subreddit) {
     isLoaded,
     error,
   };
+}
+/* return an array of posts that have been posted during a specific week day and hour */
+export function getPostsByDayHour(list, day, hour) {
+  const newList = list.filter(
+    (post) => post.postHour === hour && post.postDay === weekdays.indexOf(day),
+  );
+  return newList;
 }
 
 export default useFetchPosts;
