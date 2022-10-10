@@ -12,7 +12,11 @@ export default function Search() {
   return (
     <section className="viewWrapper">
       <SubredditForm />
-      <HeatMap fetchPosts={fetchPosts} />
+      <HeatMap
+        fetchedPosts={fetchPosts.posts}
+        isLoaded={fetchPosts.isLoaded}
+        error={fetchPosts.error}
+      />
     </section>
   );
 }

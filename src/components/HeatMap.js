@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import { object } from 'prop-types';
+import React, { useState, useMemo } from 'react';
+import { bool, string, array } from 'prop-types';
 import * as S from '../styles/HeatMapWrapper.style';
 import LoadingSpinner from '../styles/LoadingSpinner.style';
-import { getPostsByDayHour } from '../hooks/useFetchPosts';
+import { getPostsByDayHour, sortPostList } from '../hooks/useFetchPosts';
 import { weekdays, hours, utcHours } from '../sharedVariables';
 
-function HeatMap({ fetchPosts }) {
+function HeatMap({ fetchedPosts, isLoaded, error }) {
+  const transformedPosts = useMemo(() => sortPostList(fetchedPosts), [fetchedPosts]);
   const [selectedDayHour, setSelectedDayHour] = useState('');
   function dayHourClickHandler(weekDay, hour) {
     setSelectedDayHour(`${weekDay} ${hour}`);
-    console.log(getPostsByDayHour(fetchPosts.posts, weekDay, hour));
+    console.log(getPostsByDayHour(transformedPosts, weekDay, hour));
   }
   const headerHours = hours.map((hour) => (
     <S.HeatMapHeaderHour key={hour}>{hour}</S.HeatMapHeaderHour>
@@ -19,11 +20,11 @@ function HeatMap({ fetchPosts }) {
     const postsByHour = utcHours.map((hour) => (
       <S.HeatMapRowNumber
         key={`${weekDay} ${hour}`}
-        numberOfPosts={getPostsByDayHour(fetchPosts.posts, weekDay, hour).length}
+        numberOfPosts={getPostsByDayHour(transformedPosts, weekDay, hour).length}
         selected={`${weekDay} ${hour}` === selectedDayHour}
         onClick={() => { dayHourClickHandler(weekDay, hour); }}
       >
-        {getPostsByDayHour(fetchPosts.posts, weekDay, hour).length}
+        {getPostsByDayHour(transformedPosts, weekDay, hour).length}
       </S.HeatMapRowNumber>
     ));
     return (
@@ -36,16 +37,16 @@ function HeatMap({ fetchPosts }) {
     );
   });
   /* display an error if any */
-  if (fetchPosts.error) {
+  if (error) {
     return (
       <>
         Failed to fetch, check internet connection and subreddit name
-        {fetchPosts.error}
+        {error}
       </>
     );
   }
   /* loading spinner while posts still being fetched */
-  if (!fetchPosts.isLoaded) {
+  if (!isLoaded) {
     return (
       <LoadingSpinner />
     );
@@ -72,8 +73,10 @@ function HeatMap({ fetchPosts }) {
 }
 
 HeatMap.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  fetchPosts: object.isRequired,
+  /* eslint-disable */
+  fetchedPosts: array.isRequired,
+  isLoaded: bool,
+  error: string,
 };
 
 export default HeatMap;

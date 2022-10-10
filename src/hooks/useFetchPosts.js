@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { weekdays } from '../sharedVariables';
 /* restructure post list from an api response */
-function sortPostList(unsortedList) {
+export function sortPostList(unsortedList) {
   /* map over api response and restructure and simplify post list  */
   const restructuredPostsList = unsortedList.map((post) => {
     const postDate = new Date(post.data.created_utc * 1000);
@@ -34,13 +34,11 @@ async function fetchPaginatedPosts(subreddit, previousPosts = [], after = null) 
   const response = await fetch(url);
   const { data } = await response.json();
   /* add posts to array of posts that have already been fetched */
-  let allPosts = previousPosts.concat(data.children);
+  const allPosts = previousPosts.concat(data.children);
   const noMorePosts = data && data.dist < 100;
   const limitReached = allPosts.length >= 500;
   /* don't fetch if enough posts already fetched or no more posts available */
   if (noMorePosts || limitReached) {
-    allPosts = sortPostList(allPosts);
-    console.log(allPosts);
     return allPosts;
   }
   /* return fetchResults after multiple fetch calls, when necessary amount of posts been fetched */
