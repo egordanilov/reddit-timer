@@ -1,46 +1,14 @@
 /* eslint-disable */
-import React, { useState, useMemo } from 'react';
-import { bool, string, array, number } from 'prop-types';
+import React, { useState } from 'react';
+import { bool, string, array } from 'prop-types';
 import * as S from '../styles/HeatMapWrapper.style';
 import LoadingSpinner from '../styles/LoadingSpinner.style';
+import WeekdayRows from './WeekdayRows';
 import { getPostsByDayHour, sortPostList } from '../hooks/useFetchPosts';
-import { weekdays, hours, utcHours } from '../sharedVariables';
+import { hours } from '../sharedVariables';
 
-function HoursByWeekDayHour({weekDay, listOfPosts, clickHandler}) {
-  const parsedHours = utcHours.map((hourOfTheDay) => {
-    const postsByDayHour = getPostsByDayHour(listOfPosts, weekDay, hourOfTheDay);
-    const numberOfPosts = postsByDayHour.length;
-    return (
-      <S.HeatMapRowNumberOfPosts key={`${weekDay} ${hourOfTheDay}`} onClick={() => {clickHandler(weekDay, hourOfTheDay)}} numberOfPosts={numberOfPosts} >
-        {numberOfPosts}
-      </S.HeatMapRowNumberOfPosts>
-    );
-  });
-
-  return (
-    <>
-      {parsedHours}
-    </>
-  );
-}
-
-function WeekdayRows({ listOfPosts, clickHandler }) {
-  const parsedWeekdays = weekdays.map((weekday) => (
-    <S.HeatMapRow key={weekday}>
-      <S.HeatMapRowWeekday>{weekday}</S.HeatMapRowWeekday>
-      <HoursByWeekDayHour listOfPosts={listOfPosts} weekDay={weekday} clickHandler={clickHandler} />
-    </S.HeatMapRow>
-  ));
-
-  return (
-    <>
-      {parsedWeekdays}
-    </>
-  );
-}
-
-function HeatMap({ fetchedPosts, isLoaded, error }) {
-  const transformedPosts = useMemo(() => sortPostList(fetchedPosts), [fetchedPosts]);
+function HeatMap({ fetchedPosts, isLoaded, error = '' }) {
+  const transformedPosts = sortPostList(fetchedPosts);
   const [activeCell, setActiveCell] = useState({
     day: '',
     hour: '',
@@ -48,7 +16,7 @@ function HeatMap({ fetchedPosts, isLoaded, error }) {
   function dayHourClickHandler(weekDay, hour) {
     setActiveCell({ day: weekDay, hour });
     console.log(getPostsByDayHour(transformedPosts, weekDay, hour));
-  };
+  }
   const headerHours = hours.map((hour) => (
     <S.HeatMapHeaderHour key={hour}>{hour}</S.HeatMapHeaderHour>
   ));
@@ -80,7 +48,11 @@ function HeatMap({ fetchedPosts, isLoaded, error }) {
         </S.HeatMapHeader>
 
         <S.HeatMapBody>
-          <WeekdayRows listOfPosts={transformedPosts} clickHandler={dayHourClickHandler} />
+          <WeekdayRows
+            listOfPosts={transformedPosts}
+            clickHandler={dayHourClickHandler}
+            activeCell={activeCell}
+          />
         </S.HeatMapBody>
 
       </S.HeatMapWrapper>
@@ -94,9 +66,9 @@ function HeatMap({ fetchedPosts, isLoaded, error }) {
 }
 
 HeatMap.propTypes = {
-  /* eslint-disable */
+  /* eslint-disable-next-line */
   fetchedPosts: array.isRequired,
-  isLoaded: bool,
+  isLoaded: bool.isRequired,
   error: string,
 };
 
