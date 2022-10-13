@@ -1,5 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
-import useFetchPosts from '../hooks/useFetchPosts';
+import useFetchPosts, { sortPostList } from '../hooks/useFetchPosts';
+
 /* eslint-disable */
 test('loads 500 top posts from the Reddit API', async () => {
   const { result, waitForNextUpdate } = renderHook(() => useFetchPosts('500-posts'));
@@ -8,11 +9,11 @@ test('loads 500 top posts from the Reddit API', async () => {
   expect(result.current.posts).toEqual([]);
 
   await waitForNextUpdate();
-
+  const sortedPosts = sortPostList(result.current.posts);
   expect(result.current.isLoaded).toBe(true);
-  expect(result.current.posts.length).toEqual(500);
+  expect(sortedPosts.length).toEqual(500);
 
-  const postTitles = result.current.posts.map((data) => data.title);
+  const postTitles = sortedPosts.map((data) => data.title);
   expect(postTitles).toMatchSnapshot();
 });
 
@@ -20,9 +21,9 @@ test('stops loading when less than 500 posts are available', async () => {
   const { result, waitForNextUpdate } = renderHook(() => useFetchPosts('less-than-500-posts'));
 
   await waitForNextUpdate();
-
+  const sortedPosts = sortPostList(result.current.posts);
   expect(result.current.isLoaded).toBe(true);
-  expect(result.current.posts.length).toEqual(270);
+  expect(sortedPosts.length).toEqual(270);
 });
 
 test('returns error when a request fails', async () => {
