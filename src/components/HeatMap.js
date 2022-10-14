@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useState } from 'react';
 import { bool, string, array } from 'prop-types';
 import * as S from '../styles/HeatMapWrapper.style';
@@ -10,8 +9,8 @@ import { hours } from '../sharedVariables';
 function HeatMap({ fetchedPosts, isLoaded, error = '' }) {
   const transformedPosts = sortPostList(fetchedPosts);
   const [activeCell, setActiveCell] = useState({
-    day: '',
-    hour: '',
+    day: 'Sunday',
+    hour: 12,
   });
   function dayHourClickHandler(weekDay, hour) {
     setActiveCell({ day: weekDay, hour });
@@ -54,9 +53,7 @@ function HeatMap({ fetchedPosts, isLoaded, error = '' }) {
             activeCell={activeCell}
           />
         </S.HeatMapBody>
-
       </S.HeatMapWrapper>
-
       <S.HeatMapTimeZone>
         All times are shown in your timezone:
         <S.TimeZoneBold>{` ${Intl.DateTimeFormat().resolvedOptions().timeZone}`}</S.TimeZoneBold>
@@ -66,9 +63,10 @@ function HeatMap({ fetchedPosts, isLoaded, error = '' }) {
 }
 
 HeatMap.propTypes = {
-  /* eslint-disable-next-line */
+  // eslint-disable-next-line react/forbid-prop-types
   fetchedPosts: array.isRequired,
   isLoaded: bool.isRequired,
+  // eslint-disable-next-line react/require-default-props
   error: string,
 };
 

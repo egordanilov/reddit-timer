@@ -1,5 +1,7 @@
 import React from 'react';
-import { string, array, func } from 'prop-types';
+import {
+  string, array, func, number,
+} from 'prop-types';
 import * as S from '../styles/HeatMapWrapper.style';
 import { getPostsByDayHour } from '../hooks/useFetchPosts';
 import { utcHours } from '../sharedVariables';
@@ -35,11 +37,14 @@ function HoursByWeekDayHour(
 
 HoursByWeekDayHour.propTypes = {
   weekDay: string.isRequired,
-  /* eslint-disable-next-line */
+  // eslint-disable-next-line react/forbid-prop-types
   listOfPosts: array.isRequired,
   clickHandler: func.isRequired,
-  /* eslint-disable-next-line */
-  activeHour: string.isRequired,
+  activeHour: number,
+};
+
+HoursByWeekDayHour.defaultProps = {
+  activeHour: 25,
 };
 
 export default HoursByWeekDayHour;
