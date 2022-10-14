@@ -3,7 +3,7 @@ import { bool, string, array } from 'prop-types';
 import * as S from '../styles/HeatMapWrapper.style';
 import LoadingSpinner from '../styles/LoadingSpinner.style';
 import WeekdayRows from './WeekdayRows';
-import { getPostsByDayHour, sortPostList } from '../hooks/useFetchPosts';
+import { sortPostList } from '../hooks/useFetchPosts';
 import { hours } from '../sharedVariables';
 
 function HeatMap({ fetchedPosts, isLoaded, error = '' }) {
@@ -14,7 +14,6 @@ function HeatMap({ fetchedPosts, isLoaded, error = '' }) {
   });
   function dayHourClickHandler(weekDay, hour) {
     setActiveCell({ day: weekDay, hour });
-    console.log(getPostsByDayHour(transformedPosts, weekDay, hour));
   }
   const headerHours = hours.map((hour) => (
     <S.HeatMapHeaderHour key={hour}>{hour}</S.HeatMapHeaderHour>
