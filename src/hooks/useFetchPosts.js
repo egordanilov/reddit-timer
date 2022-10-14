@@ -59,6 +59,7 @@ function useFetchPosts(subreddit) {
     setError(null);
     fetchPaginatedPosts(subreddit)
       .then((newPosts) => {
+        /* don't fetch anything if component is not mounted */
         if (cancel) return;
         setPosts(newPosts);
         setIsLoaded(true);
