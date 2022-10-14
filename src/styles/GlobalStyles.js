@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
       font-weight: 400;
       font-style: normal;
       src: url("/fonts/Montserrat-Regular.woff2") format("woff2"),
-      url("/fonts/Montserrat-Regular.woff") format("woff");
+      url("/fonts/Montserrat-Regular.woff") format("font-woff");
     }
   
     /** Montserrat Medium **/
@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
       font-weight: 500;
       font-style: normal;
       src: url("/fonts/Montserrat-Medium.woff2") format("woff2"),
-      url("/fonts/Montserrat-Medium.woff") format("woff");
+      url("/fonts/Montserrat-Medium.woff") format("font-woff");
     }
   
     /** Montserrat SemiBold **/
@@ -26,7 +26,7 @@ const GlobalStyles = createGlobalStyle`
       font-weight: 600;
       font-style: normal;
       src: url("/fonts/Montserrat-SemiBold.woff2") format("woff2"),
-      url("/fonts/Montserrat-SemiBold.woff") format("woff");
+      url("/fonts/Montserrat-SemiBold.woff") format("font-woff");
     }
   
     /** Montserrat Bold **/
@@ -35,14 +35,14 @@ const GlobalStyles = createGlobalStyle`
       font-weight: 700;
       font-style: normal;
       src: url("Montserrat-Bold.woff2") format("woff2"),
-      url("Montserrat-Bold.woff") format("woff");
+      url("Montserrat-Bold.woff") format("font-woff");
     }
   
     /** Bitter Regular **/
     @font-face {
       font-family: "Bitter";
       src: url("/fonts/Bitter-Regular.woff2") format("woff2"),
-      url("/fonts/Bitter-Regular.woff") format("woff");
+      url("/fonts/Bitter-Regular.woff") format("font-woff");
     }
   
     body {
