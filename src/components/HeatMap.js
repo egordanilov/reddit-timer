@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { bool, array } from 'prop-types';
 import * as S from '../styles/HeatMapWrapper.style';
 import LoadingSpinner from '../styles/LoadingSpinner.style';
 import WeekdayRows from './WeekdayRows';
-import { sortPostList } from '../hooks/useFetchPosts';
+import { groupPostsByDayHour } from '../hooks/useFetchPosts';
 import { hours } from '../sharedVariables';
 
 function HeatMap({ fetchedPosts, isLoaded, error }) {
-  const transformedPosts = sortPostList(fetchedPosts);
+  const transformedPosts = useMemo(() => groupPostsByDayHour(fetchedPosts), [fetchedPosts]);
   const [activeCell, setActiveCell] = useState({
-    day: 'Sunday',
+    day: 0,
     hour: 12,
   });
   function dayHourClickHandler(weekDay, hour) {
