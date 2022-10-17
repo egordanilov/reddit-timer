@@ -25,13 +25,13 @@ export function sortPostList(unsortedList) {
 
 /* make an api call to fetch 500 top posts by subreddit of last year,
 recursive function calls itself until 500 posts are fetched or no more posts available */
-async function fetchPaginatedPosts(subreddit, previousPosts = [], after = null) {
+async function fetchPaginatedPosts(subreddit, abortController, previousPosts = [], after = null) {
   let url = `https://www.reddit.com/r/${subreddit}/top.json?t=year&limit=100`;
   /* pagination parameter to add to fetch url after every request */
   if (after) {
     url += `&after=${after}`;
   }
-  const response = await fetch(url);
+  const response = await fetch(url, { signal: abortController.signal });
   const { data } = await response.json();
   /* add posts to array of posts that have already been fetched */
   const allPosts = previousPosts.concat(data.children);
@@ -42,42 +42,38 @@ async function fetchPaginatedPosts(subreddit, previousPosts = [], after = null) 
     return allPosts;
   }
   /* return fetchResults after multiple fetch calls, when necessary amount of posts been fetched */
-  return fetchPaginatedPosts(subreddit, allPosts, data.after);
+  return fetchPaginatedPosts(subreddit, abortController, allPosts, data.after);
 }
 
 function useFetchPosts(subreddit) {
   const [posts, setPosts] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(null);
+  const [status, setStatus] = useState('pending');
 
   /* fetch posts every time subreddit have been updated or component 've been mounted */
   useEffect(() => {
-    let cancel = false;
-
+    const abortController = new AbortController();
+    setStatus('pending');
     setPosts([]);
-    setIsLoaded(false);
-    setError(null);
-    fetchPaginatedPosts(subreddit)
-      .then((newPosts) => {
-        /* don't fetch anything if component is not mounted */
-        if (cancel) return;
-        setPosts(newPosts);
-        setIsLoaded(true);
+    fetchPaginatedPosts(subreddit, abortController)
+      .then((postList) => {
+        setPosts(postList);
+        setStatus('resolved');
       })
-      .catch((err) => {
-        setError(err);
-        setIsLoaded(true);
+      .catch(() => {
+        /* don't fetch anything if component is not mounted */
+        if (!abortController.signal.aborted) {
+          setStatus('rejected');
+        }
       });
-    /* prevent calling fetchPaginatedPosts if component has been unmounted */
-    return () => {
-      cancel = true;
-    };
+    /* Abort all requests when component unmounted */
+    return () => abortController.abort();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subreddit]);
   /* return post List, loading status and errors if any */
   return {
     posts,
-    isLoaded,
-    error,
+    isLoaded: status === 'resolved',
+    error: status === 'rejected',
   };
 }
 /* return an array of posts that have been posted during a specific week day and hour */

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { bool, string, array } from 'prop-types';
+import { bool, array, object } from 'prop-types';
 import * as S from '../styles/HeatMapWrapper.style';
 import LoadingSpinner from '../styles/LoadingSpinner.style';
 import WeekdayRows from './WeekdayRows';
 import { sortPostList } from '../hooks/useFetchPosts';
 import { hours } from '../sharedVariables';
 
-function HeatMap({ fetchedPosts, isLoaded, error = '' }) {
+function HeatMap({ fetchedPosts, isLoaded, error }) {
   const transformedPosts = sortPostList(fetchedPosts);
   const [activeCell, setActiveCell] = useState({
     day: 'Sunday',
@@ -25,7 +25,6 @@ function HeatMap({ fetchedPosts, isLoaded, error = '' }) {
     return (
       <>
         Failed to fetch, check internet connection and subreddit name
-        {error}
       </>
     );
   }
@@ -65,8 +64,8 @@ HeatMap.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   fetchedPosts: array.isRequired,
   isLoaded: bool.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  error: string,
+  // eslint-disable-next-line react/require-default-props, react/forbid-prop-types
+  error: object,
 };
 
 export default HeatMap;
