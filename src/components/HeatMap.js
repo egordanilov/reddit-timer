@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { bool, array, object } from 'prop-types';
+import { bool, array } from 'prop-types';
 import * as S from '../styles/HeatMapWrapper.style';
 import LoadingSpinner from '../styles/LoadingSpinner.style';
 import WeekdayRows from './WeekdayRows';
@@ -65,7 +65,7 @@ HeatMap.propTypes = {
   fetchedPosts: array.isRequired,
   isLoaded: bool.isRequired,
   // eslint-disable-next-line react/require-default-props, react/forbid-prop-types
-  error: object,
+  error: bool,
 };
 
 export default HeatMap;

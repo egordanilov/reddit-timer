@@ -1,7 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import useFetchPosts, { sortPostList } from '../hooks/useFetchPosts';
 
-/* eslint-disable */
 test('loads 500 top posts from the Reddit API', async () => {
   const { result, waitForNextUpdate } = renderHook(() => useFetchPosts('500-posts'));
 

@@ -23,6 +23,24 @@ export function sortPostList(unsortedList) {
   return restructuredPostsList;
 }
 
+/* function to create an array of posts by day and hour.
+Builds an object contains posts per day of week and hour to create the heatmap.
+Each entry obj[dayOfWeek][hour] contains an array of posts
+*/
+export function groupByDayHour(posts) {
+  const postsPerDay = Array(7)
+    .fill()
+    .map(() => Array(24).fill.map(() => 0));
+
+  posts.forEach((post) => {
+    const createdAt = new Date(post.data.created_utc * 1000);
+    const dayOfWeek = createdAt.getDay();
+    const hour = createdAt.getHours();
+    postsPerDay[dayOfWeek][hour] += 1;
+  });
+  return postsPerDay;
+}
+
 /* make an api call to fetch 500 top posts by subreddit of last year,
 recursive function calls itself until 500 posts are fetched or no more posts available */
 async function fetchPaginatedPosts(subreddit, abortController, previousPosts = [], after = null) {
