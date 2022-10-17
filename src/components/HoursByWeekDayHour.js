@@ -11,20 +11,25 @@ function HoursByWeekDayHour(
   },
 ) {
   // eslint-disable-next-line arrow-body-style
-  const parsedHours = utcHours.map((hourOfTheDay) => {
-    return (
-      <S.HeatMapRowNumberOfPosts
-        key={`${weekDay} ${hourOfTheDay}`}
-        onClick={() => { clickHandler(weekDay, hourOfTheDay); }}
-        numberOfPosts={listOfPosts[weekDay][hourOfTheDay]}
-        role="button"
-        tabindex={-1}
-        selected={activeHour === hourOfTheDay}
-      >
-        {listOfPosts[weekDay][hourOfTheDay]}
-      </S.HeatMapRowNumberOfPosts>
-    );
-  });
+  function onKeyDown(event) {
+    if (event.key === ' ' || event.key === 'Enter') {
+      clickHandler();
+    }
+  }
+  const parsedHours = utcHours.map((hourOfTheDay) => (
+    <S.HeatMapRowNumberOfPosts
+      key={`${weekDay} ${hourOfTheDay}`}
+      onClick={() => { clickHandler(weekDay, hourOfTheDay); }}
+      onKeyDown={onKeyDown}
+      numberOfPosts={listOfPosts[weekDay][hourOfTheDay]}
+      type="button"
+      role="button"
+      tabindex={-1}
+      selected={activeHour === hourOfTheDay}
+    >
+      {listOfPosts[weekDay][hourOfTheDay]}
+    </S.HeatMapRowNumberOfPosts>
+  ));
 
   return (
     <>

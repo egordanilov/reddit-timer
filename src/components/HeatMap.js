@@ -6,6 +6,24 @@ import WeekdayRows from './WeekdayRows';
 import { groupPostsByDayHour } from '../hooks/useFetchPosts';
 import { hours } from '../sharedVariables';
 
+/*
+  implement adaptivity + check styling issues(especially centering),
+  accessibility,
+  check cross-browser compatibility(especially with button for each hour),
+  fix styling for button when focused and etc,
+  implement tests,
+  rewrite test for the hook, using reducer, so it is easy to match snapshot of posts,
+  set a fixed timezone for testing env,
+  add constants to hook,
+  JSDoc description,
+  rename variables,
+  fix propTypes,
+  fix linting,
+  getBackgroundColor for posts from a style comp,
+  theme variables,
+  /search redirect to /search/javascript
+*/
+
 function HeatMap({ fetchedPosts, isLoaded, error }) {
   const transformedPosts = useMemo(() => groupPostsByDayHour(fetchedPosts), [fetchedPosts]);
   const [activeCell, setActiveCell] = useState({

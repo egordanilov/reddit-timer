@@ -28,7 +28,6 @@ Builds an object contains posts per day of week and hour to create the heatmap.
 Each entry obj[dayOfWeek][hour] contains an array of posts
 */
 export function groupPostsByDayHour(posts) {
-  console.log(posts);
   const postsPerDay = Array(7)
     .fill()
     .map(() => Array(24).fill().map(() => 0));
