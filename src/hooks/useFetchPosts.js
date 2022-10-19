@@ -69,6 +69,7 @@ async function fetchPaginatedPosts(subreddit, abortController, previousPosts = [
 
 function useFetchPosts(subreddit) {
   const [posts, setPosts] = useState([]);
+  const [allPosts, setAllPosts] = useState([]);
   const [status, setStatus] = useState('pending');
 
   /* fetch posts every time subreddit have been updated or component 've been mounted */
@@ -77,7 +78,10 @@ function useFetchPosts(subreddit) {
     setStatus('pending');
     setPosts([]);
     fetchPaginatedPosts(subreddit, abortController)
-      .then((postList) => groupPostsByDayHour(postList))
+      .then((postList) => {
+        setAllPosts(postList);
+        return groupPostsByDayHour(postList);
+      })
       .then((newPostList) => {
         setPosts(newPostList);
         setStatus('resolved');
@@ -95,8 +99,9 @@ function useFetchPosts(subreddit) {
   /* return post List, loading status and errors if any */
   return {
     posts,
-    isLoaded: status === 'resolved',
+    isLoaded: status === 'resolved' || status === 'rejected',
     error: status === 'rejected' ? 'error' : '',
+    allPosts,
   };
 }
 /* return an array of posts that have been posted during a specific week day and hour */

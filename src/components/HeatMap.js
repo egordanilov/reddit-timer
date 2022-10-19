@@ -11,12 +11,11 @@ import WeekdayRows from './WeekdayRows';
 import { hours } from '../sharedVariables';
 
 /*
-  implement adaptivity + check styling issues(especially centering),
-  accessibility,
-  check cross-browser compatibility(especially with button for each hour),
+  implement adaptivity,
   fix styling for button when focused and etc,
   implement tests,
-  rewrite test for the hook, using reducer, so it is easy to match snapshot of posts,
+   rewrite test for the hook, using reducer, so it is easy to match snapshot of posts,
+  check cross-browser compatibility(especially with button for each hour),
   set a fixed timezone for testing env,
   JSDoc description,
   rename variables,
