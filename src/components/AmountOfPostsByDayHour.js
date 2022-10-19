@@ -6,7 +6,7 @@ import * as S from '../styles/HeatMapWrapper.style';
 import { utcHours } from '../sharedVariables';
 
 // eslint-disable-next-line prefer-arrow-callback
-const HoursByWeekDayHour = React.memo(function HoursByWeekDayHour(
+const AmountOfPostsByDayHour = React.memo(function AmountOfPostsByDayHour(
   {
     weekDay, listOfPosts, clickHandler, activeHour,
   },
@@ -38,15 +38,15 @@ const HoursByWeekDayHour = React.memo(function HoursByWeekDayHour(
   );
 });
 
-HoursByWeekDayHour.propTypes = {
+AmountOfPostsByDayHour.propTypes = {
   weekDay: number.isRequired,
   listOfPosts: arrayOf(arrayOf(number)).isRequired,
   clickHandler: func.isRequired,
   activeHour: number,
 };
 
-HoursByWeekDayHour.defaultProps = {
+AmountOfPostsByDayHour.defaultProps = {
   activeHour: 25,
 };
 
-export default HoursByWeekDayHour;
+export default AmountOfPostsByDayHour;

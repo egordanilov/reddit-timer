@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { weekdays } from '../sharedVariables';
 
 const AMOUNT_OF_POSTS_TO_FETCH = 500;
-const AMOUNT_OF_POSTS_PER_PAGE = 100;
+const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
 
 /* restructure post list from an api response */
-export function sortPostList(unsortedList) {
+export function prettifyPostList(unsortedList) {
   /* map over api response and restructure and simplify post list  */
-  const restructuredPostsList = unsortedList.map((post) => {
+  const prettifiedPostsList = unsortedList.map((post) => {
     const postDate = new Date(post.data.created_utc * 1000);
     const postDay = postDate.getDay();
     const postHour = postDate.getHours();
@@ -24,7 +24,7 @@ export function sortPostList(unsortedList) {
     };
     return structuredPost;
   });
-  return restructuredPostsList;
+  return prettifiedPostsList;
 }
 
 /* function to create an array of posts by day and hour.
@@ -57,7 +57,7 @@ async function fetchPaginatedPosts(subreddit, abortController, previousPosts = [
   const { data } = await response.json();
   /* add posts to array of posts that have already been fetched */
   const allPosts = previousPosts.concat(data.children);
-  const noMorePosts = data && data.dist < AMOUNT_OF_POSTS_PER_PAGE;
+  const noMorePosts = data && data.dist < MAX_AMOUNT_OF_POSTS_PER_PAGE;
   const limitReached = allPosts.length >= AMOUNT_OF_POSTS_TO_FETCH;
   /* don't fetch if enough posts already fetched or no more posts available */
   if (noMorePosts || limitReached) {
@@ -68,7 +68,7 @@ async function fetchPaginatedPosts(subreddit, abortController, previousPosts = [
 }
 
 function useFetchPosts(subreddit) {
-  const [posts, setPosts] = useState([]);
+  const [postsByDayHour, setPostsByDayHour] = useState([]);
   const [allPosts, setAllPosts] = useState([]);
   const [status, setStatus] = useState('pending');
 
@@ -76,14 +76,14 @@ function useFetchPosts(subreddit) {
   useEffect(() => {
     const abortController = new AbortController();
     setStatus('pending');
-    setPosts([]);
+    setPostsByDayHour([]);
     fetchPaginatedPosts(subreddit, abortController)
       .then((postList) => {
         setAllPosts(postList);
         return groupPostsByDayHour(postList);
       })
-      .then((newPostList) => {
-        setPosts(newPostList);
+      .then((postListByDayHour) => {
+        setPostsByDayHour(postListByDayHour);
         setStatus('resolved');
       })
       .catch(() => {
@@ -98,7 +98,7 @@ function useFetchPosts(subreddit) {
   }, [subreddit]);
   /* return post List, loading status and errors if any */
   return {
-    posts,
+    postsByDayHour,
     isLoaded: status === 'resolved' || status === 'rejected',
     error: status === 'rejected' ? 'error' : '',
     allPosts,

@@ -4,13 +4,13 @@ import {
 } from 'prop-types';
 import * as S from '../styles/HeatMapWrapper.style';
 import { weekdays, utcWeekdays } from '../sharedVariables';
-import HoursByWeekDayHour from './HoursByWeekDayHour';
+import AmountOfPostsByDayHour from './AmountOfPostsByDayHour';
 
 function WeekdayRows({ listOfPosts, clickHandler, activeCell }) {
   const parsedWeekdays = utcWeekdays.map((weekday) => (
     <S.HeatMapRow key={weekday}>
       <S.HeatMapRowWeekday>{weekdays[weekday]}</S.HeatMapRowWeekday>
-      <HoursByWeekDayHour
+      <AmountOfPostsByDayHour
         listOfPosts={listOfPosts}
         weekDay={weekday}
         clickHandler={clickHandler}

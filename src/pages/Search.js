@@ -13,7 +13,7 @@ export default function Search() {
     <section className="viewWrapper">
       <SubredditForm />
       <HeatMap
-        fetchedPosts={fetchPosts.posts}
+        fetchedPosts={fetchPosts.postsByDayHour}
         isLoaded={fetchPosts.isLoaded}
         error={fetchPosts.error}
       />
