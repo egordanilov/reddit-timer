@@ -5,7 +5,8 @@ import {
 import * as S from '../styles/HeatMapWrapper.style';
 import { utcHours } from '../sharedVariables';
 
-function HoursByWeekDayHour(
+// eslint-disable-next-line prefer-arrow-callback
+const HoursByWeekDayHour = React.memo(function HoursByWeekDayHour(
   {
     weekDay, listOfPosts, clickHandler, activeHour,
   },
@@ -35,7 +36,7 @@ function HoursByWeekDayHour(
       {parsedHours}
     </>
   );
-}
+});
 
 HoursByWeekDayHour.propTypes = {
   weekDay: number.isRequired,
