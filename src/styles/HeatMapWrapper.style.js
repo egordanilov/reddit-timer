@@ -40,6 +40,10 @@ export const HeatMapHeaderHour = styled.div`
 export const HeatMapBody = styled.div`
 `;
 
+export const HeatMapError = styled.p`
+    text-align: center;
+`;
+
 export const HeatMapRow = styled.div`
     height: 40px;
     width: 100%;

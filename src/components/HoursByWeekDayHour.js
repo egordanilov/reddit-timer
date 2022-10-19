@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  array, func, number,
+  arrayOf, func, number,
 } from 'prop-types';
 import * as S from '../styles/HeatMapWrapper.style';
 import { utcHours } from '../sharedVariables';
@@ -10,7 +10,6 @@ function HoursByWeekDayHour(
     weekDay, listOfPosts, clickHandler, activeHour,
   },
 ) {
-  // eslint-disable-next-line arrow-body-style
   function onKeyDown(event) {
     if (event.key === ' ' || event.key === 'Enter') {
       clickHandler();
@@ -40,8 +39,7 @@ function HoursByWeekDayHour(
 
 HoursByWeekDayHour.propTypes = {
   weekDay: number.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  listOfPosts: array.isRequired,
+  listOfPosts: arrayOf(arrayOf(number)).isRequired,
   clickHandler: func.isRequired,
   activeHour: number,
 };

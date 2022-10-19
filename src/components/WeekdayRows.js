@@ -1,5 +1,7 @@
 import React from 'react';
-import { array, func, object } from 'prop-types';
+import {
+  arrayOf, func, number, shape,
+} from 'prop-types';
 import * as S from '../styles/HeatMapWrapper.style';
 import { weekdays, utcWeekdays } from '../sharedVariables';
 import HoursByWeekDayHour from './HoursByWeekDayHour';
@@ -24,10 +26,8 @@ function WeekdayRows({ listOfPosts, clickHandler, activeCell }) {
 }
 
 WeekdayRows.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  activeCell: object.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  listOfPosts: array.isRequired,
+  activeCell: shape({ day: number, hour: number }).isRequired,
+  listOfPosts: arrayOf(arrayOf(number)).isRequired,
   clickHandler: func.isRequired,
 };
 

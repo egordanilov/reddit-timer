@@ -1,9 +1,13 @@
-import React, { useState, useMemo } from 'react';
-import { bool, array } from 'prop-types';
+import React, { useState } from 'react';
+import {
+  bool,
+  string,
+  arrayOf,
+  number,
+} from 'prop-types';
 import * as S from '../styles/HeatMapWrapper.style';
 import LoadingSpinner from '../styles/LoadingSpinner.style';
 import WeekdayRows from './WeekdayRows';
-import { groupPostsByDayHour } from '../hooks/useFetchPosts';
 import { hours } from '../sharedVariables';
 
 /*
@@ -14,18 +18,14 @@ import { hours } from '../sharedVariables';
   implement tests,
   rewrite test for the hook, using reducer, so it is easy to match snapshot of posts,
   set a fixed timezone for testing env,
-  add constants to hook,
   JSDoc description,
   rename variables,
-  fix propTypes,
-  fix linting,
   getBackgroundColor for posts from a style comp,
   theme variables,
   /search redirect to /search/javascript
 */
 
 function HeatMap({ fetchedPosts, isLoaded, error }) {
-  const transformedPosts = useMemo(() => groupPostsByDayHour(fetchedPosts), [fetchedPosts]);
   const [activeCell, setActiveCell] = useState({
     day: 0,
     hour: 12,
@@ -39,11 +39,11 @@ function HeatMap({ fetchedPosts, isLoaded, error }) {
 
   /* Handle loading and errors here, return loading spinner or error message */
   /* display an error if any */
-  if (error) {
+  if (error !== '') {
     return (
-      <>
+      <S.HeatMapError>
         Failed to fetch, check internet connection and subreddit name
-      </>
+      </S.HeatMapError>
     );
   }
   /* loading spinner while posts still being fetched */
@@ -64,7 +64,7 @@ function HeatMap({ fetchedPosts, isLoaded, error }) {
 
         <S.HeatMapBody>
           <WeekdayRows
-            listOfPosts={transformedPosts}
+            listOfPosts={fetchedPosts}
             clickHandler={dayHourClickHandler}
             activeCell={activeCell}
           />
@@ -79,11 +79,9 @@ function HeatMap({ fetchedPosts, isLoaded, error }) {
 }
 
 HeatMap.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  fetchedPosts: array.isRequired,
+  fetchedPosts: arrayOf(arrayOf(number)).isRequired,
   isLoaded: bool.isRequired,
-  // eslint-disable-next-line react/require-default-props, react/forbid-prop-types
-  error: bool,
+  error: string.isRequired,
 };
 
 export default HeatMap;
