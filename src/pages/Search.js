@@ -16,6 +16,7 @@ export default function Search() {
         fetchedPosts={fetchPosts.postsByDayHour}
         isLoaded={fetchPosts.isLoaded}
         error={fetchPosts.error}
+        structuredPostList={fetchPosts.allPosts}
       />
     </section>
   );

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import useFetchPosts, { prettifyPostList } from '../hooks/useFetchPosts';
+import useFetchPosts from '../hooks/useFetchPosts';
 
 const getTotalNumberOfPosts = (nestedPostList) => nestedPostList.reduce(
   (numTotal, postsPerDay) => postsPerDay.reduce(
@@ -18,8 +18,7 @@ test('loads 500 top posts from the Reddit API', async () => {
   expect(result.current.isLoaded).toBe(true);
   expect(numberOfPosts).toEqual(500);
 
-  const sortedPostList = prettifyPostList(result.current.allPosts);
-  const postTitles = sortedPostList.map((data) => data.title);
+  const postTitles = result.current.allPosts.map((data) => data.title);
   expect(postTitles).toMatchSnapshot();
 });
 

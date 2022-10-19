@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { weekdays } from '../sharedVariables';
 
 const AMOUNT_OF_POSTS_TO_FETCH = 500;
 const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
@@ -101,13 +100,13 @@ function useFetchPosts(subreddit) {
     postsByDayHour,
     isLoaded: status === 'resolved' || status === 'rejected',
     error: status === 'rejected' ? 'error' : '',
-    allPosts,
+    allPosts: prettifyPostList(allPosts),
   };
 }
 /* return an array of posts that have been posted during a specific week day and hour */
 export function getPostsByDayHour(list, day, hour) {
   const newList = list.filter(
-    (post) => post.postHour === hour && post.postDay === weekdays.indexOf(day),
+    (post) => post.postHour === hour && post.postDay === day,
   );
   return newList;
 }
