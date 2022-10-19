@@ -20,12 +20,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "TZ=America/Chicago react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "format": "eslint --fix .",
-    "cypress": "cross-env TZ=Europe/Berlin cypress run",
-    "cypress:open": "cross-env TZ=Europe/Berlin npx cypress open",
+    "cypress": "cross-env cypress run",
+    "cypress:open": "cross-env npx cypress open",
     "prepare": "husky install"
   },
   "browserslist": {
