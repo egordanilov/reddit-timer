@@ -40,3 +40,5 @@ test('returns error when a request fails', async () => {
   expect(result.current.isLoaded).toBe(true);
   expect(result.current.error).toEqual('error');
 });
+
+export default getTotalNumberOfPosts;

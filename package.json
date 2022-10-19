@@ -24,8 +24,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "format": "eslint --fix .",
-    "cypress": "cross-env TZ=Europe/Berlin cypress run",
-    "cypress:open": "cross-env TZ=Europe/Berlin npx cypress open",
+    "cypress": "cross-env TZ=America/Chicago cypress run",
+    "cypress:open": "cross-env TZ=America/Chicago npx cypress open",
     "prepare": "husky install"
   },
   "browserslist": {

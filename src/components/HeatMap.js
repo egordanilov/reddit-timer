@@ -12,10 +12,7 @@ import { hours } from '../sharedVariables';
 
 /*
   implement adaptivity,
-  fix styling for button when focused and etc,
-  implement tests,
   check cross-browser compatibility(especially with button for each hour),
-  set a fixed timezone for testing env,
   JSDoc description,
   rename variables,
   getBackgroundColor for posts from a style comp,
@@ -47,13 +44,13 @@ function HeatMap({ fetchedPosts, isLoaded, error }) {
   /* loading spinner while posts still being fetched */
   if (!isLoaded) {
     return (
-      <LoadingSpinner />
+      <LoadingSpinner data-testid="loading-spinner" />
     );
   }
 
   return (
     <>
-      <S.HeatMapWrapper>
+      <S.HeatMapWrapper data-testid="heatmap">
         <S.HeatMapHeader>
           <S.HeatMapHeaderHourWrapper>
             {headerHours}
@@ -68,7 +65,7 @@ function HeatMap({ fetchedPosts, isLoaded, error }) {
           />
         </S.HeatMapBody>
       </S.HeatMapWrapper>
-      <S.HeatMapTimeZone>
+      <S.HeatMapTimeZone data-testid="timezone">
         All times are shown in your timezone:
         <S.TimeZoneBold>{` ${Intl.DateTimeFormat().resolvedOptions().timeZone}`}</S.TimeZoneBold>
       </S.HeatMapTimeZone>
