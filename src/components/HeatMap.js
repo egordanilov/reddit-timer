@@ -10,16 +10,6 @@ import LoadingSpinner from '../styles/LoadingSpinner.style';
 import WeekdayRows from './WeekdayRows';
 import { hours } from '../sharedVariables';
 
-/*
-  implement adaptivity,
-  check cross-browser compatibility(especially with button for each hour),
-  JSDoc description,
-  rename variables,
-  getBackgroundColor for posts from a style comp,
-  theme variables,
-  /search redirect to /search/javascript
-*/
-
 function HeatMap({ fetchedPosts, isLoaded, error }) {
   const [activeCell, setActiveCell] = useState({
     day: 0,
