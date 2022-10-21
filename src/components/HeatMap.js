@@ -81,7 +81,7 @@ HeatMap.propTypes = {
       upvotes: number,
       author: string,
       num_comments: number,
-      url: string,
+      permalink: string,
       author_is_blocked: bool,
     }),
   ).isRequired,

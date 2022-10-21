@@ -4,6 +4,7 @@ import {
   shape, arrayOf, number, string, bool,
 } from 'prop-types';
 import { getPostsByDayHour } from '../hooks/useFetchPosts';
+import PostAuthor from './PostAuthor';
 import * as S from '../styles/PostsTable.style';
 
 function PostsTable({ activeCell, posts }) {
@@ -22,12 +23,12 @@ function PostsTable({ activeCell, posts }) {
       return strTime;
     }
     return (
-      <S.PostsTableRow key={`${post.url} ${activeCell.day} ${activeCell.hour}`}>
-      <S.PostsTableCell>{post.title}</S.PostsTableCell>
-      <S.PostsTableCell>{formatAMPM(date)}</S.PostsTableCell>
-      <S.PostsTableCell>{post.upvotes}</S.PostsTableCell>
-      <S.PostsTableCell>{post.num_comments}</S.PostsTableCell>
-      <S.PostsTableCell>{post.author}</S.PostsTableCell>
+      <S.PostsTableRow key={`${post.permalink} ${activeCell.day} ${activeCell.hour}`}>
+        <S.PostsTableCell><a href={`https://reddit.com${post.permalink}`} target="_blank" rel="noopener noreferrer">{post.title}</a></S.PostsTableCell>
+        <S.PostsTableCell>{formatAMPM(date)}</S.PostsTableCell>
+        <S.PostsTableCell>{post.upvotes}</S.PostsTableCell>
+        <S.PostsTableCell>{post.num_comments}</S.PostsTableCell>
+        <S.PostsTableCell><PostAuthor post={post} /></S.PostsTableCell>
       </S.PostsTableRow>
     )
   }
@@ -63,7 +64,7 @@ PostsTable.propTypes = {
       upvotes: number,
       author: string,
       num_comments: number,
-      url: string,
+      permalink: string,
       author_is_blocked: bool,
     }),
   ).isRequired,

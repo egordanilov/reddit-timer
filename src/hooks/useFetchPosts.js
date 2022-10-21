@@ -18,7 +18,7 @@ export function prettifyPostList(unsortedList) {
       upvotes: post.data.ups,
       author: post.data.author,
       num_comments: post.data.num_comments,
-      url: post.data.url,
+      permalink: post.data.permalink,
       author_is_blocked: post.data.author_is_blocked,
     };
     return structuredPost;
