@@ -9,15 +9,29 @@ import * as S from '../styles/PostsTable.style';
 function PostsTable({ activeCell, posts }) {
   if (posts === []) return <></>;
   const filteredPostList = getPostsByDayHour(posts, activeCell.day, activeCell.hour);
-  const postsToRender = filteredPostList.map((post) => (
-    <li key={`${post.url} ${activeCell.day} ${activeCell.hour}`}>
-      {post.title}
-      {post.date}
-      {post.upvotes}
-      {post.num_comments}
-      {post.author}
-    </li>
-  ));
+  const postsToRender = filteredPostList.map((post) => {
+    const date = new Date(post.created_utc * 1000);
+    function formatAMPM(date) {
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var ampm = hours >= 12 ? 'pm' : 'am';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? '0'+minutes : minutes;
+      var strTime = hours + ':' + minutes + ' ' + ampm;
+      return strTime;
+    }
+    return (
+      <S.PostsTableRow key={`${post.url} ${activeCell.day} ${activeCell.hour}`}>
+      <S.PostsTableCell>{post.title}</S.PostsTableCell>
+      <S.PostsTableCell>{formatAMPM(date)}</S.PostsTableCell>
+      <S.PostsTableCell>{post.upvotes}</S.PostsTableCell>
+      <S.PostsTableCell>{post.num_comments}</S.PostsTableCell>
+      <S.PostsTableCell>{post.author}</S.PostsTableCell>
+      </S.PostsTableRow>
+    )
+  }
+  );
   return (
     <S.PostsTableWrapper>
       <S.PostsTableHeading>Posts</S.PostsTableHeading>
@@ -32,13 +46,7 @@ function PostsTable({ activeCell, posts }) {
           </S.PostsTableRow>
         </thead>
         <tbody>
-          <S.PostsTableRow>
-            <S.PostsTableCell>The new Babel release gives support for ECMAscript this line needs to be shortened</S.PostsTableCell>
-            <S.PostsTableCell>2:02am</S.PostsTableCell>
-            <S.PostsTableCell>270</S.PostsTableCell>
-            <S.PostsTableCell>23</S.PostsTableCell>
-            <S.PostsTableCell>Abazithisneedstobeshortened</S.PostsTableCell>
-          </S.PostsTableRow>
+          {postsToRender}
         </tbody>
       </S.PostsTable>
     </S.PostsTableWrapper>
