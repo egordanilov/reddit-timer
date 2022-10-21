@@ -1,9 +1,10 @@
+/* eslint-disable */
 import React from 'react';
 import {
   shape, arrayOf, number, string, bool,
 } from 'prop-types';
 import { getPostsByDayHour } from '../hooks/useFetchPosts';
-import PostsTableWrapper from '../styles/PostsTable.style';
+import * as S from '../styles/PostsTable.style';
 
 function PostsTable({ activeCell, posts }) {
   if (posts === []) return <></>;
@@ -18,9 +19,29 @@ function PostsTable({ activeCell, posts }) {
     </li>
   ));
   return (
-    <PostsTableWrapper>
-      {postsToRender}
-    </PostsTableWrapper>
+    <S.PostsTableWrapper>
+      <S.PostsTableHeading>Posts</S.PostsTableHeading>
+      <S.PostsTable>
+        <thead>
+          <S.PostsTableRow>
+            <S.PostTableHeaderCell>Title</S.PostTableHeaderCell>
+            <S.PostTableHeaderCell>Time Posted</S.PostTableHeaderCell>
+            <S.PostTableHeaderCell>Score</S.PostTableHeaderCell>
+            <S.PostTableHeaderCell>Comments</S.PostTableHeaderCell>
+            <S.PostTableHeaderCell>Author</S.PostTableHeaderCell>
+          </S.PostsTableRow>
+        </thead>
+        <tbody>
+          <S.PostsTableRow>
+            <S.PostsTableCell>The new Babel release gives support for ECMAscript this line needs to be shortened</S.PostsTableCell>
+            <S.PostsTableCell>2:02am</S.PostsTableCell>
+            <S.PostsTableCell>270</S.PostsTableCell>
+            <S.PostsTableCell>23</S.PostsTableCell>
+            <S.PostsTableCell>Abazithisneedstobeshortened</S.PostsTableCell>
+          </S.PostsTableRow>
+        </tbody>
+      </S.PostsTable>
+    </S.PostsTableWrapper>
   );
 }
 
