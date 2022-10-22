@@ -90,9 +90,6 @@ describe('posts table', () => {
     screen.debug();
     // table has 5 columns
     expect(screen.getAllByRole('columnheader').length).toEqual(5);
-
-    const heatmap = screen.getByTestId('heatmap');
-    const emptyCells = within(heatmap).getAllByRole('button');
   });
   test('the posts table is not shown when there are no posts for the selected weekday/hour', async () => {
 
