@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const PostsTableWrapper = styled.section`
     width: 786px;
     margin: 0 auto;
+    text-align: center;
 `;
 
 export const PostsTableHeading = styled.h2`

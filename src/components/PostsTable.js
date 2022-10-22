@@ -8,11 +8,19 @@ import * as S from '../styles/PostsTable.style';
 
 function PostsTable({ activeCell, posts }) {
   if (posts === []) return <></>;
-  const filteredPostList = getPostsByDayHour(posts, activeCell.day, activeCell.hour);
-  const sortedPostList = filteredPostList.sort(
+  const filteredByDayHourPostList = getPostsByDayHour(posts, activeCell.day, activeCell.hour);
+  const sortedByTimePostedPostList = filteredByDayHourPostList.sort(
     (a, b) => (a.date.getUTCMinutes() > b.date.getUTCMinutes() ? 1 : -1),
   );
-  const postsToRender = sortedPostList.map((post) => {
+  if (filteredByDayHourPostList.length === 0) {
+    return (
+      <S.PostsTableWrapper>
+        <br />
+        <b>No posts at this day and hour, try clicking another cell in the Heatmap.</b>
+      </S.PostsTableWrapper>
+    );
+  }
+  const postsToRender = sortedByTimePostedPostList.map((post) => {
     function formatAMPM(date) {
       let hours = date.getHours();
       let minutes = date.getMinutes();

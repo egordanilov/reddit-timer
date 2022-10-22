@@ -81,3 +81,15 @@ describe('heatmap', () => {
     expect(screen.getByText('Failed to fetch, check internet connection and subreddit name')).toBeInTheDocument();
   });
 });
+
+describe('posts table', () => {
+  test('the posts table is shown when a box in the heatmap has been clicked', async () => {
+
+  });
+  test('the posts table is not shown when there are no posts for the selected weekday/hour', async () => {
+
+  });
+  test("the table shows the post's title, time, score (number of upvotes), number of comments and author", async () => {
+
+  });
+});
