@@ -84,7 +84,15 @@ describe('heatmap', () => {
 
 describe('posts table', () => {
   test('the posts table is shown when a box in the heatmap has been clicked', async () => {
+    setup('/search/javascript');
+    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+    await waitForElementToBeRemoved(() => screen.getByTestId('loading-spinner'));
+    screen.debug();
+    // table has 5 columns
+    expect(screen.getAllByRole('columnheader').length).toEqual(5);
 
+    const heatmap = screen.getByTestId('heatmap');
+    const emptyCells = within(heatmap).getAllByRole('button');
   });
   test('the posts table is not shown when there are no posts for the selected weekday/hour', async () => {
 
