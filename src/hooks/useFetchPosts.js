@@ -13,6 +13,7 @@ export function prettifyPostList(unsortedList) {
     const structuredPost = {
       title: post.data.title,
       created_utc: post.data.created_utc,
+      date: new Date(post.data.created_utc * 1000),
       postDay,
       postHour,
       upvotes: post.data.ups,

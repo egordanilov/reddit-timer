@@ -18,6 +18,7 @@ export const PostsTableHeading = styled.h2`
 
 export const PostsTable = styled.table`
     width: 100%;
+    color: #000;
     table-layout: fixed;
     border-collapse: collapse;
     border: 1px solid #DDD;

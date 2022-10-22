@@ -75,6 +75,7 @@ HeatMap.propTypes = {
   structuredPostList: arrayOf(
     shape({
       title: string,
+      date: Date,
       created_utc: number,
       postDay: number,
       postHour: number,
