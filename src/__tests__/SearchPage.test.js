@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  render, screen, within, waitForElementToBeRemoved,
+  render, screen, within, waitForElementToBeRemoved, waitFor,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
@@ -82,19 +82,62 @@ describe('heatmap', () => {
   });
 });
 
+async function clickOnHeatMapCellWithValue(value) {
+  await waitFor(() => screen.getByTestId('heatmap'));
+  const heatmap = await screen.getByTestId('heatmap');
+  const cellWithValue = within(heatmap).getAllByText(value)[0];
+  userEvent.click(cellWithValue);
+}
+
 describe('posts table', () => {
   test('the posts table is shown when a box in the heatmap has been clicked', async () => {
     setup('/search/javascript');
-    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
-    await waitForElementToBeRemoved(() => screen.getByTestId('loading-spinner'));
-    screen.debug();
-    // table has 5 columns
+    await clickOnHeatMapCellWithValue('1');
     expect(screen.getAllByRole('columnheader').length).toEqual(5);
   });
   test('the posts table is not shown when there are no posts for the selected weekday/hour', async () => {
-
+    setup('/search/javascript');
+    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+    await waitForElementToBeRemoved(() => screen.getByTestId('loading-spinner'));
+    await clickOnHeatMapCellWithValue('0');
+    expect(screen.queryByRole('table')).not.toBeInTheDocument();
   });
-  test("the table shows the post's title, time, score (number of upvotes), number of comments and author", async () => {
+  test("the table shows the post's title, time, score (number of upvotes), number of comments and author and sorted by time when post was created", async () => {
+    setup('/search/javascript');
+    await clickOnHeatMapCellWithValue('4');
 
+    const table = screen.getByRole('table');
+    /* slice the table header row */
+    const tableRows = within(table).getAllByRole('row').slice(1);
+    const tableContent = tableRows.map((row) => {
+      const cells = within(row).getAllByRole('cell');
+      const titleLink = within(cells[0]).getByRole('link');
+      const authorLink = within(cells[4]).getByRole('link');
+      return {
+        title: titleLink.innerHTML,
+        href: titleLink.href,
+        time: cells[1].innerHTML,
+        score: cells[2].innerHTML,
+        numComments: cells[3].innerHTML,
+        author: authorLink.innerHTML,
+        authorHref: authorLink.href,
+      };
+    });
+
+    expect(tableContent).toMatchSnapshot();
+  });
+
+  test('shows no link for a deleted user', async () => {
+    setup('/search/javascript');
+    await waitFor(() => screen.getByTestId('heatmap'));
+    const heatmap = await screen.getByTestId('heatmap');
+    const cells = within(heatmap).getAllByRole('button');
+    await userEvent.click(cells[77]);
+    const table = await screen.getByRole('table');
+    const columnWithDeletedUser = within(table).getByRole('cell', { name: /\[deleted\]/i });
+    expect(within(columnWithDeletedUser).queryByRole('link')).not.toBeInTheDocument();
+    expect(columnWithDeletedUser.innerHTML).toBe('[deleted]');
+
+    screen.debug();
   });
 });
