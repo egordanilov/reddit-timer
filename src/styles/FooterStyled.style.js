@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const FooterStyled = styled.footer`
+export const FooterStyled = styled.footer`
     width: 100%; /* tries to take up the complete space */
     max-width: 940px; /* prevents growing larger than 940px */
     margin: auto; /* centers footer on screens wider than 940px */
@@ -9,24 +9,6 @@ const FooterStyled = styled.footer`
     display: flex;
     align-items: center;
     margin-top: 70px;
-
-    a {
-        text-decoration: none;
-        color: ${(props) => props.theme.color.text};
-    }
-
-    a:hover {
-        color: ${(props) => props.theme.color.linkHover};
-    }
-
-    a:first-of-type {
-        flex: 1;
-    }
-
-    a:last-of-type {
-        text-align: right;
-        flex: 1;
-    }
 
     @media (min-width: 992px) and (max-width: 1199px) {
         max-width: 820px;
@@ -56,7 +38,29 @@ const FooterStyled = styled.footer`
             display: none;
         }
     }
-    
 `;
 
-export default FooterStyled;
+export const FooterLink = styled.a`
+    text-decoration: none;
+    color: ${(props) => props.theme.color.text};
+
+    &:hover {
+        color: ${(props) => props.theme.color.linkHover};
+    }
+
+    &:first-of-type {
+        flex: 1;
+    }
+
+    &:last-of-type {
+        text-align: right;
+        flex: 1;
+    }
+
+    @media (max-width: 439px) {
+        margin: 0 auto;
+        &:first-of-type, &:last-of-type {
+            display: none;
+        }
+    }
+`;

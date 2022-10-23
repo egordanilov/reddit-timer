@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FooterStyled from '../styles/FooterStyled.style';
+import { FooterStyled, FooterLink } from '../styles/FooterStyled.style';
 import { ReactComponent as IconMenu } from './footerlogo.svg';
 import Logo from '../styles/Logo.style';
 import theme from '../styles/theme';
@@ -8,7 +8,7 @@ import theme from '../styles/theme';
 function Footer() {
   return (
     <FooterStyled theme={theme}>
-      <a href="https://profy.dev/employers">profy.dev</a>
+      <FooterLink href="https://profy.dev/employers">profy.dev</FooterLink>
       <Logo to="/" alt=""><IconMenu /></Logo>
       <Link to="/terms">Terms &amp; Privacy</Link>
     </FooterStyled>
