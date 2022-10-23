@@ -9,7 +9,7 @@ function Footer() {
   return (
     <FooterStyled theme={theme}>
       <a href="https://profy.dev/employers">profy.dev</a>
-      <Logo to="/" alt="" aria-label="go to the home page"><IconMenu alt="Reddit Timer logo" /></Logo>
+      <Logo to="/" alt=""><IconMenu /></Logo>
       <Link to="/terms">Terms &amp; Privacy</Link>
     </FooterStyled>
   );

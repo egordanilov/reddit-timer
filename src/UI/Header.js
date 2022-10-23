@@ -9,7 +9,7 @@ function Header() {
   return (
     <S.HeaderStyled>
       <div className="header__logo">
-        <Logo to="/" aria-label="go to the home page"><IconMenu alt="Reddit Timer logo" /></Logo>
+        <Logo to="/"><IconMenu /></Logo>
       </div>
 
       <div className="header__links">
