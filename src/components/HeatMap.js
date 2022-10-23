@@ -43,28 +43,31 @@ function HeatMap({
   }
 
   return (
-    <S.HeatMapContainer>
-      <S.HeatMapWrapper data-testid="heatmap">
-        <S.HeatMapHeader>
-          <S.HeatMapHeaderHourWrapper>
-            {headerHours}
-          </S.HeatMapHeaderHourWrapper>
-        </S.HeatMapHeader>
+    <>
+      <S.HeatMapContainer>
+        <S.HeatMapWrapper data-testid="heatmap">
+          <S.HeatMapHeader>
+            <S.HeatMapHeaderHourWrapper>
+              {headerHours}
+            </S.HeatMapHeaderHourWrapper>
+          </S.HeatMapHeader>
 
-        <S.HeatMapBody>
-          <WeekdayRows
-            listOfPosts={fetchedPosts}
-            clickHandler={dayHourClickHandler}
-            activeCell={activeCell}
-          />
-        </S.HeatMapBody>
-      </S.HeatMapWrapper>
+          <S.HeatMapBody>
+            <WeekdayRows
+              listOfPosts={fetchedPosts}
+              clickHandler={dayHourClickHandler}
+              activeCell={activeCell}
+            />
+          </S.HeatMapBody>
+        </S.HeatMapWrapper>
+      </S.HeatMapContainer>
+
       <S.HeatMapTimeZone data-testid="timezone">
         All times are shown in your timezone:
         <S.TimeZoneBold>{` ${Intl.DateTimeFormat().resolvedOptions().timeZone}`}</S.TimeZoneBold>
       </S.HeatMapTimeZone>
       <PostsTable activeCell={activeCell} posts={structuredPostList} />
-    </S.HeatMapContainer>
+    </>
   );
 }
 

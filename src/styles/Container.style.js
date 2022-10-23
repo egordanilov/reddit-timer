@@ -2,16 +2,8 @@ import styled from 'styled-components';
 
 const Container = styled.main`
     min-height: calc(100vh - 200px);
-    max-width: 1200px;
+    max-width: 1200px
     margin: 0 auto;
-
-    @media (min-width: 1400px) {
-        max-width: 1200px;
-    }
-
-    @media (min-width: 1200px) and (max-width: 1399px) {
-        max-width: 1100px;
-    }
 
     @media (min-width: 768px) and (max-width: 992px) {
         padding: 0 30px;

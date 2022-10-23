@@ -4,7 +4,8 @@ import theme from './theme';
 export const HeatMapContainer = styled.div`
     width: calc(100%-40px);
     padding: 0 20px;
-    @media (max-width: 1074px) {
+    overflow-x: visible;
+    @media (max-width: 1149px) {
         overflow-x: scroll;
     }
 `;

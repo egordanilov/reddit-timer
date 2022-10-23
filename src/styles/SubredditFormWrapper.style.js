@@ -22,6 +22,18 @@ export const SubredditInput = styled.input`
     padding-left: 16px;
     line-height: 17px;
     height: 32px;
+
+    @media (min-width: 576px) and (max-width: 767px) {
+        width: 300px;
+    }
+
+    @media (min-width: 401px) and (max-width: 575px) {
+        width: 190px;
+    }
+
+    @media (max-width: 400px) {
+        width: 100px;
+    }
 `;
 
 export const InputLabel = styled.label`
