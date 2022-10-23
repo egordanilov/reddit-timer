@@ -44,7 +44,9 @@ function PostsTable({ activeCell, posts }) {
   });
   return (
     <>
-      <S.PostsTableHeading>Posts</S.PostsTableHeading>
+      <S.PostsTableWrapper>
+        <S.PostsTableHeading>Posts</S.PostsTableHeading>
+      </S.PostsTableWrapper>
       <S.PostsOverflowContainer>
         <S.PostsTableWrapper>
           <S.PostsTable>

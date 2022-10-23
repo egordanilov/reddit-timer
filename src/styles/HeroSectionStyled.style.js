@@ -72,15 +72,7 @@ export const Heading = styled.h1`
 `;
 
 export const HeroImage = styled.img`
-    max-width: 100%;
+    max-width: 1000px;
     width: 90vw;
     margin-top: 36px;
-
-    @media (min-width: 1200px) {
-        width: 80vw;
-    }
-
-    @media (max-width: 991px) {
-        width: 94vw;
-    }
 `;

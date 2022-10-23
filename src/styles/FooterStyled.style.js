@@ -8,6 +8,7 @@ const FooterStyled = styled.footer`
     height: 100px;
     display: flex;
     align-items: center;
+    margin-top: 70px;
 
     a {
         text-decoration: none;

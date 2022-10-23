@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import theme from './theme';
 
 export const HeatMapOverflowContainer = styled.div`
-    width: calc(100%-30px);
+    width: calc(100% - 30px);
     margin: 0 auto;
     overflow-x: visible;
     @media (max-width: 1194px) {

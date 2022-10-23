@@ -4,17 +4,13 @@ import theme from './theme';
 export const InfoSectionWrapper = styled.section`
     text-align: left;
     max-width: 738px;
-    margin: 105px auto;
+    margin: 70px auto;
     font-family: ${theme.font.family.default};
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 27px;
     color: ${theme.color.text};
-
-    @media (max-width: 767px) {
-        margin: 70px auto;
-    }
 `;
 export const InfoSectionHeader = styled.h2`
     font-family: ${theme.font.family.headline};
@@ -27,10 +23,7 @@ export const InfoSectionHeader = styled.h2`
 `;
 
 export const InfoStyled = styled.article`
-    margin-bottom: 105px;
-    @media (max-width: 767px) {
-        margin-bottom: 50px;
-    }
+    margin-bottom: 50px;
 `;
 
 export const InfoLink = styled.a`
