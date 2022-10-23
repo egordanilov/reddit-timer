@@ -47,10 +47,13 @@ const FooterStyled = styled.footer`
 
     @media (max-width: 439px) {
         max-width: 300px;
-        padding: 0 10px;
+        padding: 0px;
         justify-content: space-between;
+        a {
+            margin: 0 auto;
+        }
         a:first-of-type, a:last-of-type {
-            flex: none;
+            display: none;
         }
     }
     
