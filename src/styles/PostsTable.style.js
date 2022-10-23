@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const PostsOverflowContainer = styled.div`
-    width: 786px;
+    width: calc(100%-30px);
     overflow-x: visible;
     @media (max-width: 831px) {
         overflow-x: scroll;

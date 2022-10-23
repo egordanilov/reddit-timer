@@ -43,23 +43,27 @@ function PostsTable({ activeCell, posts }) {
     );
   });
   return (
-    <S.PostsTableWrapper>
+    <>
       <S.PostsTableHeading>Posts</S.PostsTableHeading>
-      <S.PostsTable>
-        <thead>
-          <S.PostsTableRow>
-            <S.PostTableHeaderCell>Title</S.PostTableHeaderCell>
-            <S.PostTableHeaderCell>Time Posted</S.PostTableHeaderCell>
-            <S.PostTableHeaderCell>Score</S.PostTableHeaderCell>
-            <S.PostTableHeaderCell>Comments</S.PostTableHeaderCell>
-            <S.PostTableHeaderCell>Author</S.PostTableHeaderCell>
-          </S.PostsTableRow>
-        </thead>
-        <tbody>
-          {postsToRender}
-        </tbody>
-      </S.PostsTable>
-    </S.PostsTableWrapper>
+      <S.PostsOverflowContainer>
+        <S.PostsTableWrapper>
+          <S.PostsTable>
+            <thead>
+              <S.PostsTableRow>
+                <S.PostTableHeaderCell>Title</S.PostTableHeaderCell>
+                <S.PostTableHeaderCell>Time Posted</S.PostTableHeaderCell>
+                <S.PostTableHeaderCell>Score</S.PostTableHeaderCell>
+                <S.PostTableHeaderCell>Comments</S.PostTableHeaderCell>
+                <S.PostTableHeaderCell>Author</S.PostTableHeaderCell>
+              </S.PostsTableRow>
+            </thead>
+            <tbody>
+              {postsToRender}
+            </tbody>
+          </S.PostsTable>
+        </S.PostsTableWrapper>
+      </S.PostsOverflowContainer>
+    </>
   );
 }
 
