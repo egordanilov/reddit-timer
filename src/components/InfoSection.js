@@ -16,7 +16,7 @@ function InfoSection() {
       <Info id="about" headline="About">
         This app was created during a course on 
         <S.InfoLink href="https://profy.dev" target="_blank" rel="noopener noreferrer"> profy.dev </S.InfoLink> with the goal to implement a pixel-perfect real-world application with professional workflows and tools like Kanban, ClickUp, Figma, GitHub, pull requests and code reviews. 
-        <S.InfoLink href="https://profy.dev/employers" target="_blank" rel="noopener noreferrer"> Click here for more information.</S.InfoLink>
+        <br /><S.InfoLink href="https://profy.dev/employers" target="_blank" rel="noopener noreferrer"> Click here for more information.</S.InfoLink>
       </Info>
       {/* eslint-enable */}
     </S.InfoSectionWrapper>

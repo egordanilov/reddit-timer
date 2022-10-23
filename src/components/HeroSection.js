@@ -6,7 +6,7 @@ import headerImg from '../UI/headerImg.png';
 
 function HeroSection() {
   return (
-    <S.HeroSectionStyled>
+    <S.HeroSectionWrapper>
       <S.Heading>No reactions to your reddit posts?</S.Heading>
       <S.HeroSubtitle>
         Great timing, great results! Find the best time to post on your subreddit.
@@ -20,7 +20,7 @@ function HeroSection() {
       <Link to={`/search/${defaultSubreddit}`}>
         <S.HeroImage src={headerImg} alt="Best time to post on reddit" />
       </Link>
-    </S.HeroSectionStyled>
+    </S.HeroSectionWrapper>
   );
 }
 
