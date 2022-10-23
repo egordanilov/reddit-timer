@@ -26,6 +26,33 @@ const FooterStyled = styled.footer`
         text-align: right;
         flex: 1;
     }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+        max-width: 820px;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        max-width: 660px;
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+        max-width: 500px;
+        padding: 0 30px;
+    }
+
+    @media (min-width: 440px) and (max-width: 575px) {
+        max-width: 360px;
+    }
+
+    @media (max-width: 439px) {
+        max-width: 300px;
+        padding: 0 10px;
+        justify-content: space-between;
+        a:first-of-type, a:last-of-type {
+            flex: none;
+        }
+    }
+    
 `;
 
 export default FooterStyled;
