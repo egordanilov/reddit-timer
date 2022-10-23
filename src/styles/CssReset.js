@@ -29,6 +29,7 @@ const CssReset = css`
     body {
         line-height: 1;
         box-sizing: border-box;
+        overflow-x: hidden;
     }
     ol, ul {
         list-style: none;

@@ -43,7 +43,7 @@ function HeatMap({
   }
 
   return (
-    <>
+    <S.HeatMapContainer>
       <S.HeatMapWrapper data-testid="heatmap">
         <S.HeatMapHeader>
           <S.HeatMapHeaderHourWrapper>
@@ -64,7 +64,7 @@ function HeatMap({
         <S.TimeZoneBold>{` ${Intl.DateTimeFormat().resolvedOptions().timeZone}`}</S.TimeZoneBold>
       </S.HeatMapTimeZone>
       <PostsTable activeCell={activeCell} posts={structuredPostList} />
-    </>
+    </S.HeatMapContainer>
   );
 }
 

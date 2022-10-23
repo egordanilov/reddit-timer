@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 import theme from './theme';
 
+export const HeatMapContainer = styled.div`
+    width: calc(100%-40px);
+    padding: 0 20px;
+    @media (max-width: 1074px) {
+        overflow-x: scroll;
+    }
+`;
+
 export const HeatMapWrapper = styled.section`
     width: 1114px;
     height: 332px;
     margin: 60px auto 0 auto;
-    overflow-x: visible;
 `;
 
 export const HeatMapHeader = styled.div`
