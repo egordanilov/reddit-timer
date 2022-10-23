@@ -44,7 +44,7 @@ function HeatMap({
 
   return (
     <>
-      <S.HeatMapContainer>
+      <S.HeatMapOverflowContainer>
         <S.HeatMapWrapper data-testid="heatmap">
           <S.HeatMapHeader>
             <S.HeatMapHeaderHourWrapper>
@@ -60,7 +60,7 @@ function HeatMap({
             />
           </S.HeatMapBody>
         </S.HeatMapWrapper>
-      </S.HeatMapContainer>
+      </S.HeatMapOverflowContainer>
 
       <S.HeatMapTimeZone data-testid="timezone">
         All times are shown in your timezone:

@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const PostsOverflowContainer = styled.div`
+    width: 786px;
+    overflow-x: visible;
+    @media (max-width: 831px) {
+        overflow-x: scroll;
+    }
+`;
+
 export const PostsTableWrapper = styled.section`
     width: 786px;
     margin: 0 auto;
