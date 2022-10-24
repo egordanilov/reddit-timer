@@ -14,6 +14,10 @@ export const PostsTableWrapper = styled.section`
     text-align: center;
 `;
 
+export const PostsCaption = styled.caption`
+    text-align: left;
+`;
+
 export const PostsTableHeading = styled.h2`
     text-align: left;
     font-size: 24px;

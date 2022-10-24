@@ -50,6 +50,9 @@ function PostsTable({ activeCell, posts }) {
       <S.PostsOverflowContainer>
         <S.PostsTableWrapper>
           <S.PostsTable>
+            <S.PostsCaption>
+              All posts by Weekday and Hour will appear here
+            </S.PostsCaption>
             <thead>
               <S.PostsTableRow>
                 <S.PostTableHeaderCell>Title</S.PostTableHeaderCell>
