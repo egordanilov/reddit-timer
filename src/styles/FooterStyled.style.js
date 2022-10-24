@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const FooterStyled = styled.footer`
     width: 100%; /* tries to take up the complete space */
@@ -43,24 +44,33 @@ export const FooterStyled = styled.footer`
 export const FooterLink = styled.a`
     text-decoration: none;
     color: ${(props) => props.theme.color.text};
+    flex: 1;
+
 
     &:hover {
         color: ${(props) => props.theme.color.linkHover};
     }
-
-    &:first-of-type {
-        flex: 1;
-    }
-
-    &:last-of-type {
-        text-align: right;
-        flex: 1;
-    }
-
+    
     @media (max-width: 439px) {
-        margin: 0 auto;
-        &:first-of-type, &:last-of-type {
-            display: none;
-        }
+        display: none;
+    }
+`;
+
+export const FooterLogoLink = styled(Link)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+`;
+
+export const FooterTermsLink = styled(Link)`
+    text-align: right;
+    color: ${(props) => props.theme.color.text};
+    flex: 1;
+    &:hover {
+        color: ${(props) => props.theme.color.linkHover};
+    }
+    @media (max-width: 439px) {
+        display: none;
     }
 `;
