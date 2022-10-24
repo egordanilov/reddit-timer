@@ -30,6 +30,7 @@ function SubredditForm() {
           value={subredditInput}
           onChange={changeHandler}
           id="subredditInput"
+          name="subredditInput"
         />
         <ActionButton type="submit">
           SEARCH
