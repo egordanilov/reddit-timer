@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const AMOUNT_OF_POSTS_TO_FETCH = 500;
 const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
 
-/* restructure post list from an api response */
+/* restructure post list to get rid of unnecessary properties */
 export function prettifyPostList(unsortedList) {
   /* map over api response and restructure and simplify post list  */
   const prettifiedPostsList = unsortedList.map((post) => {
@@ -41,13 +41,12 @@ Each entry obj[dayOfWeek][hour] contains an array of posts
 export function groupPostsByDayHour(posts) {
   const postsPerDay = Array(7)
     .fill()
-    .map(() => Array(24).fill().map(() => 0));
-
-  posts.forEach((post) => {
-    const createdAt = new Date(post.data.created_utc * 1000);
-    const dayOfWeek = createdAt.getDay();
-    const hour = createdAt.getHours();
-    postsPerDay[dayOfWeek][hour] += 1;
+    .map(() => Array(24).fill().map(() => []));
+  const prettifiedPostList = prettifyPostList(posts);
+  prettifiedPostList.forEach((post) => {
+    const dayOfWeek = post.postDay;
+    const hour = post.postHour;
+    postsPerDay[dayOfWeek][hour].push(post);
   });
   return postsPerDay;
 }
@@ -92,7 +91,6 @@ async function fetchPaginatedPosts(subreddit, abortController, previousPosts = [
  */
 function useFetchPosts(subreddit) {
   const [postsByDayHour, setPostsByDayHour] = useState([]);
-  const [allPosts, setAllPosts] = useState([]);
   const [status, setStatus] = useState('pending');
 
   /* fetch posts every time subreddit have been updated or component 've been mounted */
@@ -101,10 +99,7 @@ function useFetchPosts(subreddit) {
     setStatus('pending');
     setPostsByDayHour([]);
     fetchPaginatedPosts(subreddit, abortController)
-      .then((postList) => {
-        setAllPosts(postList);
-        return groupPostsByDayHour(postList);
-      })
+      .then((postList) => groupPostsByDayHour(postList))
       .then((postListByDayHour) => {
         setPostsByDayHour(postListByDayHour);
         setStatus('resolved');
@@ -124,7 +119,6 @@ function useFetchPosts(subreddit) {
     postsByDayHour,
     isLoaded: status === 'resolved' || status === 'rejected',
     error: status === 'rejected' ? 'error' : '',
-    allPosts: prettifyPostList(allPosts),
   };
 }
 

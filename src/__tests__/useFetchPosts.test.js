@@ -7,6 +7,12 @@ const getTotalNumberOfPosts = (nestedPostList) => nestedPostList.reduce(
   ),
   0,
 );
+
+function flattenPostList(oldList) {
+  const newList = oldList.flat().flat();
+  return newList;
+}
+
 test('loads 500 top posts from the Reddit API', async () => {
   const { result, waitForNextUpdate } = renderHook(() => useFetchPosts('500-posts'));
 
@@ -14,11 +20,11 @@ test('loads 500 top posts from the Reddit API', async () => {
   expect(result.current.postsByDayHour).toEqual([]);
 
   await waitForNextUpdate();
-  const numberOfPosts = getTotalNumberOfPosts(result.current.postsByDayHour);
+  const posts = flattenPostList(result.current.postsByDayHour);
   expect(result.current.isLoaded).toBe(true);
-  expect(numberOfPosts).toEqual(500);
+  expect(posts.length).toEqual(500);
 
-  const postTitles = result.current.allPosts.map((data) => data.title);
+  const postTitles = posts.map((data) => data.title);
   expect(postTitles).toMatchSnapshot();
 });
 
@@ -26,9 +32,9 @@ test('stops loading when less than 500 posts are available', async () => {
   const { result, waitForNextUpdate } = renderHook(() => useFetchPosts('less-than-500-posts'));
 
   await waitForNextUpdate();
-  const numberOfPosts = getTotalNumberOfPosts(result.current.postsByDayHour);
+  const posts = flattenPostList(result.current.postsByDayHour);
   expect(result.current.isLoaded).toBe(true);
-  expect(numberOfPosts).toEqual(270);
+  expect(posts.length).toEqual(270);
 });
 
 test('returns error when a request fails', async () => {

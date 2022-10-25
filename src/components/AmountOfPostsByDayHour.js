@@ -1,14 +1,15 @@
 import React from 'react';
 import {
-  arrayOf, func, number,
+  arrayOf,
+  func, number,
 } from 'prop-types';
 import * as S from '../styles/HeatMap.style';
-import { utcHours } from '../sharedVariables';
+import { postShape, utcHours } from '../sharedVariables';
 
 // eslint-disable-next-line prefer-arrow-callback
 const AmountOfPostsByDayHour = React.memo(function AmountOfPostsByDayHour(
   {
-    weekDay, listOfPosts, clickHandler, activeHour,
+    weekDay, listOfPostsByWeekDay, clickHandler, activeHour,
   },
 ) {
   function onKeyDown(event) {
@@ -21,13 +22,13 @@ const AmountOfPostsByDayHour = React.memo(function AmountOfPostsByDayHour(
       key={`${weekDay} ${hourOfTheDay}`}
       onClick={() => { clickHandler(weekDay, hourOfTheDay); }}
       onKeyDown={onKeyDown}
-      numberOfPosts={listOfPosts[weekDay][hourOfTheDay]}
+      numberOfPosts={listOfPostsByWeekDay[hourOfTheDay].length}
       type="button"
       role="button"
       tabindex={-1}
       selected={activeHour === hourOfTheDay}
     >
-      {listOfPosts[weekDay][hourOfTheDay]}
+      {listOfPostsByWeekDay[hourOfTheDay].length}
     </S.HeatMapRowNumberOfPosts>
   ));
 
@@ -40,7 +41,7 @@ const AmountOfPostsByDayHour = React.memo(function AmountOfPostsByDayHour(
 
 AmountOfPostsByDayHour.propTypes = {
   weekDay: number.isRequired,
-  listOfPosts: arrayOf(arrayOf(number)).isRequired,
+  listOfPostsByWeekDay: arrayOf(arrayOf(postShape)).isRequired,
   clickHandler: func.isRequired,
   activeHour: number,
 };
