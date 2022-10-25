@@ -39,13 +39,12 @@ export const FooterWrapper = styled.footer`
 
     @media (max-width: 439px) {
         max-width: 300px;
-        padding: 0px;
+        padding: 0 10px;
         justify-content: space-between;
     }
 
     ${FooterLink}:nth-child(1) {
         text-align: left;
-        display: none;
     }
     ${FooterLink}:nth-child(3) {
         text-align: right;
