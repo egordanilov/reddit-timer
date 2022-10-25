@@ -99,10 +99,7 @@ function useFetchPosts(subreddit) {
     setStatus('pending');
     setPostsByDayHour([]);
     fetchPaginatedPosts(subreddit, abortController)
-      .then((postList) => {
-        console.log(groupPostsByDayHour(postList));
-        return groupPostsByDayHour(postList);
-      })
+      .then((postList) => groupPostsByDayHour(postList))
       .then((postListByDayHour) => {
         setPostsByDayHour(postListByDayHour);
         setStatus('resolved');
