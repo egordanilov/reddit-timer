@@ -172,3 +172,44 @@ Array [
   "2",
 ]
 `;
+
+exports[`posts table the table shows the post's title, time, score (number of upvotes), number of comments and author and sorted by time when post was created 1`] = `
+Array [
+  Object {
+    "author": "ConfidentMushroom",
+    "authorHref": "https://reddit.com/u/ConfidentMushroom",
+    "href": "https://reddit.com/r/javascript/comments/s5826l/new_chrome_devtools_feature_record_replay_and/",
+    "numComments": "23",
+    "score": "304",
+    "time": "3:16 am",
+    "title": "New Chrome DevTools feature: record, replay, and measure user interactions",
+  },
+  Object {
+    "author": "shane_il",
+    "authorHref": "https://reddit.com/u/shane_il",
+    "href": "https://reddit.com/r/javascript/comments/qeny0z/askjs_looking_for_an_os_agnostic_search_module/",
+    "numComments": "11",
+    "score": "302",
+    "time": "3:18 am",
+    "title": "[AskJS] Looking for an OS agnostic search module for node.",
+  },
+  Object {
+    "author": "jon_abides",
+    "authorHref": "https://reddit.com/u/jon_abides",
+    "href": "https://reddit.com/r/javascript/comments/qjl9lb/ive_created_a_vanilla_js_lib_that_generates/",
+    "numComments": "34",
+    "score": "216",
+    "time": "3:29 am",
+    "title": "I’ve created a Vanilla JS lib that generates animated waves",
+  },
+  Object {
+    "author": "NiceGuy-n2",
+    "authorHref": "https://reddit.com/u/NiceGuy-n2",
+    "href": "https://reddit.com/r/javascript/comments/wib2ra/express_like_api_for_bunjs_just_for_fun/",
+    "numComments": "7",
+    "score": "75",
+    "time": "3:47 am",
+    "title": "Express like api for bunjs ( Just for fun)",
+  },
+]
+`;

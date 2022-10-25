@@ -2,7 +2,7 @@ import React from 'react';
 import {
   arrayOf, func, number, shape,
 } from 'prop-types';
-import * as S from '../styles/HeatMapWrapper.style';
+import * as S from '../styles/HeatMap.style';
 import { weekdays, utcWeekdays } from '../sharedVariables';
 import AmountOfPostsByDayHour from './AmountOfPostsByDayHour';
 

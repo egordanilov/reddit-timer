@@ -1,12 +1,13 @@
 import React from 'react';
+import Container from '../styles/Container.style';
 import HeroSection from '../components/HeroSection';
 import InfoSection from '../components/InfoSection';
 
 export default function Home() {
   return (
-    <section className="viewWrapper">
+    <Container>
       <HeroSection />
       <InfoSection />
-    </section>
+    </Container>
   );
 }

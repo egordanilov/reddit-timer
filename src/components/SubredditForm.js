@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import * as S from '../styles/SubredditFormWrapper.style';
-import { Heading, ActionButton } from '../styles/HeroSectionStyled.style';
+import * as S from '../styles/SubredditForm.style';
+import { Heading, ActionButton } from '../styles/HeroSection.style';
 import defaultSubreddit from '../sharedVariables';
 
 function SubredditForm() {
@@ -30,6 +30,7 @@ function SubredditForm() {
           value={subredditInput}
           onChange={changeHandler}
           id="subredditInput"
+          name="subredditInput"
         />
         <ActionButton type="submit">
           SEARCH
