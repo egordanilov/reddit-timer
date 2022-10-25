@@ -7,9 +7,17 @@ export const InputRowWrapper = styled.form`
    display: flex;
    justify-content: center;
    align-items: center;
-   margin-top: 30px;
-   height: 36px;
-   margin-bottom: 56px;
+    margin-top: 30px;
+    height: 36px;
+    margin-bottom: 56px;
+    @media (max-width: 575px) {
+        height: 100%;
+        flex-direction: column;
+        &:nth-child(2) {
+            margin-top: 15px;
+        }
+    }
+}
 `;
 
 export const SubredditInput = styled.input`
@@ -27,12 +35,18 @@ export const SubredditInput = styled.input`
         width: 300px;
     }
 
-    @media (min-width: 401px) and (max-width: 575px) {
-        width: 190px;
+    @media (max-width: 575px) {
+        width: 290px;
     }
 
-    @media (max-width: 400px) {
-        width: 100px;
+    @media (max-width: 387px) {
+        width: 220px;
+    }
+`;
+
+export const InputGroup = styled.div`
+    @media(max-width: 575px) {
+        margin-bottom: 15px;
     }
 `;
 

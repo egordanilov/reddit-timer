@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as S from '../styles/HeroSection.style';
+import ActionButton from '../styles/ActionButton.style';
 import defaultSubreddit from '../sharedVariables';
 import headerImg from '../UI/headerImg.png';
 
@@ -12,7 +13,7 @@ function HeroSection() {
         Great timing, great results! Find the best time to post on your subreddit.
       </S.HeroSubtitle>
       <Link to={`/search/${defaultSubreddit}`}>
-        <S.ActionButton>SHOW ME THE BEST TIME</S.ActionButton>
+        <ActionButton>SHOW ME THE BEST TIME</ActionButton>
       </Link>
       <Link to={`/search/${defaultSubreddit}`}>
         <S.HeroSubreddit>{`r/${defaultSubreddit}`}</S.HeroSubreddit>

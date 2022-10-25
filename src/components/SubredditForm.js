@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import * as S from '../styles/SubredditForm.style';
-import { Heading, ActionButton } from '../styles/HeroSection.style';
+import { Heading } from '../styles/HeroSection.style';
+import ActionButton from '../styles/ActionButton.style';
 import defaultSubreddit from '../sharedVariables';
 
 function SubredditForm() {
@@ -25,13 +26,15 @@ function SubredditForm() {
     <S.SubredditFormWrapper>
       <Heading>Find the best time for a subreddit</Heading>
       <S.InputRowWrapper onSubmit={submitHandler}>
-        <S.InputLabel htmlFor="subredditInput">r /</S.InputLabel>
-        <S.SubredditInput
-          value={subredditInput}
-          onChange={changeHandler}
-          id="subredditInput"
-          name="subredditInput"
-        />
+        <S.InputGroup>
+          <S.InputLabel htmlFor="subredditInput">r /</S.InputLabel>
+          <S.SubredditInput
+            value={subredditInput}
+            onChange={changeHandler}
+            id="subredditInput"
+            name="subredditInput"
+          />
+        </S.InputGroup>
         <ActionButton type="submit">
           SEARCH
         </ActionButton>

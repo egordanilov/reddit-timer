@@ -17,11 +17,11 @@ describeOnBranches('footer')('Footer', () => {
       .and('eq', 'https://profy.dev/employers');
   });
 
-  it('Contains Terms & Privacy link "/terms"', () => {
+  it('Contains link to "https://github.com/egordanilov/reddit-timer"', () => {
     cy
       .get('footer')
-      .contains('Terms & Privacy')
-      .click();
-    cy.url().should('equal', `${Cypress.config().baseUrl}/terms`);
+      .contains('Github')
+      .and('have.attr', 'href')
+      .and('eq', 'https://github.com/egordanilov/reddit-timer');
   });
 });
