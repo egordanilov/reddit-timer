@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from '../styles/InfoSectionWrapper.style';
+import * as S from '../styles/InfoSection.style';
 import InfoChild from './InfoChild';
 
 function InfoSection() {

@@ -1,19 +1,17 @@
 import React from 'react';
-import {
-  FooterStyled, FooterLink, FooterLogoLink, FooterTermsLink,
-} from '../styles/FooterStyled.style';
+import * as S from '../styles/Footer.style';
 import { ReactComponent as IconMenu } from './footerlogo.svg';
 import theme from '../styles/theme';
 
 function Footer() {
   return (
-    <FooterStyled theme={theme}>
-      <FooterLink href="https://profy.dev/employers">profy.dev</FooterLink>
-      <FooterLogoLink to="/" aria-label="click to go to home page">
+    <S.FooterWrapper theme={theme}>
+      <S.FooterLink href="https://profy.dev/employers">profy.dev</S.FooterLink>
+      <S.FooterLogoLink to="/" aria-label="click to go to home page">
         <IconMenu alt="reddit_time_footer_logo" />
-      </FooterLogoLink>
-      <FooterTermsLink to="/terms">Terms &amp; Privacy</FooterTermsLink>
-    </FooterStyled>
+      </S.FooterLogoLink>
+      <S.FooterTermsLink to="/terms">Terms &amp; Privacy</S.FooterTermsLink>
+    </S.FooterWrapper>
   );
 }
 

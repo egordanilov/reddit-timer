@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import * as S from '../styles/HeroSectionStyled.style';
+import * as S from '../styles/HeroSection.style';
 import defaultSubreddit from '../sharedVariables';
 import headerImg from '../UI/headerImg.png';
 

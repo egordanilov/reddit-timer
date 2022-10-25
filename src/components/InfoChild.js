@@ -1,6 +1,6 @@
 import React from 'react';
 import { string, node } from 'prop-types';
-import * as S from '../styles/InfoSectionWrapper.style';
+import * as S from '../styles/InfoSection.style';
 
 function InfoChild({ id, headline, children }) {
   return (

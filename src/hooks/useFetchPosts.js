@@ -31,6 +31,13 @@ export function prettifyPostList(unsortedList) {
 Builds an object contains posts per day of week and hour to create the heatmap.
 Each entry obj[dayOfWeek][hour] contains an array of posts
 */
+/**
+ * Create an array of posts by day and hour.
+ * Create an nested array, 7 elements for each day of week,
+ * each day of week has 24 elements for each hour
+ * @param {any} posts
+ * @returns {array}
+ */
 export function groupPostsByDayHour(posts) {
   const postsPerDay = Array(7)
     .fill()
@@ -45,8 +52,17 @@ export function groupPostsByDayHour(posts) {
   return postsPerDay;
 }
 
-/* make an api call to fetch 500 top posts by subreddit of last year,
-recursive function calls itself until 500 posts are fetched or no more posts available */
+/**
+ * The URL is the endpoint that we fetch, to get top posts of subreddit passed as a parameter.
+ * Reddit API can only return MAX_AMOUNT_OF_POSTS_PER_PAGE posts per request
+ * Recursive function that calls itself,
+ * until no more posts available or AMOUNT_OF_POSTS_TO_FETCH fetched
+ * @param {string} subreddit
+ * @param {AbortController} abortController
+ * @param {array} previousPosts=[]
+ * @param {string} after=null received from API response, id of the last post from last fetch
+ * @returns {array} array containing AMOUNT_OF_POSTS_TO_FETCH posts received from fetching
+ */
 async function fetchPaginatedPosts(subreddit, abortController, previousPosts = [], after = null) {
   let url = `https://www.reddit.com/r/${subreddit}/top.json?t=year&limit=100`;
   /* pagination parameter to add to fetch url after every request */
@@ -67,6 +83,13 @@ async function fetchPaginatedPosts(subreddit, abortController, previousPosts = [
   return fetchPaginatedPosts(subreddit, abortController, allPosts, data.after);
 }
 
+/**
+ * Custom Hook definition, takes subreddit,
+ * returns an object containing Array[][] of posts sorted by day and hour,
+ * loading status, error, and Array[] of posts
+ * @param {string} subreddit
+ * @returns {array, string, string, array}
+ */
 function useFetchPosts(subreddit) {
   const [postsByDayHour, setPostsByDayHour] = useState([]);
   const [allPosts, setAllPosts] = useState([]);
@@ -96,7 +119,7 @@ function useFetchPosts(subreddit) {
     return () => abortController.abort();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subreddit]);
-  /* return post List, loading status and errors if any */
+  /* final return */
   return {
     postsByDayHour,
     isLoaded: status === 'resolved' || status === 'rejected',
@@ -104,7 +127,14 @@ function useFetchPosts(subreddit) {
     allPosts: prettifyPostList(allPosts),
   };
 }
-/* return an array of posts that have been posted during a specific week day and hour */
+
+/**
+ * Get an array of posts for day of the week and hour requested
+ * @param {array} list
+ * @param {number} day
+ * @param {number} hour
+ * @returns {array}
+ */
 export function getPostsByDayHour(list, day, hour) {
   const newList = list.filter(
     (post) => post.postHour === hour && post.postDay === day,

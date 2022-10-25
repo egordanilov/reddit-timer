@@ -6,7 +6,7 @@ import {
   number,
   shape,
 } from 'prop-types';
-import * as S from '../styles/HeatMapWrapper.style';
+import * as S from '../styles/HeatMap.style';
 import LoadingSpinner from '../styles/LoadingSpinner.style';
 import WeekdayRows from './WeekdayRows';
 import PostsTable from './PostsTable';

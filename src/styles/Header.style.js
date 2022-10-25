@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { HashLink } from 'react-router-hash-link';
 
-export const HeaderStyled = styled.header`
+export const HeaderWrapper = styled.header`
     display: flex;
     height: 100px;
     justify-content: space-between;

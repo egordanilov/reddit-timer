@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const FooterStyled = styled.footer`
+export const FooterWrapper = styled.footer`
     width: 100%; /* tries to take up the complete space */
     max-width: 940px; /* prevents growing larger than 940px */
     margin: auto; /* centers footer on screens wider than 940px */
