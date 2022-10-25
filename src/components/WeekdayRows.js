@@ -1,17 +1,17 @@
 import React from 'react';
 import {
-  arrayOf, func, number, shape,
+  func, number, shape,
 } from 'prop-types';
 import * as S from '../styles/HeatMap.style';
-import { weekdays, utcWeekdays } from '../sharedVariables';
+import { weekdays, utcWeekdays, postListShape } from '../sharedVariables';
 import AmountOfPostsByDayHour from './AmountOfPostsByDayHour';
 
-function WeekdayRows({ listOfPosts, clickHandler, activeCell }) {
+function WeekdayRows({ listOfAllPosts, clickHandler, activeCell }) {
   const parsedWeekdays = utcWeekdays.map((weekday) => (
     <S.HeatMapRow key={weekday}>
       <S.HeatMapRowWeekday>{weekdays[weekday]}</S.HeatMapRowWeekday>
       <AmountOfPostsByDayHour
-        listOfPosts={listOfPosts}
+        listOfPostsByWeekDay={listOfAllPosts[weekday]}
         weekDay={weekday}
         clickHandler={clickHandler}
         activeHour={activeCell.day === weekday ? activeCell.hour : 25}
@@ -27,7 +27,7 @@ function WeekdayRows({ listOfPosts, clickHandler, activeCell }) {
 
 WeekdayRows.propTypes = {
   activeCell: shape({ day: number, hour: number }).isRequired,
-  listOfPosts: arrayOf(arrayOf(number)).isRequired,
+  listOfAllPosts: postListShape.isRequired,
   clickHandler: func.isRequired,
 };
 

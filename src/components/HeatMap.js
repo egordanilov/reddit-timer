@@ -2,18 +2,15 @@ import React, { useState } from 'react';
 import {
   bool,
   string,
-  arrayOf,
-  number,
-  shape,
 } from 'prop-types';
 import * as S from '../styles/HeatMap.style';
 import LoadingSpinner from '../styles/LoadingSpinner.style';
 import WeekdayRows from './WeekdayRows';
 import PostsTable from './PostsTable';
-import { hours } from '../sharedVariables';
+import { hours, postListShape } from '../sharedVariables';
 
 function HeatMap({
-  fetchedPosts, isLoaded, error, structuredPostList,
+  fetchedPosts, isLoaded, error,
 }) {
   const [activeCell, setActiveCell] = useState({
     day: 0,
@@ -54,7 +51,7 @@ function HeatMap({
 
           <S.HeatMapBody>
             <WeekdayRows
-              listOfPosts={fetchedPosts}
+              listOfAllPosts={fetchedPosts}
               clickHandler={dayHourClickHandler}
               activeCell={activeCell}
             />
@@ -66,29 +63,15 @@ function HeatMap({
         All times are shown in your timezone:
         <S.TimeZoneBold>{` ${Intl.DateTimeFormat().resolvedOptions().timeZone}`}</S.TimeZoneBold>
       </S.HeatMapTimeZone>
-      <PostsTable activeCell={activeCell} posts={structuredPostList} />
+      <PostsTable activeCell={activeCell} posts={fetchedPosts[activeCell.day][activeCell.hour]} />
     </>
   );
 }
 
 HeatMap.propTypes = {
-  fetchedPosts: arrayOf(arrayOf(number)).isRequired,
+  fetchedPosts: postListShape.isRequired,
   isLoaded: bool.isRequired,
   error: string.isRequired,
-  structuredPostList: arrayOf(
-    shape({
-      title: string,
-      date: Date,
-      created_utc: number,
-      postDay: number,
-      postHour: number,
-      upvotes: number,
-      author: string,
-      num_comments: number,
-      permalink: string,
-      author_is_blocked: bool,
-    }),
-  ).isRequired,
 };
 
 export default HeatMap;

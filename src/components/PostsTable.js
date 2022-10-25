@@ -1,18 +1,16 @@
 import React from 'react';
 import {
-  shape, arrayOf, number, string, bool,
+  shape, number, arrayOf,
 } from 'prop-types';
-import { getPostsByDayHour } from '../hooks/useFetchPosts';
 import PostAuthor from './PostAuthor';
 import * as S from '../styles/PostsTable.style';
+import { postShape } from '../sharedVariables';
 
 function PostsTable({ activeCell, posts }) {
-  if (posts === []) return <></>;
-  const filteredByDayHourPostList = getPostsByDayHour(posts, activeCell.day, activeCell.hour);
-  const sortedByTimePostedPostList = filteredByDayHourPostList.sort(
+  const sortedByTimePostedPostList = posts.sort(
     (a, b) => (a.date.getUTCMinutes() > b.date.getUTCMinutes() ? 1 : -1),
   );
-  if (filteredByDayHourPostList.length === 0) {
+  if (posts.length === 0) {
     return (
       <S.PostsTableWrapper>
         <br />
@@ -73,20 +71,7 @@ function PostsTable({ activeCell, posts }) {
 }
 
 PostsTable.propTypes = {
-  posts: arrayOf(
-    shape({
-      title: string,
-      date: Date,
-      created_utc: number,
-      postDay: number,
-      postHour: number,
-      upvotes: number,
-      author: string,
-      num_comments: number,
-      permalink: string,
-      author_is_blocked: bool,
-    }),
-  ).isRequired,
+  posts: arrayOf(postShape).isRequired,
   activeCell: shape({
     day: number,
     hour: number,

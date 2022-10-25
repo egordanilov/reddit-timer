@@ -31,7 +31,7 @@ jobs:
         wait-on: 'http://localhost:3000'
         env: branch-name=${{ github.head_ref }}
       env:
-        TZ: Europe/Berlin
+        TZ: America/Chicago
 
     - name: Build
       run: yarn build
