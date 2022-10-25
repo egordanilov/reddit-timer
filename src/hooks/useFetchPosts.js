@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const AMOUNT_OF_POSTS_TO_FETCH = 500;
 const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
 
-/* restructure post list from an api response */
+/* restructure post list to get rid of unnecessary properties*/
 export function prettifyPostList(unsortedList) {
   /* map over api response and restructure and simplify post list  */
   const prettifiedPostsList = unsortedList.map((post) => {
