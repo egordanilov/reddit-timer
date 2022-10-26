@@ -17,8 +17,8 @@ const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
  * permalink: "/r/javascript/comments/qsfc94/askjs_why_are_classes_so_rare_in_modern_js/",
  * author_is_blocked: false
  * }, ...499 more posts]
- *@param {array} unsortedList
- *@returns {array}
+ * @param {array} unsortedList
+ * @returns {array}
  */
 export function prettifyPostList(unsortedList) {
   /* map over api response and restructure and simplify post list  */
