@@ -100,7 +100,7 @@ async function fetchPaginatedPosts(subreddit, abortController, previousPosts = [
 
 /**
  * Custom Hook definition, takes subreddit,
- * returns an object containing Array[][] of posts sorted by day and hour,
+ * returns an object containing Array[][][] of posts sorted by day and hour
  * loading status, error, and Array[] of posts
  * @param {string} subreddit
  * @returns {array, string, string, array}
@@ -139,7 +139,7 @@ function useFetchPosts(subreddit) {
 }
 
 /**
- * Get an array of posts for day of the week and hour requested
+ * Filter posts by day and hour, used inside of PostsTable component
  * @param {array} list
  * @param {number} day
  * @param {number} hour
