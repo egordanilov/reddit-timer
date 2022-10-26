@@ -3,7 +3,23 @@ import { useEffect, useState } from 'react';
 const AMOUNT_OF_POSTS_TO_FETCH = 500;
 const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
 
-/* restructure post list to get rid of unnecessary properties */
+/** Restructure post list to get rid of unnecessary properties
+ * This function is being called inside groupPostsByDayHour()
+ * Accepts an array of 500 posts received from an API.
+ * Return array of posts e.x [{
+ * title: 'Post title", 
+ * created_utc: 1636735695,
+ * date: new Date(created_utc * 1000),
+ * postDay: 2, postHour: 12,
+ * upvotes: 151,
+ * author: 'nickname',
+ * num_comments: 300,
+ * permalink: "/r/javascript/comments/qsfc94/askjs_why_are_classes_so_rare_in_modern_js/",
+ * author_is_blocked: false
+ * }, ...499 more posts]
+ *@param {array} unsortedList
+ *@returns {array}
+ */
 export function prettifyPostList(unsortedList) {
   /* map over api response and restructure and simplify post list  */
   const prettifiedPostsList = unsortedList.map((post) => {
@@ -35,7 +51,7 @@ Each entry obj[dayOfWeek][hour] contains an array of posts
  * Create an array of posts by day and hour.
  * Create an nested array, 7 elements for each day of week,
  * each day of week has 24 elements for each hour
- * @param {any} posts
+ * @param {array} posts
  * @returns {array}
  */
 export function groupPostsByDayHour(posts) {
@@ -53,14 +69,14 @@ export function groupPostsByDayHour(posts) {
 
 /**
  * The URL is the endpoint that we fetch, to get top posts of subreddit passed as a parameter.
- * Reddit API can only return MAX_AMOUNT_OF_POSTS_PER_PAGE posts per request
+ * Reddit API can only return 100 posts per request
  * Recursive function that calls itself,
- * until no more posts available or AMOUNT_OF_POSTS_TO_FETCH fetched
+ * until no more posts available or 500 fetched
  * @param {string} subreddit
  * @param {AbortController} abortController
  * @param {array} previousPosts=[]
  * @param {string} after=null received from API response, id of the last post from last fetch
- * @returns {array} array containing AMOUNT_OF_POSTS_TO_FETCH posts received from fetching
+ * @returns {array} array containing 500 posts received from fetching
  */
 async function fetchPaginatedPosts(subreddit, abortController, previousPosts = [], after = null) {
   let url = `https://www.reddit.com/r/${subreddit}/top.json?t=year&limit=100`;
