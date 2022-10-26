@@ -7,7 +7,7 @@ const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
  * This function is being called inside groupPostsByDayHour()
  * Accepts an array of 500 posts received from an API.
  * Return array of posts e.x [{
- * title: 'Post title", 
+ * title: 'Post title",
  * created_utc: 1636735695,
  * date: new Date(created_utc * 1000),
  * postDay: 2, postHour: 12,
