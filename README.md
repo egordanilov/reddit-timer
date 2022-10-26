@@ -5,16 +5,15 @@ An interactive HeatMap shows amount of posts for selected day of the week and ho
 
 ![Reddit Timer Screenshot](https://user-images.githubusercontent.com/31379969/197903965-d267849a-68c2-4f59-931d-c5e5c655d93b.png)
 
-## Skils learned while I was developing this project\
-• Working on existing codebase and integrating new features\
-• Implementing pixel-perfect designs\
-• Using project management tools\
-• Writing automated tests
-• Using Mock Service Worker to respond API calls within tests\
-• Continuous integration\
-• Using git pull request flow with code reviews\
+## Skills That I Have Learned
+&nbsp;&nbsp;• Working on existing codebase and integrating new features\
+&nbsp;&nbsp;• Implementing pixel-perfect designs\
+&nbsp;&nbsp;• Using project management tools\
+&nbsp;&nbsp;• Writing automated tests\
+&nbsp;&nbsp;• Using Mock Service Worker to respond API calls within tests\
+&nbsp;&nbsp;• Continuous integration and using git pull request flow with code reviews
 
-## How App Works
+## Under The Hood
 [Search page](https://github.com/egordanilov/reddit-timer/blob/main/src/pages/Search.js) is taking a URL parameter and fetches top posts of the year for specified subreddit.\
 Fetching data is happening inside of [useFetchPost.js](https://github.com/egordanilov/reddit-timer/blob/main/src/hooks/useFetchPosts.js)\
 Result of fetching data is being passed down as props to [HeatMap.js](https://github.com/egordanilov/reddit-timer/blob/main/src/components/HeatMap.js)\
@@ -24,18 +23,19 @@ Table of posts by day of week and hour is shown, clicking on different time show
 [useFetchPosts test](https://github.com/egordanilov/reddit-timer/blob/main/src/__tests__/useFetchPosts.test.js)\
 We are using a Mock Service Worker and renderHook to test the custom hook.\
 [Search Page test](https://github.com/egordanilov/reddit-timer/blob/main/src/__tests__/SearchPage.test.js)\
+Tests entire Search page broken down to testing input form, heatmap and posts table\
 [Home Page test](https://github.com/egordanilov/reddit-timer/blob/main/src/__tests__/HomePage.test.js)\
+Tests entire Home page brokend down to testing hero section, about section and navigating to Search page\
 [App.js test](https://github.com/egordanilov/reddit-timer/blob/main/src/__tests__/App.test.js)
+Includes tests for Header and Footer, including navigation between pages.
 
 ## Tools used inside this project
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-React Testing Library\
-React Router Dom\
-Styled Components\
-MockServiceWorker\
-ESLint
+&nbsp;&nbsp;Create React App\
+&nbsp;&nbsp;React Testing Library\
+&nbsp;&nbsp;React Router Dom\
+&nbsp;&nbsp;Styled Components\
+&nbsp;&nbsp;MockServiceWorker\
+&nbsp;&nbsp;ESLint
 
 ## Available Scripts
 Before starting a project, don't forget to install dependencies
