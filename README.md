@@ -1,6 +1,45 @@
+# Reddit Timer 👋
+Want to know when is the best time to post on your favorite subreddit?
+Reddit Timer lets you pick the best day of the week and time of the day to post to get the most upvotes by analyzing top 500 posts of the year.
+An interactive HeatMap shows amount of posts for selected day of the week and hour, browse through it, click on desired time to view the posts for that time.
+
+![Reddit Timer Screenshot](https://user-images.githubusercontent.com/31379969/197903965-d267849a-68c2-4f59-931d-c5e5c655d93b.png)
+
+## Skils learned while I was developing this project\
+• Working on existing codebase and integrating new features\
+• Implementing pixel-perfect designs\
+• Using project management tools\
+• Writing automated tests
+• Using Mock Service Worker to respond API calls within tests\
+• Continuous integration\
+• Using git pull request flow with code reviews\
+
+## How App Works
+[Search page](https://github.com/egordanilov/reddit-timer/blob/main/src/pages/Search.js) is taking a URL parameter and fetches top posts of the year for specified subreddit.\
+Fetching data is happening inside of [useFetchPost.js](https://github.com/egordanilov/reddit-timer/blob/main/src/hooks/useFetchPosts.js)\
+Result of fetching data is being passed down as props to [HeatMap.js](https://github.com/egordanilov/reddit-timer/blob/main/src/components/HeatMap.js)\
+Table of posts by day of week and hour is shown, clicking on different time shows top posts for a specific day and time inside of [PostsTable.js](https://github.com/egordanilov/reddit-timer/blob/main/src/components/PostsTable.js)
+
+## Tests
+[useFetchPosts test](https://github.com/egordanilov/reddit-timer/blob/main/src/__tests__/useFetchPosts.test.js)\
+We are using a Mock Service Worker and renderHook to test the custom hook.\
+[Search Page test](https://github.com/egordanilov/reddit-timer/blob/main/src/__tests__/SearchPage.test.js)\
+[Home Page test](https://github.com/egordanilov/reddit-timer/blob/main/src/__tests__/HomePage.test.js)\
+[App.js test](https://github.com/egordanilov/reddit-timer/blob/main/src/__tests__/App.test.js)
+
+## Tools used inside this project
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React Testing Library\
+React Router Dom\
+Styled Components\
+MockServiceWorker\
+ESLint
 
 ## Available Scripts
+Before starting a project, don't forget to install dependencies
+### `yarn install`
 
 In the project directory, you can run:
 
@@ -24,45 +63,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
