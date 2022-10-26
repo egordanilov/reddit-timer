@@ -32,22 +32,6 @@ export const HeroSubtitle = styled.p`
     }
 `;
 
-export const ActionButton = styled.button`
-background: #fdb755;
-border-radius: 4px;
-color: #fff;
-font-family: ${theme.font.default};
-
-border: none;
-padding: 10px 16px;
-cursor: pointer;
-font-size: 14px;
-&:hover {
-    background: #fea62e;
-}
-
-`;
-
 export const Heading = styled.h1`
     font-family: ${theme.font.family.headline};
     color: #000000;

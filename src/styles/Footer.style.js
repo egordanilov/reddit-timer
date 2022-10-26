@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+export const FooterLink = styled.a`
+    text-decoration: none;
+    color: ${(props) => props.theme.color.text};
+    flex: 1;
+    &:hover {
+        color: ${(props) => props.theme.color.linkHover};
+    }
+`;
+
 export const FooterWrapper = styled.footer`
     width: 100%; /* tries to take up the complete space */
     max-width: 940px; /* prevents growing larger than 940px */
@@ -32,27 +41,14 @@ export const FooterWrapper = styled.footer`
         max-width: 300px;
         padding: 0px;
         justify-content: space-between;
-        a {
-            margin: 0 auto;
-        }
-        a:first-of-type, a:last-of-type {
-            display: none;
-        }
     }
-`;
 
-export const FooterLink = styled.a`
-    text-decoration: none;
-    color: ${(props) => props.theme.color.text};
-    flex: 1;
-
-
-    &:hover {
-        color: ${(props) => props.theme.color.linkHover};
-    }
-    
-    @media (max-width: 439px) {
+    ${FooterLink}:nth-child(1) {
+        text-align: left;
         display: none;
+    }
+    ${FooterLink}:nth-child(3) {
+        text-align: right;
     }
 `;
 
@@ -61,16 +57,4 @@ export const FooterLogoLink = styled(Link)`
     justify-content: center;
     align-items: center;
     margin-left: 0;
-`;
-
-export const FooterTermsLink = styled(Link)`
-    text-align: right;
-    color: ${(props) => props.theme.color.text};
-    flex: 1;
-    &:hover {
-        color: ${(props) => props.theme.color.linkHover};
-    }
-    @media (max-width: 439px) {
-        display: none;
-    }
 `;

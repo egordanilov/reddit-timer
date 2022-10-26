@@ -6,11 +6,11 @@ import theme from '../styles/theme';
 function Footer() {
   return (
     <S.FooterWrapper theme={theme}>
-      <S.FooterLink href="https://profy.dev/employers">profy.dev</S.FooterLink>
+      <S.FooterLink href="https://profy.dev/employers" target="_blank" rel="noopener noreferrer">profy.dev</S.FooterLink>
       <S.FooterLogoLink to="/" aria-label="click to go to home page">
         <IconMenu alt="reddit_time_footer_logo" />
       </S.FooterLogoLink>
-      <S.FooterTermsLink to="/terms">Terms &amp; Privacy</S.FooterTermsLink>
+      <S.FooterLink href="https://github.com/egordanilov/reddit-timer" target="_blank" rel="noopener noreferrer">Github</S.FooterLink>
     </S.FooterWrapper>
   );
 }
