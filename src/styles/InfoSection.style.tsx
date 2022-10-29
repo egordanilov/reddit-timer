@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from './theme.ts';
+import theme from './theme';
 
 export const InfoSectionWrapper = styled.section`
     text-align: left;

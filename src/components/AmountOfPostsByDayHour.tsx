@@ -1,16 +1,18 @@
 import React from 'react';
-import {
-  arrayOf,
-  func, number,
-} from 'prop-types';
 import * as S from '../styles/HeatMap.style';
-import { postShape, utcHours } from '../sharedVariables';
+import { utcHours } from '../sharedVariables';
 
-// eslint-disable-next-line prefer-arrow-callback
+type AmountOfPostsByDayHourProps = {
+  weekDay: number;
+  listOfPostsByWeekDay: any;
+  clickHandler: any;
+  activeHour: number;
+}
+
 const AmountOfPostsByDayHour = React.memo(function AmountOfPostsByDayHour(
   {
     weekDay, listOfPostsByWeekDay, clickHandler, activeHour,
-  },
+  }:AmountOfPostsByDayHourProps,
 ) {
   function onKeyDown(event) {
     if (event.key === ' ' || event.key === 'Enter') {
@@ -25,7 +27,7 @@ const AmountOfPostsByDayHour = React.memo(function AmountOfPostsByDayHour(
       numberOfPosts={listOfPostsByWeekDay[hourOfTheDay].length}
       type="button"
       role="button"
-      tabindex={-1}
+      tabIndex={-1}
       selected={activeHour === hourOfTheDay}
     >
       {listOfPostsByWeekDay[hourOfTheDay].length}
@@ -38,16 +40,5 @@ const AmountOfPostsByDayHour = React.memo(function AmountOfPostsByDayHour(
     </>
   );
 });
-
-AmountOfPostsByDayHour.propTypes = {
-  weekDay: number.isRequired,
-  listOfPostsByWeekDay: arrayOf(arrayOf(postShape)).isRequired,
-  clickHandler: func.isRequired,
-  activeHour: number,
-};
-
-AmountOfPostsByDayHour.defaultProps = {
-  activeHour: 25,
-};
 
 export default AmountOfPostsByDayHour;

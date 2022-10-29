@@ -1,10 +1,6 @@
 import React from 'react';
-import {
-  shape, number, arrayOf,
-} from 'prop-types';
 import PostAuthor from './PostAuthor';
 import * as S from '../styles/PostsTable.style';
-import { postShape } from '../sharedVariables';
 
 function PostsTable({ activeCell, posts }) {
   const sortedByTimePostedPostList = posts.sort(
@@ -69,13 +65,5 @@ function PostsTable({ activeCell, posts }) {
     </>
   );
 }
-
-PostsTable.propTypes = {
-  posts: arrayOf(postShape).isRequired,
-  activeCell: shape({
-    day: number,
-    hour: number,
-  }).isRequired,
-};
 
 export default PostsTable;

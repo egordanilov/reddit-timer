@@ -12,7 +12,7 @@ import theme from '../styles/theme';
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles theme={theme} />
+      <GlobalStyles />
       <Header />
       <Routes>
         <Route path="/">

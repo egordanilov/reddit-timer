@@ -73,7 +73,12 @@ export const HeatMapRowWeekday = styled.div`
     align-items: center;
 `;
 
-export const HeatMapRowNumberOfPosts = styled.button`
+interface NumberOfPostsProps {
+    numberOfPosts: number;
+    selected: boolean;
+}
+
+export const HeatMapRowNumberOfPosts = styled.button<NumberOfPostsProps>`
     box-sizing: border-box;
     background: ${(props) => theme.heatMapColors[props.numberOfPosts < 10 ? props.numberOfPosts : 10]};
     font-style: normal;

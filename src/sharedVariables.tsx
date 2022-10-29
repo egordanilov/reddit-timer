@@ -1,7 +1,3 @@
-import {
-  shape, string, number, bool, arrayOf,
-} from 'prop-types';
-
 const defaultSubreddit = 'javascript';
 export const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 export const hours = ['12:00am', '2:00am', '4:00am', '6:00am', '8:00am', '10:00am', '12:00pm', '2:00pm', '4:00pm', '6:00pm', '8:00pm', '10:00pm'];
@@ -10,20 +6,5 @@ export const utcHours = [
 export const utcWeekdays = [
   0, 1, 2, 3, 4, 5, 6,
 ];
-
-export const postShape = shape({
-  title: string,
-  created_utc: number,
-  date: Date,
-  postDay: number,
-  postHour: number,
-  upvotes: number,
-  author: string,
-  num_comments: number,
-  permalink: string,
-  author_is_blocked: bool,
-});
-
-export const postListShape = arrayOf(arrayOf(arrayOf(postShape)));
 
 export default defaultSubreddit;

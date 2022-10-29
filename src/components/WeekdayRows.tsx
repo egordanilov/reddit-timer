@@ -1,9 +1,6 @@
 import React from 'react';
-import {
-  func, number, shape,
-} from 'prop-types';
 import * as S from '../styles/HeatMap.style';
-import { weekdays, utcWeekdays, postListShape } from '../sharedVariables';
+import { weekdays, utcWeekdays } from '../sharedVariables';
 import AmountOfPostsByDayHour from './AmountOfPostsByDayHour';
 
 function WeekdayRows({ listOfAllPosts, clickHandler, activeCell }) {
@@ -24,11 +21,5 @@ function WeekdayRows({ listOfAllPosts, clickHandler, activeCell }) {
     </>
   );
 }
-
-WeekdayRows.propTypes = {
-  activeCell: shape({ day: number, hour: number }).isRequired,
-  listOfAllPosts: postListShape.isRequired,
-  clickHandler: func.isRequired,
-};
 
 export default WeekdayRows;

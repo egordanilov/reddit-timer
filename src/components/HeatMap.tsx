@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
-import {
-  bool,
-  string,
-} from 'prop-types';
 import * as S from '../styles/HeatMap.style';
 import LoadingSpinner from '../styles/LoadingSpinner.style';
 import WeekdayRows from './WeekdayRows';
 import PostsTable from './PostsTable';
-import { hours, postListShape } from '../sharedVariables';
+import { hours } from '../sharedVariables';
 
 function HeatMap({
   fetchedPosts, isLoaded, error,
@@ -16,7 +12,7 @@ function HeatMap({
     day: 0,
     hour: 12,
   });
-  function dayHourClickHandler(weekDay, hour) {
+  function dayHourClickHandler(weekDay: number, hour: number) {
     setActiveCell({ day: weekDay, hour });
   }
   const headerHours = hours.map((hour) => (
@@ -67,11 +63,5 @@ function HeatMap({
     </>
   );
 }
-
-HeatMap.propTypes = {
-  fetchedPosts: postListShape.isRequired,
-  isLoaded: bool.isRequired,
-  error: string.isRequired,
-};
 
 export default HeatMap;

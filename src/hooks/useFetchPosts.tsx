@@ -20,7 +20,7 @@ const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
  * @param {array} unsortedList
  * @returns {array}
  */
-export function prettifyPostList(unsortedList: Array) {
+export function prettifyPostList(unsortedList: any) {
   /* map over api response and restructure and simplify post list  */
   const prettifiedPostsList = unsortedList.map((post) => {
     const postDate = new Date(post.data.created_utc * 1000);
@@ -56,8 +56,8 @@ Each entry obj[dayOfWeek][hour] contains an array of posts
  */
 export function groupPostsByDayHour(posts) {
   const postsPerDay = Array(7)
-    .fill()
-    .map(() => Array(24).fill().map(() => []));
+    .fill([])
+    .map(() => Array(24).fill([]).map(() => []));
   const prettifiedPostList = prettifyPostList(posts);
   prettifiedPostList.forEach((post) => {
     const dayOfWeek = post.postDay;
