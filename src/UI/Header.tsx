@@ -16,7 +16,7 @@ function Header() {
 
       <div>
         <S.HeaderLink to={`/search/${defaultSubreddit}`} theme={theme}>Search</S.HeaderLink>
-        <S.HeaderLink smooth to="/#how-it-works" theme={theme}>How it works</S.HeaderLink>
+        <S.HeaderLink smooth to="/#how-it-works">How it works</S.HeaderLink>
         <S.HeaderLink smooth to="/#about" theme={theme}>About</S.HeaderLink>
       </div>
     </S.HeaderWrapper>

@@ -9,10 +9,10 @@ function SubredditForm() {
   const { subreddit = defaultSubreddit } = useParams();
   const [subredditInput, setSubredditInput] = React.useState(subreddit);
   const navigate = useNavigate();
-  const changeHandler = (e) => {
+  const changeHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
     setSubredditInput(e.target.value);
   };
-  const submitHandler = (e) => {
+  const submitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
     const newPath = `/search/${subredditInput}`;
     navigate(newPath);

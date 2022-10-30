@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import {resolveAny} from "dns";
 
 const AMOUNT_OF_POSTS_TO_FETCH = 500;
 const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
@@ -113,7 +114,7 @@ export function groupPostsByDayHour(posts:UnsortedListOfPostsFromApiResponse) {
 
 type PreviousPostsType = PostFromApi[] | [];
 
-async function fetchPaginatedPosts(subreddit: string, abortController:AbortController, previousPosts:PreviousPostsType = [], after:afterParamApi = null){
+async function fetchPaginatedPosts(subreddit: string, abortController:AbortController, previousPosts:PreviousPostsType = [], after:afterParamApi = null): Promise<any> {
   let url = `https://www.reddit.com/r/${subreddit}/top.json?t=year&limit=100`;
   /* pagination parameter to add to fetch url after every request */
   if (after) {
@@ -140,8 +141,21 @@ async function fetchPaginatedPosts(subreddit: string, abortController:AbortContr
  * @param {string} subreddit
  * @returns {array, string, string, array}
  */
+interface ApiResponseType {
+  kind: "Listing";
+  data: {
+    after: string | null;
+    dist: number;
+    modhash: string;
+    geo_filter: string;
+    before: string | null;
+    children: PostFromApi[];
+  };
+}
+
 function useFetchPosts(subreddit:string) {
-  const [postsByDayHour, setPostsByDayHour] = useState([]);
+  const listPostsOfDayHour:ListOfPostsByDayHourArray = [];
+  const [postsByDayHour, setPostsByDayHour] = useState(listPostsOfDayHour);
   const [status, setStatus] = useState('pending');
 
   /* fetch posts every time subreddit have been updated or component 've been mounted */
@@ -150,7 +164,7 @@ function useFetchPosts(subreddit:string) {
     setStatus('pending');
     setPostsByDayHour([]);
     fetchPaginatedPosts(subreddit, abortController)
-      .then((postList) => groupPostsByDayHour(postList))
+      .then((postList:PreviousPostsType) => groupPostsByDayHour(postList))
       .then((postListByDayHour:ListOfPostsByDayHourArray) => {
         setPostsByDayHour(postListByDayHour);
         setStatus('resolved');

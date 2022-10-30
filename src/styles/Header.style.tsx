@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { LinkProps, NavLinkProps } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 export const HeaderWrapper = styled.header`
@@ -17,7 +18,14 @@ export const HeaderWrapper = styled.header`
     }
 `;
 
-export const HeaderLink = styled(HashLink)`
+export interface HashLinkProps extends LinkProps {
+    elementId?: string | undefined;
+    smooth?: boolean | undefined;
+    scroll?: ((element: HTMLElement) => void) | undefined;
+    timeout?: number | undefined;
+}
+
+export const HeaderLink = styled(HashLink)<HashLinkProps>`
     text-decoration: none;
     color: ${(props) => props.theme.color.text};
     margin-left: 26px;
