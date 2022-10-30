@@ -9,8 +9,8 @@ function Header() {
   return (
     <S.HeaderWrapper>
       <div>
-        <Logo to="/" alt="reddit_time_footer_logo" aria-label="go to home page">
-          <IconMenu alt="reddit_time_footer_logo" />
+        <Logo to="/" aria-label="go to home page">
+          <IconMenu />
         </Logo>
       </div>
 

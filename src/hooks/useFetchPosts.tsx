@@ -20,7 +20,7 @@ const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
  * @param {array} unsortedList
  * @returns {array}
  */
-export function prettifyPostList(unsortedList) {
+export function prettifyPostList(unsortedList: Array) {
   /* map over api response and restructure and simplify post list  */
   const prettifiedPostsList = unsortedList.map((post) => {
     const postDate = new Date(post.data.created_utc * 1000);
@@ -128,7 +128,6 @@ function useFetchPosts(subreddit) {
       });
     /* Abort all requests when component unmounted */
     return () => abortController.abort();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subreddit]);
   /* final return */
   return {
@@ -145,7 +144,7 @@ function useFetchPosts(subreddit) {
  * @param {number} hour
  * @returns {array}
  */
-export function getPostsByDayHour(list, day, hour) {
+export function getPostsByDayHour(list, day: number, hour: number) {
   const newList = list.filter(
     (post) => post.postHour === hour && post.postDay === day,
   );
