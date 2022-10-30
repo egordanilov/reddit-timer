@@ -23,7 +23,7 @@ type FetchedPosts = Days[];
 
 interface WeekdayRowsProps {
     listOfAllPosts: FetchedPosts;
-    clickHandler: Function;
+    clickHandler: (weekDay: number, hour: number) => void;
     activeCell: {
         day: number;
         hour: number;

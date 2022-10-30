@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LinkProps, NavLinkProps } from 'react-router-dom';
+import { LinkProps } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 export const HeaderWrapper = styled.header`

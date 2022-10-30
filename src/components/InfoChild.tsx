@@ -2,8 +2,8 @@ import React from 'react';
 import * as S from '../styles/InfoSection.style';
 
 interface InfoChildProps {
-  id: "how-it-works" | "about";
-  headline: "About" | "How it works";
+  id: 'how-it-works' | 'about';
+  headline: 'About' | 'How it works';
   children: React.ReactNode;
 }
 

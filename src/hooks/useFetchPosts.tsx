@@ -4,7 +4,7 @@ const AMOUNT_OF_POSTS_TO_FETCH = 500;
 const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
 
 interface PostFromApi {
-  kind: "t3";
+  kind: 't3';
   data: {
     title: string;
     created_utc: number;

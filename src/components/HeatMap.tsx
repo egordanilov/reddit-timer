@@ -27,7 +27,7 @@ interface HeatMapProps {
   fetchedPosts: FetchedPosts;
   isLoaded: boolean;
   error: string;
-};
+}
 
 function HeatMap({
   fetchedPosts, isLoaded, error,

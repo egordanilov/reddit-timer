@@ -38,15 +38,15 @@ function PostsTable({ activeCell, posts }:PostsTableProps) {
   const postsToRender = sortedByTimePostedPostList.map((post) => {
     function formatAMPM(date:Date) {
       let hours = date.getHours();
-      let minutes = date.getMinutes();
+      const minutes = date.getMinutes();
       const ampm = hours >= 12 ? 'pm' : 'am';
       hours %= 12;
       // eslint-disable-next-line no-unneeded-ternary
       hours = hours ? hours : 12; // the hour '0' should be '12'
-        let parsedMinutes: string = minutes.toString();
-        if (minutes < 10) {
-            parsedMinutes = `0${parsedMinutes}`;
-        }
+      let parsedMinutes: string = minutes.toString();
+      if (minutes < 10) {
+        parsedMinutes = `0${parsedMinutes}`;
+      }
       const strTime = `${hours}:${parsedMinutes} ${ampm}`;
       return strTime;
     }
