@@ -3,6 +3,22 @@ import { useEffect, useState } from 'react';
 const AMOUNT_OF_POSTS_TO_FETCH = 500;
 const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
 
+interface PostFromApi {
+  kind: "t3";
+  data: {
+    title: string;
+    created_utc: number;
+    date: Date;
+    postDay: number;
+    postHour: number;
+    ups: number;
+    author: string;
+    num_comments: number;
+    permalink: string;
+    author_is_blocked: boolean;
+  };
+}
+type UnsortedListOfPostsFromApiResponse = PostFromApi[];
 /** Restructure post list to get rid of unnecessary properties
  * This function is being called inside groupPostsByDayHour()
  * Accepts an array of 500 posts received from an API.
@@ -20,13 +36,13 @@ const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
  * @param {array} unsortedList
  * @returns {array}
  */
-export function prettifyPostList(unsortedList: any) {
+export function prettifyPostList(unsortedList: UnsortedListOfPostsFromApiResponse) {
   /* map over api response and restructure and simplify post list  */
-  const prettifiedPostsList = unsortedList.map((post) => {
+  return unsortedList.map((post:PostFromApi) => {
     const postDate = new Date(post.data.created_utc * 1000);
     const postDay = postDate.getDay();
     const postHour = postDate.getHours();
-    const structuredPost = {
+    return {
       title: post.data.title,
       created_utc: post.data.created_utc,
       date: new Date(post.data.created_utc * 1000),
@@ -38,10 +54,26 @@ export function prettifyPostList(unsortedList: any) {
       permalink: post.data.permalink,
       author_is_blocked: post.data.author_is_blocked,
     };
-    return structuredPost;
   });
-  return prettifiedPostsList;
 }
+
+interface Post {
+  title: string;
+  created_utc: number;
+  date: Date;
+  postDay: number;
+  postHour: number;
+  upvotes: number;
+  author: string;
+  num_comments: number;
+  permalink: string;
+  author_is_blocked: boolean;
+}
+
+type PostsByHourArray = Post[];
+type PostsByDayArray = PostsByHourArray[];
+type ListOfPostsByDayHourArray = PostsByDayArray[];
+type afterParamApi = string | null;
 
 /* function to create an array of posts by day and hour.
 Builds an object contains posts per day of week and hour to create the heatmap.
@@ -49,13 +81,13 @@ Each entry obj[dayOfWeek][hour] contains an array of posts
 */
 /**
  * Create an array of posts by day and hour.
- * Create an nested array, 7 elements for each day of week,
+ * Create a nested array, 7 elements for each day of week,
  * each day of week has 24 elements for each hour
  * @param {array} posts
  * @returns {array}
  */
-export function groupPostsByDayHour(posts) {
-  const postsPerDay = Array(7)
+export function groupPostsByDayHour(posts:UnsortedListOfPostsFromApiResponse) {
+  const postsPerDay:ListOfPostsByDayHourArray = Array(7)
     .fill([])
     .map(() => Array(24).fill([]).map(() => []));
   const prettifiedPostList = prettifyPostList(posts);
@@ -78,7 +110,10 @@ export function groupPostsByDayHour(posts) {
  * @param {string} after=null received from API response, id of the last post from last fetch
  * @returns {array} array containing 500 posts received from fetching
  */
-async function fetchPaginatedPosts(subreddit, abortController, previousPosts = [], after = null) {
+
+type PreviousPostsType = PostFromApi[] | [];
+
+async function fetchPaginatedPosts(subreddit: string, abortController:AbortController, previousPosts:PreviousPostsType = [], after:afterParamApi = null){
   let url = `https://www.reddit.com/r/${subreddit}/top.json?t=year&limit=100`;
   /* pagination parameter to add to fetch url after every request */
   if (after) {
@@ -105,7 +140,7 @@ async function fetchPaginatedPosts(subreddit, abortController, previousPosts = [
  * @param {string} subreddit
  * @returns {array, string, string, array}
  */
-function useFetchPosts(subreddit) {
+function useFetchPosts(subreddit:string) {
   const [postsByDayHour, setPostsByDayHour] = useState([]);
   const [status, setStatus] = useState('pending');
 
@@ -116,7 +151,7 @@ function useFetchPosts(subreddit) {
     setPostsByDayHour([]);
     fetchPaginatedPosts(subreddit, abortController)
       .then((postList) => groupPostsByDayHour(postList))
-      .then((postListByDayHour) => {
+      .then((postListByDayHour:ListOfPostsByDayHourArray) => {
         setPostsByDayHour(postListByDayHour);
         setStatus('resolved');
       })
@@ -138,17 +173,11 @@ function useFetchPosts(subreddit) {
 }
 
 /**
- * Filter posts by day and hour, used inside of PostsTable component
+ * Filter posts by day and hour, used inside PostsTable component
  * @param {array} list
  * @param {number} day
  * @param {number} hour
  * @returns {array}
  */
-export function getPostsByDayHour(list, day: number, hour: number) {
-  const newList = list.filter(
-    (post) => post.postHour === hour && post.postDay === day,
-  );
-  return newList;
-}
 
 export default useFetchPosts;

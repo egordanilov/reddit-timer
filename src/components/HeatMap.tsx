@@ -5,9 +5,33 @@ import WeekdayRows from './WeekdayRows';
 import PostsTable from './PostsTable';
 import { hours } from '../sharedVariables';
 
+type Post = {
+  title: string;
+  created_utc: number;
+  date: Date;
+  postDay: number;
+  postHour: number;
+  upvotes: number;
+  author: string;
+  num_comments: number;
+  permalink: string;
+  author_is_blocked: boolean;
+};
+
+type TopLevel = Post[];
+type Days = TopLevel[];
+
+type FetchedPosts = Days[];
+
+interface HeatMapProps {
+  fetchedPosts: FetchedPosts;
+  isLoaded: boolean;
+  error: string;
+};
+
 function HeatMap({
   fetchedPosts, isLoaded, error,
-}) {
+}:HeatMapProps) {
   const [activeCell, setActiveCell] = useState({
     day: 0,
     hour: 12,

@@ -1,8 +1,13 @@
 import React from 'react';
-import { string, node } from 'prop-types';
 import * as S from '../styles/InfoSection.style';
 
-function InfoChild({ id, headline, children }) {
+interface InfoChildProps {
+  id: "how-it-works" | "about";
+  headline: "About" | "How it works";
+  children: React.ReactNode;
+}
+
+function InfoChild({ id, headline, children }:InfoChildProps) {
   return (
     <S.InfoStyled id={id}>
       <S.InfoSectionHeader>{ headline }</S.InfoSectionHeader>
@@ -10,11 +15,5 @@ function InfoChild({ id, headline, children }) {
     </S.InfoStyled>
   );
 }
-
-InfoChild.propTypes = {
-  id: string.isRequired,
-  headline: string.isRequired,
-  children: node.isRequired,
-};
 
 export default InfoChild;

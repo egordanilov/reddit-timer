@@ -14,7 +14,7 @@ const AmountOfPostsByDayHour = React.memo(function AmountOfPostsByDayHour(
     weekDay, listOfPostsByWeekDay, clickHandler, activeHour,
   }:AmountOfPostsByDayHourProps,
 ) {
-  function onKeyDown(event) {
+  function onKeyDown(event: React.KeyboardEvent) {
     if (event.key === ' ' || event.key === 'Enter') {
       clickHandler();
     }
