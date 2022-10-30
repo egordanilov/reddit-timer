@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import {resolveAny} from "dns";
 
 const AMOUNT_OF_POSTS_TO_FETCH = 500;
 const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
@@ -114,7 +113,7 @@ export function groupPostsByDayHour(posts:UnsortedListOfPostsFromApiResponse) {
 
 type PreviousPostsType = PostFromApi[] | [];
 
-async function fetchPaginatedPosts(subreddit: string, abortController:AbortController, previousPosts:PreviousPostsType = [], after:afterParamApi = null): Promise<any> {
+async function fetchPaginatedPosts(subreddit: string, abortController:AbortController, previousPosts:PreviousPostsType = [], after:afterParamApi = null): Promise<UnsortedListOfPostsFromApiResponse> {
   let url = `https://www.reddit.com/r/${subreddit}/top.json?t=year&limit=100`;
   /* pagination parameter to add to fetch url after every request */
   if (after) {
@@ -141,17 +140,6 @@ async function fetchPaginatedPosts(subreddit: string, abortController:AbortContr
  * @param {string} subreddit
  * @returns {array, string, string, array}
  */
-interface ApiResponseType {
-  kind: "Listing";
-  data: {
-    after: string | null;
-    dist: number;
-    modhash: string;
-    geo_filter: string;
-    before: string | null;
-    children: PostFromApi[];
-  };
-}
 
 function useFetchPosts(subreddit:string) {
   const listPostsOfDayHour:ListOfPostsByDayHourArray = [];
