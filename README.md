@@ -15,8 +15,8 @@ An interactive HeatMap shows amount of posts for selected day of the week and ho
 
 ## Under The Hood
 [Search page](https://github.com/egordanilov/reddit-timer/blob/main/src/pages/Search.tsx) is taking a URL parameter and fetches top posts of the year for specified subreddit.\
-Fetching data is happening inside of [useFetchPost.js](https://github.com/egordanilov/reddit-timer/blob/main/src/hooks/useFetchPosts.tsx)\
-Result of fetching data is being passed down as props to [HeatMap.js](https://github.com/egordanilov/reddit-timer/blob/main/src/components/HeatMap.tsx)\
+Fetching data is happening inside of [useFetchPost.tsx](https://github.com/egordanilov/reddit-timer/blob/main/src/hooks/useFetchPosts.tsx)\
+Result of fetching data is being passed down as props to [HeatMap.tsx](https://github.com/egordanilov/reddit-timer/blob/main/src/components/HeatMap.tsx)\
 Table of posts by day of week and hour is shown, clicking on different time shows top posts for a specific day and time inside of [PostsTable.tsx](https://github.com/egordanilov/reddit-timer/blob/main/src/components/PostsTable.tsx)
 
 ## Tests
