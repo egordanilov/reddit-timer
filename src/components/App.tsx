@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import { Outlet, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '../styles/GlobalStyles';
@@ -9,7 +9,7 @@ import Search from '../pages/Search';
 import Terms from '../pages/Terms';
 import theme from '../styles/theme';
 
-function App() {
+function App():ReactElement {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />

@@ -5,7 +5,7 @@ const ActionButton = styled.button`
     background: #fdb755;
     border-radius: 4px;
     color: #fff;
-    font-family: ${theme.font.default};
+    font-family: ${theme.font.family.default};
 
     border: none;
     padding: 10px 16px;

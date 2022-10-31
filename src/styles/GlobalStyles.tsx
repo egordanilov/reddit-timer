@@ -34,8 +34,8 @@ const GlobalStyles = createGlobalStyle`
       font-family: "Montserrat";
       font-weight: 700;
       font-style: normal;
-      src: url("Montserrat-Bold.woff2") format("woff2"),
-      url("Montserrat-Bold.woff") format("font-woff");
+      src: url("/fonts/Montserrat-Bold.woff2") format("woff2"),
+      url("/fonts/Montserrat-Bold.woff") format("font-woff");
     }
   
     /** Bitter Regular **/

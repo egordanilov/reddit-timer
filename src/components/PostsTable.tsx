@@ -1,12 +1,17 @@
-import React from 'react';
-import {
-  shape, number, arrayOf,
-} from 'prop-types';
+import React, {ReactElement} from 'react';
 import PostAuthor from './PostAuthor';
 import * as S from '../styles/PostsTable.style';
-import { postShape } from '../sharedVariables';
+import { Post } from '../hooks/useFetchPosts';
 
-function PostsTable({ activeCell, posts }) {
+interface PostsTableProps {
+    activeCell: {
+        day: number;
+        hour: number;
+    };
+    posts: Post[];
+}
+
+function PostsTable({ activeCell, posts }:PostsTableProps):ReactElement {
   const sortedByTimePostedPostList = posts.sort(
     (a, b) => (a.date.getUTCMinutes() > b.date.getUTCMinutes() ? 1 : -1),
   );
@@ -19,15 +24,18 @@ function PostsTable({ activeCell, posts }) {
     );
   }
   const postsToRender = sortedByTimePostedPostList.map((post) => {
-    function formatAMPM(date) {
+    function formatAMPM(date:Date) {
       let hours = date.getHours();
-      let minutes = date.getMinutes();
+      const minutes = date.getMinutes();
       const ampm = hours >= 12 ? 'pm' : 'am';
       hours %= 12;
       // eslint-disable-next-line no-unneeded-ternary
       hours = hours ? hours : 12; // the hour '0' should be '12'
-      minutes = minutes < 10 ? `0${minutes}` : minutes;
-      const strTime = `${hours}:${minutes} ${ampm}`;
+      let parsedMinutes: string = minutes.toString();
+      if (minutes < 10) {
+        parsedMinutes = `0${parsedMinutes}`;
+      }
+      const strTime = `${hours}:${parsedMinutes} ${ampm}`;
       return strTime;
     }
     return (
@@ -36,7 +44,7 @@ function PostsTable({ activeCell, posts }) {
         <S.PostsTableCell>{formatAMPM(post.date)}</S.PostsTableCell>
         <S.PostsTableCell>{post.upvotes}</S.PostsTableCell>
         <S.PostsTableCell>{post.num_comments}</S.PostsTableCell>
-        <S.PostsTableCell>{post.author === '[deleted]' ? post.author : <PostAuthor post={post} />}</S.PostsTableCell>
+        <S.PostsTableCell>{post.author === '[deleted]' ? post.author : <PostAuthor postAuthor={post.author} />}</S.PostsTableCell>
       </S.PostsTableRow>
     );
   });
@@ -69,13 +77,5 @@ function PostsTable({ activeCell, posts }) {
     </>
   );
 }
-
-PostsTable.propTypes = {
-  posts: arrayOf(postShape).isRequired,
-  activeCell: shape({
-    day: number,
-    hour: number,
-  }).isRequired,
-};
 
 export default PostsTable;

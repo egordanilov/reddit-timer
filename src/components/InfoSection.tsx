@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import * as S from '../styles/InfoSection.style';
 import InfoChild from './InfoChild';
 
-function InfoSection() {
+function InfoSection():ReactElement {
   return (
     <S.InfoSectionWrapper>
       <InfoChild id="how-it-works" headline="How it works">
