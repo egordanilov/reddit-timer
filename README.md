@@ -14,10 +14,10 @@ An interactive HeatMap shows amount of posts for selected day of the week and ho
 &nbsp;&nbsp;• Continuous integration and using git pull request flow with code reviews
 
 ## Under The Hood
-[Search page](https://github.com/egordanilov/reddit-timer/blob/main/src/pages/Search.js) is taking a URL parameter and fetches top posts of the year for specified subreddit.\
-Fetching data is happening inside of [useFetchPost.js](https://github.com/egordanilov/reddit-timer/blob/main/src/hooks/useFetchPosts.js)\
-Result of fetching data is being passed down as props to [HeatMap.js](https://github.com/egordanilov/reddit-timer/blob/main/src/components/HeatMap.js)\
-Table of posts by day of week and hour is shown, clicking on different time shows top posts for a specific day and time inside of [PostsTable.js](https://github.com/egordanilov/reddit-timer/blob/main/src/components/PostsTable.js)
+[Search page](https://github.com/egordanilov/reddit-timer/blob/main/src/pages/Search.tsx) is taking a URL parameter and fetches top posts of the year for specified subreddit.\
+Fetching data is happening inside of [useFetchPost.js](https://github.com/egordanilov/reddit-timer/blob/main/src/hooks/useFetchPosts.tsx)\
+Result of fetching data is being passed down as props to [HeatMap.js](https://github.com/egordanilov/reddit-timer/blob/main/src/components/HeatMap.tsx)\
+Table of posts by day of week and hour is shown, clicking on different time shows top posts for a specific day and time inside of [PostsTable.tsx](https://github.com/egordanilov/reddit-timer/blob/main/src/components/PostsTable.tsx)
 
 ## Tests
 [useFetchPosts test](https://github.com/egordanilov/reddit-timer/blob/main/src/__tests__/useFetchPosts.test.js)\
@@ -30,6 +30,7 @@ Tests entire Home page brokend down to testing hero section, about section and n
 Includes tests for Header and Footer, including navigation between pages.
 
 ## Tools used inside this project
+&nbsp;&nbsp;Typescript\
 &nbsp;&nbsp;Create React App\
 &nbsp;&nbsp;React Testing Library\
 &nbsp;&nbsp;React Router Dom\
