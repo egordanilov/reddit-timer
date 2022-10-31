@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React, { ReactElement } from 'react';
 import { useParams } from 'react-router-dom';
 import useFetchPosts from '../hooks/useFetchPosts';
 import Container from '../styles/Container.style';

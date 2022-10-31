@@ -2,9 +2,9 @@ import React, {ReactElement} from 'react';
 import * as S from '../styles/HeatMap.style';
 import { weekdays, utcWeekdays } from '../sharedVariables';
 import { ListOfPostsByDayHourArray } from '../hooks/useFetchPosts';
-import AmountOfPostsByDayHour from './AmountOfPostsByDayHour';
+import HeatMapRow from './HeatMapRow';
 
-interface WeekdayRowsProps {
+interface HeatMapRowsProps {
     listOfAllPosts: ListOfPostsByDayHourArray;
     clickHandler: (weekday: number, hourOfTheDay: number) => void;
     activeCell: {
@@ -13,11 +13,11 @@ interface WeekdayRowsProps {
     };
 }
 
-function WeekdayRows({ listOfAllPosts, clickHandler, activeCell }:WeekdayRowsProps):ReactElement {
+function HeatMapRows({ listOfAllPosts, clickHandler, activeCell }:HeatMapRowsProps):ReactElement {
   const parsedWeekdays = utcWeekdays.map((weekday) => (
     <S.HeatMapRow key={weekday}>
       <S.HeatMapRowWeekday>{weekdays[weekday]}</S.HeatMapRowWeekday>
-      <AmountOfPostsByDayHour
+      <HeatMapRow
         listOfPostsByWeekDay={listOfAllPosts[weekday]}
         weekDay={weekday}
         clickHandler={clickHandler}
@@ -32,4 +32,4 @@ function WeekdayRows({ listOfAllPosts, clickHandler, activeCell }:WeekdayRowsPro
   );
 }
 
-export default WeekdayRows;
+export default HeatMapRows;

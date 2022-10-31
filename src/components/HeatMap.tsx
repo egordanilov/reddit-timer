@@ -1,7 +1,7 @@
 import React, {ReactElement, useState} from 'react';
 import * as S from '../styles/HeatMap.style';
 import LoadingSpinner from '../styles/LoadingSpinner.style';
-import WeekdayRows from './WeekdayRows';
+import HeatMapRows from './HeatMapRows';
 import PostsTable from './PostsTable';
 import { ListOfPostsByDayHourArray } from '../hooks/useFetchPosts';
 import { hours } from '../sharedVariables';
@@ -53,7 +53,7 @@ function HeatMap({
           </S.HeatMapHeader>
 
           <S.HeatMapBody>
-            <WeekdayRows
+            <HeatMapRows
               listOfAllPosts={fetchedPosts}
               clickHandler={dayHourClickHandler}
               activeCell={activeCell}
