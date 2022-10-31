@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, ReactElement } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import * as S from '../styles/SubredditForm.style';
 import { Heading } from '../styles/HeroSection.style';
 import ActionButton from '../styles/ActionButton.style';
 import defaultSubreddit from '../sharedVariables';
 
-function SubredditForm() {
+function SubredditForm():ReactElement {
   const { subreddit = defaultSubreddit } = useParams();
   const [subredditInput, setSubredditInput] = React.useState(subreddit);
   const navigate = useNavigate();

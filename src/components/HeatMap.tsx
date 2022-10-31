@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {ReactElement, useState} from 'react';
 import * as S from '../styles/HeatMap.style';
 import LoadingSpinner from '../styles/LoadingSpinner.style';
 import WeekdayRows from './WeekdayRows';
@@ -31,7 +31,7 @@ interface HeatMapProps {
 
 function HeatMap({
   fetchedPosts, isLoaded, error,
-}:HeatMapProps) {
+}:HeatMapProps):ReactElement {
   const [activeCell, setActiveCell] = useState({
     day: 0,
     hour: 12,

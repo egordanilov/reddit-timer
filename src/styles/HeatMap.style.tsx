@@ -73,9 +73,11 @@ export const HeatMapRowWeekday = styled.div`
     align-items: center;
 `;
 
+
 interface NumberOfPostsProps {
     numberOfPosts: number;
     selected: boolean;
+    tabindex: number;
 }
 
 export const HeatMapRowNumberOfPosts = styled.button<NumberOfPostsProps>`

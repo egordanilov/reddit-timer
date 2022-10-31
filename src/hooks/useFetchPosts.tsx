@@ -18,6 +18,19 @@ interface PostFromApi {
     author_is_blocked: boolean;
   };
 }
+
+interface Post {
+  title: string;
+  created_utc: number;
+  date: Date;
+  postDay: number;
+  postHour: number;
+  upvotes: number;
+  author: string;
+  num_comments: number;
+  permalink: string;
+  author_is_blocked: boolean;
+}
 type UnsortedListOfPostsFromApiResponse = PostFromApi[];
 /** Restructure post list to get rid of unnecessary properties
  * This function is being called inside groupPostsByDayHour()
@@ -36,7 +49,7 @@ type UnsortedListOfPostsFromApiResponse = PostFromApi[];
  * @param {array} unsortedList
  * @returns {array}
  */
-export function prettifyPostList(unsortedList: UnsortedListOfPostsFromApiResponse) {
+export function prettifyPostList(unsortedList: UnsortedListOfPostsFromApiResponse):Post[] {
   /* map over api response and restructure and simplify post list  */
   return unsortedList.map((post:PostFromApi) => {
     const postDate = new Date(post.data.created_utc * 1000);
@@ -55,19 +68,6 @@ export function prettifyPostList(unsortedList: UnsortedListOfPostsFromApiRespons
       author_is_blocked: post.data.author_is_blocked,
     };
   });
-}
-
-interface Post {
-  title: string;
-  created_utc: number;
-  date: Date;
-  postDay: number;
-  postHour: number;
-  upvotes: number;
-  author: string;
-  num_comments: number;
-  permalink: string;
-  author_is_blocked: boolean;
 }
 
 type PostsByHourArray = Post[];

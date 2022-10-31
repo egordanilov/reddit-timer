@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import * as S from '../styles/Header.style';
 import Logo from '../styles/Logo.style';
 import { ReactComponent as IconMenu } from './RedditTimerLogo.svg';
 import theme from '../styles/theme';
 import defaultSubreddit from '../sharedVariables';
 
-function Header() {
+function Header():ReactElement {
   return (
     <S.HeaderWrapper>
       <div>

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import { Link } from 'react-router-dom';
 import * as S from '../styles/HeroSection.style';
 import ActionButton from '../styles/ActionButton.style';
 import defaultSubreddit from '../sharedVariables';
 import headerImg from '../UI/headerImg.png';
 
-function HeroSection() {
+function HeroSection():ReactElement {
   return (
     <S.HeroSectionWrapper>
       <S.Heading>No reactions to your reddit posts?</S.Heading>

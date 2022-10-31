@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import * as S from '../styles/InfoSection.style';
 
 interface InfoChildProps {
@@ -7,7 +7,7 @@ interface InfoChildProps {
   children: React.ReactNode;
 }
 
-function InfoChild({ id, headline, children }:InfoChildProps) {
+function InfoChild({ id, headline, children }:InfoChildProps):ReactElement {
   return (
     <S.InfoStyled id={id}>
       <S.InfoSectionHeader>{ headline }</S.InfoSectionHeader>

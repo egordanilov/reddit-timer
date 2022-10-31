@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import PostAuthor from './PostAuthor';
 import * as S from '../styles/PostsTable.style';
 
@@ -23,7 +23,7 @@ interface PostsTableProps {
     posts: Post[];
 }
 
-function PostsTable({ activeCell, posts }:PostsTableProps) {
+function PostsTable({ activeCell, posts }:PostsTableProps):ReactElement {
   const sortedByTimePostedPostList = posts.sort(
     (a, b) => (a.date.getUTCMinutes() > b.date.getUTCMinutes() ? 1 : -1),
   );

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import * as S from '../styles/HeatMap.style';
 import { utcHours } from '../sharedVariables';
+
 
 type AmountOfPostsByDayHourProps = {
   weekDay: number;
@@ -13,21 +14,22 @@ const AmountOfPostsByDayHour = React.memo(function AmountOfPostsByDayHour(
   {
     weekDay, listOfPostsByWeekDay, clickHandler, activeHour,
   }:AmountOfPostsByDayHourProps,
-) {
-  function onKeyDown(event: React.KeyboardEvent) {
+):ReactElement {
+  function onKeyDown(event: React.KeyboardEvent, weekDay: number, hourOfTheDay: number) {
     if (event.key === ' ' || event.key === 'Enter') {
-      clickHandler();
+      clickHandler(weekDay, hourOfTheDay);
     }
   }
+
   const parsedHours = utcHours.map((hourOfTheDay) => (
     <S.HeatMapRowNumberOfPosts
       key={`${weekDay} ${hourOfTheDay}`}
       onClick={() => { clickHandler(weekDay, hourOfTheDay); }}
-      onKeyDown={onKeyDown}
+      onKeyDown={(event) => { onKeyDown(event, weekDay, hourOfTheDay)}}
       numberOfPosts={listOfPostsByWeekDay[hourOfTheDay].length}
       type="button"
       role="button"
-      tabIndex={-1}
+      tabindex={-1}
       selected={activeHour === hourOfTheDay}
     >
       {listOfPostsByWeekDay[hourOfTheDay].length}
