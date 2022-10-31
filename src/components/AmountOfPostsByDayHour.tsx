@@ -1,12 +1,12 @@
 import React, {ReactElement} from 'react';
 import * as S from '../styles/HeatMap.style';
 import { utcHours } from '../sharedVariables';
-
+import { ArrayOfPostsByWeekDay } from '../hooks/useFetchPosts';
 
 type AmountOfPostsByDayHourProps = {
   weekDay: number;
-  listOfPostsByWeekDay: any;
-  clickHandler: any;
+  listOfPostsByWeekDay: ArrayOfPostsByWeekDay;
+  clickHandler: (weekday: number, hourOfTheDay: number) => void;
   activeHour: number;
 }
 
@@ -22,7 +22,7 @@ const AmountOfPostsByDayHour = React.memo(function AmountOfPostsByDayHour(
   }
 
   const parsedHours = utcHours.map((hourOfTheDay) => (
-    <S.HeatMapRowNumberOfPosts
+    <S.AmountOfPostsByDayHour
       key={`${weekDay} ${hourOfTheDay}`}
       onClick={() => { clickHandler(weekDay, hourOfTheDay); }}
       onKeyDown={(event) => { onKeyDown(event, weekDay, hourOfTheDay)}}
@@ -33,7 +33,7 @@ const AmountOfPostsByDayHour = React.memo(function AmountOfPostsByDayHour(
       selected={activeHour === hourOfTheDay}
     >
       {listOfPostsByWeekDay[hourOfTheDay].length}
-    </S.HeatMapRowNumberOfPosts>
+    </S.AmountOfPostsByDayHour>
   ));
 
   return (

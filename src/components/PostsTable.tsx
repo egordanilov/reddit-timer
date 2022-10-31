@@ -1,19 +1,7 @@
 import React, {ReactElement} from 'react';
 import PostAuthor from './PostAuthor';
 import * as S from '../styles/PostsTable.style';
-
-type Post = {
-    title: string;
-    created_utc: number;
-    date: Date;
-    postDay: number;
-    postHour: number;
-    upvotes: number;
-    author: string;
-    num_comments: number;
-    permalink: string;
-    author_is_blocked: boolean;
-};
+import { Post } from '../hooks/useFetchPosts';
 
 interface PostsTableProps {
     activeCell: {

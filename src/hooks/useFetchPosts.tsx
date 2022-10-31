@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const AMOUNT_OF_POSTS_TO_FETCH = 500;
 const MAX_AMOUNT_OF_POSTS_PER_PAGE = 100;
 
-interface PostFromApi {
+export interface PostFromApi {
   kind: 't3';
   data: {
     title: string;
@@ -18,8 +18,7 @@ interface PostFromApi {
     author_is_blocked: boolean;
   };
 }
-
-interface Post {
+export interface Post {
   title: string;
   created_utc: number;
   date: Date;
@@ -31,7 +30,18 @@ interface Post {
   permalink: string;
   author_is_blocked: boolean;
 }
-type UnsortedListOfPostsFromApiResponse = PostFromApi[];
+export type UnsortedListOfPostsFromApiResponse = PostFromApi[];
+export type PostsByHourArray = Post[];
+export type ArrayOfPostsByWeekDay = PostsByHourArray[];
+export type ListOfPostsByDayHourArray = ArrayOfPostsByWeekDay[];
+export interface UseFetchPostsReturnType {
+  postsByDayHour: ListOfPostsByDayHourArray;
+  isLoaded: boolean;
+  error: 'error' | '';
+}
+type afterParamApi = string | null;
+type PreviousPostsType = PostFromApi[] | [];
+
 /** Restructure post list to get rid of unnecessary properties
  * This function is being called inside groupPostsByDayHour()
  * Accepts an array of 500 posts received from an API.
@@ -70,11 +80,6 @@ export function prettifyPostList(unsortedList: UnsortedListOfPostsFromApiRespons
   });
 }
 
-type PostsByHourArray = Post[];
-type PostsByDayArray = PostsByHourArray[];
-type ListOfPostsByDayHourArray = PostsByDayArray[];
-type afterParamApi = string | null;
-
 /* function to create an array of posts by day and hour.
 Builds an object contains posts per day of week and hour to create the heatmap.
 Each entry obj[dayOfWeek][hour] contains an array of posts
@@ -86,7 +91,7 @@ Each entry obj[dayOfWeek][hour] contains an array of posts
  * @param {array} posts
  * @returns {array}
  */
-export function groupPostsByDayHour(posts:UnsortedListOfPostsFromApiResponse) {
+export function groupPostsByDayHour(posts:UnsortedListOfPostsFromApiResponse):ListOfPostsByDayHourArray {
   const postsPerDay:ListOfPostsByDayHourArray = Array(7)
     .fill([])
     .map(() => Array(24).fill([]).map(() => []));
@@ -110,8 +115,6 @@ export function groupPostsByDayHour(posts:UnsortedListOfPostsFromApiResponse) {
  * @param {string} after=null received from API response, id of the last post from last fetch
  * @returns {array} array containing 500 posts received from fetching
  */
-
-type PreviousPostsType = PostFromApi[] | [];
 
 async function fetchPaginatedPosts(subreddit: string, abortController:AbortController, previousPosts:PreviousPostsType = [], after:afterParamApi = null): Promise<UnsortedListOfPostsFromApiResponse> {
   let url = `https://www.reddit.com/r/${subreddit}/top.json?t=year&limit=100`;
@@ -141,7 +144,7 @@ async function fetchPaginatedPosts(subreddit: string, abortController:AbortContr
  * @returns {array, string, string, array}
  */
 
-function useFetchPosts(subreddit:string) {
+function useFetchPosts(subreddit:string):UseFetchPostsReturnType {
   const listPostsOfDayHour:ListOfPostsByDayHourArray = [];
   const [postsByDayHour, setPostsByDayHour] = useState(listPostsOfDayHour);
   const [status, setStatus] = useState('pending');

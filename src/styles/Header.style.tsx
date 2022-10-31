@@ -18,7 +18,7 @@ export const HeaderWrapper = styled.header`
     }
 `;
 
-export interface HashLinkProps extends LinkProps {
+interface HashLinkProps extends LinkProps {
     elementId?: string | undefined;
     smooth?: boolean | undefined;
     scroll?: ((element: HTMLElement) => void) | undefined;
